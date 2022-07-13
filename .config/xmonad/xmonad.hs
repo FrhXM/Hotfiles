@@ -28,15 +28,16 @@ import XMonad.Actions.WindowBringer (gotoMenu, bringMenu)
 import XMonad.Actions.WindowMenu (windowMenu)
 
 -- Hooks
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
+import XMonad.Hooks.ManageDocks 
 import XMonad.ManageHook (doFloat)                                                         
 import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)              
-import XMonad.Hooks.ManageDocks (avoidStruts, docks)                                           
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook) 
-import XMonad.Hooks.DynamicLog (dynamicLogWithPP, xmobarPP, xmobarColor, wrap, shorten, PP(..))
 
 -- Utilities
 import XMonad.Util.EZConfig ( additionalKeysP )                                                 
-import XMonad.Util.Run (spawnPipe, hPutStrLn)                                                
 import XMonad.Util.SpawnOnce (spawnOnce)                                                    
 import XMonad.Util.Cursor (setDefaultCursor)
 import XMonad.Util.NamedScratchpad 
@@ -73,7 +74,7 @@ import XMonad.Layout.Accordion
 
 -- Others
 import qualified XMonad.StackSet as W                                                        
-import qualified Data.Map as M                                                              
+import qualified Data.Map 	 as M                                                              
 
 ------------------------------------------------------------------------
 -- Color Pallatte
@@ -114,9 +115,6 @@ myClickJustFocuses   = False       :: Bool       -- focus click config
 myFont    = "xft:JetBrains Mono:style=Bold:pixelsize=13" :: String
 myBigFont = "xft:FiraCode Nerd Font Mono:pixelsize=100"  :: String
 
--- this is to show the number of windows in each workspace.
-windowCount :: X (Maybe String)
-windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 ------ Workspaces -------
 -- wsDEV           = "¹DEV"
@@ -312,7 +310,7 @@ myShowWNameTheme = def
                 }
 
 myLayoutHook    = showWName' myShowWNameTheme
-                $ mkToggle (NOBORDERS ?? FULL ?? EOT)
+                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
                 $ limitWindows 12
                 $ avoidStruts
                 $ onWorkspaces [" 1 "," 2 "] codeLayouts
@@ -370,7 +368,7 @@ myKeys =
     -- Window navigation
     , ("M-<Return>",    promote                                 ) {-- Moves the focused window to the master pane --}
     , ("M-t",           withFocused toggleFloat                 ) {-- Floating window --}
-    , ("M-f",           sendMessage $ Toggle FULL               ) {--Full Screen --}
+    , ("M-f",           sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts) {--FuLL Screen--}
     , ("M-S-f",         withFocused (sendMessage . maximizeRestore)) {-- For Maximaze With Paddings --}
     , ("M-e",           viewEmptyWorkspace                      ) {-- Find Empty Workspaces --}
     , ("M-g",           tagToEmptyWorkspace                     ) {-- Go To workspaces --}
@@ -405,49 +403,76 @@ myKeys =
                     else (W.float w (W.RationalRect (1/6) (1/6) (2/3) (2/3)) s))
 
 ------------------------------------------------------------------------
--- Main Do
+-- Main && XMobar
 ------------------------------------------------------------------------
-main = do
-    xmproc <- spawnPipe "xmobar ~/.config/xmobar/xmobar.hs"
-    xmonad $ docks def {  modMask                   = myModMask
-                        , terminal                  = myTerminal
-                        , borderWidth               = myBorderWidth
-                        , focusedBorderColor        = myFocusedBorderColor 
-                        , normalBorderColor         = myNormalBorderColor
-                        , focusFollowsMouse         = myFocusFollowsMouse  
-                        , clickJustFocuses          = myClickJustFocuses
-                        , workspaces                = myWorkspaces
-                        , startupHook               = myStartupHook
-                        , layoutHook                = myLayoutHook
-                        , manageHook                = myManageHook
-                        , logHook                   = dynamicLogWithPP xmobarPP
-                                                        -- XMOBAR SETTINGS
-                                                       { ppOutput = hPutStrLn xmproc   -- xmobar
-                                                       -- Current workspace
-                                                       , ppCurrent = xmobarColor blue_ "" . wrap
-                                                                 ("<box type=Bottom width=2 mb=2 color=" ++ cyan ++ ">") "</box>"
-                                                       -- Visible but not current workspace
-                                                       , ppVisible = xmobarColor green ""
-                                                       -- Hidden workspace
-                                                       , ppHidden = xmobarColor blue_ "" . wrap
-                                                                  ("<box type=Top width=2 mt=2 color=" ++ cyan ++ ">") "</box>"
-                                                       -- Hidden workspaces (no windows)
-                                                       , ppHiddenNoWindows = xmobarColor blue_ ""
-                                                       -- Title of active window
-                                                       , ppTitle = xmobarColor blue_ "" . shorten 60
-                                                       -- Separator character
-                                                       , ppSep =  "<fc=" ++ cyan_ ++ "> <fn=1>|</fn> </fc>"
-                                                       -- WS Separator 
-                                                       , ppWsSep = "  "
-                                                       -- Urgent workspace
-                                                       , ppUrgent = xmobarColor fg "" . wrap "!" "!"
-                                                       -- Adding # of windows on current workspace to the bar
-                                                       , ppExtras  = [windowCount]
-                                                       --  Type Of layout in xmobar
-                                                       , ppLayout   = xmobarColor blue_ ""
-                                                       -- order of things in xmobar
-                                                       , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
-                                                       } 
-                                                       >>  updatePointer (0.5, 0.5) (0, 0)  -- exact centre of window
-                                                       >>  fadeInactiveLogHook 0.95         -- Trancperncy Window (max = 1)
-                         } `additionalKeysP` myKeys
+main = xmonad
+     . ewmhFullscreen
+     . ewmh
+     . withEasySB mySB defToggleStrutsKey
+     . docks
+     $ myConfig
+     where
+     mySB = statusBarProp "xmobar" (pure myPP)
+     	where
+	myPP = xmobarPP 
+	      -- Properties of current workspace
+	    { ppCurrent = xmobarColor colorPrimary "" . wrap "<box type=Bottom width=2> " " </box>"
+
+	      -- Properties of workspace on other monitor
+	    , ppVisible = xmobarColor colorSecondary "" . wrap "<box type=Bottom width=2> " " </box>"
+
+	      -- Properties of hidden workspaces without windows
+	    , ppHiddenNoWindows = xmobarColor colorInactive ""
+
+	      -- Title of active window
+	    , ppTitle = xmobarColor colorFG "" . shorten 80
+	      
+	      -- Separator character
+	    , ppSep =  "<fc=#3d85c6> <fn=1>|</fn> </fc>"
+
+	      -- WS Separator
+	    , ppWsSep = " "
+
+	      -- Number of windows on workspace
+	    , ppExtras = [windowCount]
+
+	      -- Order of things
+	    , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+	    }     
+	    where
+		colorBG :: String
+		colorBG = "#1f1f1f"
+
+		colorFG :: String
+		colorFG = "#dfdfdf"
+
+		colorInactive :: String
+		colorInactive = "#878787"
+
+		colorPrimary :: String
+		colorPrimary = "#3d85c6"
+
+		colorSecondary :: String
+		colorSecondary = "#c13e63"
+		
+		-- this is to show the number of windows in each workspace.
+		windowCount :: X (Maybe String)
+		windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+
+------------------------------------------------------------------------
+-- AllVar && AllConf && Allkeys
+------------------------------------------------------------------------
+myConfig = def { modMask                    = myModMask
+		, terminal                  = myTerminal
+		, borderWidth               = myBorderWidth
+		, focusedBorderColor        = myFocusedBorderColor 
+		, normalBorderColor         = myNormalBorderColor
+		, focusFollowsMouse         = myFocusFollowsMouse  
+		, clickJustFocuses          = myClickJustFocuses
+		, workspaces                = myWorkspaces
+		, startupHook               = myStartupHook
+		, layoutHook                = myLayoutHook
+		, manageHook                = myManageHook
+		, logHook		    = updatePointer (0.5, 0.5) (0, 0)
+					    >> fadeInactiveLogHook 0.95 
+	        } `additionalKeysP` myKeys
