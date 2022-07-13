@@ -75,7 +75,7 @@ alias l.='exa -a | egrep "^\."'
 ## confirm before overwriting something
 alias cp="cp -i"
 alias mv='mv -i'
-alias rm='rm -I'
+alias rm='trash-put'
 
 ## bat && find
 alias cat='bat'
