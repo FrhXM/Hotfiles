@@ -28,10 +28,10 @@ import XMonad.Actions.WindowBringer (gotoMenu, bringMenu)
 import XMonad.Actions.WindowMenu (windowMenu)
 
 -- Hooks
-import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
-import XMonad.Hooks.ManageDocks 
+import XMonad.Hooks.EwmhDesktops 
+import XMonad.Hooks.ManageDocks (avoidStruts, docks, ToggleStruts(..))
 import XMonad.ManageHook (doFloat)                                                         
 import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)              
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook) 
@@ -300,7 +300,7 @@ twoTabbed       = renamed [Replace "TWO TABBED"]
 ------------------------------------------------------------------------
 -- Layout Hook
 ------------------------------------------------------------------------
-mySpacings       = spacingRaw False (Border 0 0 0 0) True (Border 5 5 5 5) True
+mySpacings       = spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True
 myGaps           = gaps [(U, 10),(D, 5),(L, 10),(R, 10)]
 myShowWNameTheme = def
                 { swn_font              = myBigFont
@@ -414,7 +414,7 @@ main = xmonad
      where
      mySB = statusBarProp "xmobar" (pure myPP)
      	where
-	myPP = xmobarPP 
+	myPP = def 
 	      -- Properties of current workspace
 	    { ppCurrent = xmobarColor colorPrimary "" . wrap "<box type=Bottom width=2> " " </box>"
 
@@ -459,10 +459,10 @@ main = xmonad
 		windowCount :: X (Maybe String)
 		windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
-------------------------------------------------------------------------
--- AllVar && AllConf && Allkeys
-------------------------------------------------------------------------
-myConfig = def { modMask                    = myModMask
+-------------------------------------------------------------------------------
+-- 	   AllVaribles Not In Containers But In My Heart ==>               ---
+-------------------------------------------------------------------------------
+myConfig = def  { modMask                   = myModMask
 		, terminal                  = myTerminal
 		, borderWidth               = myBorderWidth
 		, focusedBorderColor        = myFocusedBorderColor 
