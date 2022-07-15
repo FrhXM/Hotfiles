@@ -423,9 +423,15 @@ main = xmonad
 
 	      -- Properties of hidden workspaces without windows
 	    , ppHiddenNoWindows = xmobarColor colorInactive ""
+        
+        -- Properties of hidden WS (Active)
+        , ppHidden = xmobarColor colorFG ""
+
+        -- Type Of layout in xmobar
+        , ppLayout = xmobarColor colorPrimary ""   
 
 	      -- Title of active window
-	    , ppTitle = xmobarColor colorFG "" . shorten 80
+	    , ppTitle = xmobarColor colorFG "" . shorten 70 
 	      
 	      -- Separator character
 	    , ppSep =  "<fc=#3d85c6> <fn=1>|</fn> </fc>"
@@ -437,14 +443,14 @@ main = xmonad
 	    , ppExtras = [windowCount]
 
 	      -- Order of things
-	    , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=4>" ++ ws ++ "</fn>"] ++ ex ++ ["<fc=" ++ colorPrimary ++ ">[" ++ l ++ "]</fc> " ++ t ]
 	    }     
 	    where
 		colorBG :: String
 		colorBG = "#1f1f1f"
 
 		colorFG :: String
-		colorFG = "#dfdfdf"
+		colorFG = "#caa9fa"
 
 		colorInactive :: String
 		colorInactive = "#878787"
@@ -462,7 +468,8 @@ main = xmonad
 -------------------------------------------------------------------------------
 -- 	   AllVaribles Not In Containers But In My Heart ==>               ---
 -------------------------------------------------------------------------------
-myConfig = def  { modMask                   = myModMask
+myConfig = def  
+        { modMask                   = myModMask
 		, terminal                  = myTerminal
 		, borderWidth               = myBorderWidth
 		, focusedBorderColor        = myFocusedBorderColor 
@@ -473,6 +480,6 @@ myConfig = def  { modMask                   = myModMask
 		, startupHook               = myStartupHook
 		, layoutHook                = myLayoutHook
 		, manageHook                = myManageHook
-		, logHook		    = updatePointer (0.5, 0.5) (0, 0)
-					    >> fadeInactiveLogHook 0.95 
-	        } `additionalKeysP` myKeys
+		, logHook		            = updatePointer (0.5, 0.5) (0, 0)
+					                >> fadeInactiveLogHook 0.95 
+	    } `additionalKeysP` myKeys
