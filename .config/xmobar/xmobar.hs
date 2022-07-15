@@ -3,9 +3,10 @@ Config {
        , additionalFonts    = [ "xft:FiraCode Nerd Font Mono:pixelsize=12:antialias=true:hinting=true"
                                 , "xft:Font Awesome 6 Free Solid:pixelsize=12"
                                 , "xft:Font Awesome 6 Brands:pixelsize=12"
+                                , "xft:JetBrains Mono:style=Bold:pixelsize=12"
                               ]
        , bgColor        = "#11121D"
-       , fgColor        = "#a9b1d6"
+       , fgColor        = "#878787"
        , alpha          = 255
        , position       = TopSize L 100 25
        , border         = NoBorder
