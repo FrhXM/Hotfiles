@@ -25,7 +25,6 @@ import XMonad.Actions.WithAll (killAll, sinkAll)
 import XMonad.Actions.WindowGo (raiseBrowser)
 import XMonad.Actions.RotSlaves (rotSlavesDown)
 import XMonad.Actions.WindowBringer (gotoMenu, bringMenu)
-import XMonad.Actions.WindowMenu (windowMenu)
 
 -- Hooks
 import XMonad.Hooks.StatusBar
@@ -370,6 +369,7 @@ myKeys =
     , ("M-t",           withFocused toggleFloat                 ) {-- Floating window --}
     , ("M-f",           sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts) {--FuLL Screen--}
     , ("M-S-f",         withFocused (sendMessage . maximizeRestore)) {-- For Maximaze With Paddings --}
+    , ("M-b",           sendMessage ToggleStruts                ) {-- ignore Bar --}
     , ("M-e",           viewEmptyWorkspace                      ) {-- Find Empty Workspaces --}
     , ("M-g",           tagToEmptyWorkspace                     ) {-- Go To workspaces --}
     , ("M-n",           withFocused minimizeWindow              ) {-- For Minimize && Action minimize --}
@@ -379,8 +379,7 @@ myKeys =
     , ("M-S-s",         sendMessage $ SwapWindow                ) {-- Compine Two Layout [XM-comboP]--}
     , ("M-S-r",         rotSlavesDown                           ) {-- Don't Touch Layout in Master --}
     , ("M-p",           gotoMenu                                ) {-- Find Window  in dmenu --}
-    , ("M-b",           bringMenu                               ) {-- swap window To Current WS --}
-    , ("M-o",           windowMenu                              ){-- For windowMenu --}
+    , ("M-o",           bringMenu                               ) {-- swap window To Current WS --}
    
    -- Resize layout
     , ("M-a",           sendMessage MirrorExpand) {-- For Layout ResizableTile( Tiled ) -}
@@ -483,3 +482,4 @@ myConfig = def
 		, logHook		            = updatePointer (0.5, 0.5) (0, 0)
 					                >> fadeInactiveLogHook 0.95 
 	    } `additionalKeysP` myKeys
+
