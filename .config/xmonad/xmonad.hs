@@ -315,8 +315,8 @@ myLayoutHook    = showWName' myShowWNameTheme
                 $ onWorkspaces [" 1 "," 2 "] codeLayouts
                 $ onWorkspaces [" 3 "," 4 "] webLayouts
                 $ onWorkspaces [" 5 "," 6 "] chatLayouts
-                $ onWorkspaces [" 7 "," 8 "] settingsLayouts
-                $ onWorkspace " 9 " mediaLayout
+                $ onWorkspaces [" 7 "," 8 "] settingeLayouts
+                $ onWorkspace " 9 " mediaLayouts
                 $ allLayouts
                where 
     allLayouts = tall ||| threeColMid ||| dishes ||| oneBig ||| grid ||| twoPane ||| spirals ||| circle ||| floats ||| tabs
@@ -324,8 +324,8 @@ myLayoutHook    = showWName' myShowWNameTheme
     codeLayouts = dishes ||| twoPane ||| tabs
     chatLayouts = grid ||| threeColMid ||| dishes ||| oneBig ||| tall ||| twoPane ||| spirals ||| circle ||| floats ||| tabs
     youtubeLayouts = oneBig ||| full
-    settingsLayouts = circle ||| grid ||| spirals ||| floats
-    mediaLayout = oneUp ||| twoTabbed ||| masterTabbed ||| tabs 
+    settingeLayouts = circle ||| grid ||| spirals ||| floats
+    mediaLayouts = oneUp ||| twoTabbed ||| masterTabbed ||| tabs 
 
 ------------------------------------------------------------------------
 -- Custom Keys
@@ -482,4 +482,3 @@ myConfig = def
 		, logHook		            = updatePointer (0.5, 0.5) (0, 0)
 					                >> fadeInactiveLogHook 0.95 
 	    } `additionalKeysP` myKeys
-
