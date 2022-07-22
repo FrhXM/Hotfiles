@@ -8,13 +8,15 @@ Config {
        , bgColor        = "#11121D"
        , fgColor        = "#878787"
        , alpha          = 255
-       , position       = TopSize L 100 25
-       , border         = NoBorder
-       , borderWidth    = 1
-       , borderColor    = "#f7768e"
+       , position       = Static {xpos = 0, ypos = 0, width = 1920, height = 35}
+       , border         = BottomB
+       , borderWidth    = 0
+       , borderColor    = "#34363d"
        , lowerOnStart   = True
        , hideOnStart    = False
        , allDesktops    = True
+       , overrideRedirect = True,
+       , pickBroadest = False,
        , persistent     = True
        , iconRoot       = "/home/frhxm/.config/xmobar/xpm/"  -- default: "[NERD]"
        , commands       = [ Run Date "<fn=2>\xf017</fn> %b %d %Y  %H:%M:%S" "date" 10
