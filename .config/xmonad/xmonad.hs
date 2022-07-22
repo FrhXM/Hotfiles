@@ -136,7 +136,7 @@ myStartupHook = do
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "xset r rate 255 55"                                                  -- speeds cursor in urxvt
-    spawnOnce "picom --experimental-backends -b"                                    -- Compositor
+    spawnOnce "picom --experimental-backends -b -f"                                 -- Compositor
     setDefaultCursor xC_left_ptr                                                    -- Default Cursor
 
 ------------------------------------------------------------------------
@@ -482,3 +482,4 @@ myConfig = def
 		, logHook		            = updatePointer (0.5, 0.5) (0, 0)
 					                >> fadeInactiveLogHook 0.95 
 	    } `additionalKeysP` myKeys
+
