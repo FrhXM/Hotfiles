@@ -42,6 +42,8 @@ set numberwidth=5           " width of Number Line
 set hidden                  " Overwrite buffers 
 set mouse=a          	    " Active la souris, dans tous les modes 
 set undofile                " save undo chages even after computer restart
+set ttyfast                 " always assume a fast terminal
+set showtabline=2           " Show vim tab line even if only one file is open
 set clipboard+=unnamedplus  " use Clipboard To copy & paste To Vim
 
 set ignorecase              " make searching case insensitive
@@ -115,6 +117,7 @@ nnoremap <C-b> :bd<CR>
 call plug#begin('~/.config/nvim/plugins')
         " --- Appearance ---"
   Plug 'tiagovla/tokyodark.nvim'
+  Plug 'nvim-lualine/lualine.nvim'
   Plug 'sheerun/vim-polyglot'
   Plug 'ryanoasis/vim-devicons'
 
@@ -135,7 +138,15 @@ call plug#end()
 " | Settings plugin |
 " +----------------+
 " ============================== Theme =================================
+let g:tokyodark_transparent_background = 0    " set to enable transparent background.
+let g:tokyodark_enable_italic_comment = 1     " Set to enable italic in Comment
+let g:tokyodark_enable_italic = 1             " Set to italicize keywords. This option is designed to use with fonts that support italic styles,
+let g:tokyodark_color_gamma = "1.0"           " Change to adjust the brightness of the theme. (Darker < 1.0 < Lighter).
 colorscheme tokyodark
+" Status Line 
+lua << END
+require('lualine').setup()
+END
 " enable transparent terminal bg
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
@@ -154,4 +165,5 @@ nnoremap <C-g> :GFiles<CR>
 " ========================= NERDTree ==================================
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-g> :NERDTreeFind<CR>
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif 
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
