@@ -30,11 +30,11 @@ import XMonad.Actions.Search  (google, youtube, images, github, promptSearch, se
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.EwmhDesktops 
+import XMonad.Hooks.WindowSwallowing
 import XMonad.Hooks.ManageDocks (avoidStruts, docks, ToggleStruts(..))
 import XMonad.ManageHook (doFloat)                                                         
 import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)              
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook) 
-import XMonad.Hooks.WindowSwallowing
 
 -- Utilities
 import XMonad.Util.EZConfig ( additionalKeysP )                                                 
