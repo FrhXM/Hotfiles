@@ -24,7 +24,7 @@ import XMonad.Actions.Promote (promote)
 import XMonad.Actions.WithAll (killAll, sinkAll)
 import XMonad.Actions.WindowGo (raiseBrowser)
 import XMonad.Actions.RotSlaves (rotSlavesDown)
-import XMonad.Actions.WindowBringer (gotoMenu, bringMenu)
+import XMonad.Actions.Search  (google, youtube, images, github, promptSearch, searchEngine)
 
 -- Hooks
 import XMonad.Hooks.StatusBar
@@ -34,6 +34,7 @@ import XMonad.Hooks.ManageDocks (avoidStruts, docks, ToggleStruts(..))
 import XMonad.ManageHook (doFloat)                                                         
 import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)              
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook) 
+import XMonad.Hooks.WindowSwallowing
 
 -- Utilities
 import XMonad.Util.EZConfig ( additionalKeysP )                                                 
@@ -71,9 +72,16 @@ import XMonad.Layout.HintedGrid
 import XMonad.Layout.Dwindle                                                    
 import XMonad.Layout.Accordion
 
+-- prompt
+import XMonad.Prompt
+import XMonad.Prompt.Shell
+import XMonad.Prompt.Window
+import XMonad.Prompt.Man
+import XMonad.Prompt.FuzzyMatch
+
 -- Others
 import qualified XMonad.StackSet as W                                                        
-import qualified Data.Map 	 as M                                                              
+import qualified Data.Map 	     as M                                                              
 
 ------------------------------------------------------------------------
 -- Color Pallatte
@@ -105,6 +113,7 @@ white_       = "#acb0d0"
 ------------------------------------------------------------------------
 myTerminal           = "kitty"     :: String     -- Terminal
 myModMask            = mod1Mask    :: KeyMask    -- leader key (Alt)
+myWinMask            = mod4Mask    :: KeyMask    -- Windows Key (Super)
 myBorderWidth        = 1           :: Dimension  -- Border size
 myNormalBorderColor  = black       :: String     -- Border color of unfocus window
 myFocusedBorderColor = blue        :: String     -- Border color of focus window
@@ -136,7 +145,7 @@ myStartupHook = do
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "xset r rate 255 55"                                                  -- speeds cursor in urxvt
-    spawnOnce "picom --experimental-backends -b -f"                                 -- Compositor
+    spawnOnce "picom --experimental-backends"                                       -- Compositor
     setDefaultCursor xC_left_ptr                                                    -- Default Cursor
 
 ------------------------------------------------------------------------
@@ -299,7 +308,8 @@ twoTabbed       = renamed [Replace "TWO TABBED"]
 ------------------------------------------------------------------------
 -- Layout Hook
 ------------------------------------------------------------------------
-mySpacings       = spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True
+myHandleEventHook= swallowEventHook (className =? "kitty") (return True)
+mySpacings= spacingRaw False (Border 0 10 10 10) True (Border 10 10 10 10) True
 myGaps           = gaps [(U, 10),(D, 5),(L, 10),(R, 10)]
 myShowWNameTheme = def
                 { swn_font              = myBigFont
@@ -328,6 +338,45 @@ myLayoutHook    = showWName' myShowWNameTheme
     mediaLayouts = oneUp ||| twoTabbed ||| masterTabbed ||| tabs 
 
 ------------------------------------------------------------------------
+-- XPrompt
+------------------------------------------------------------------------
+myXPConfig = def 
+          { font                = myFont
+          , bgColor             = bg
+          , fgColor             = fg
+          , bgHLight            = green
+          , fgHLight            = black
+          , borderColor         = blue
+          , promptBorderWidth   = 3
+          , position            = CenteredAt (1 / 4) (1 / 3)
+          , alwaysHighlight     = True
+          , height              = 40
+          , maxComplRows        = Just 5       -- set to Just 5 for 5 rows Or Nothing
+          , maxComplColumns     = Just 2       -- set to Just 5 for 5 coulmn Or Nothing
+          , historySize         = 256
+          , historyFilter       = id
+          , promptKeymap        = vimLikeXPKeymap
+          , completionKey       = (0, xK_Tab)
+          , changeModeKey       = xK_grave
+          , defaultText         = []
+          , autoComplete        = Nothing     -- set Just 100000 for .1 sec
+          , showCompletionOnTab = False
+          , complCaseSensitivity= CaseInSensitive
+          , defaultPrompter     = id
+                -- Prompt.FuzzyMatch
+          , searchPredicate     = fuzzyMatch
+          , sorter              = fuzzySort
+          }
+
+------------------------------------------------------------------------
+-- XP Search 
+------------------------------------------------------------------------
+aur         = searchEngine "aur" "https://aur.archlinux.org/packages?O=0&K="
+archwiki    = searchEngine "archwiki" "http://wiki.archlinux.org/index.php/Special:Search?search="
+reddit      = searchEngine "reddit" "https://www.reddit.com/r/unixporn/search/?q="
+wallhaven   = searchEngine "wallhaven" "https://wallhaven.cc/search?q="
+ 
+------------------------------------------------------------------------
 -- Custom Keys
 ------------------------------------------------------------------------
 myKeys = 
@@ -338,24 +387,20 @@ myKeys =
     
     -- System 
                    --- Audio ---
-    , ("<XF86AudioMute>",  spawn "pamixer -t && notify-send -t 200 'Toggle mute button!'") 	
-    , ("<F9>",        spawn "pamixer -i 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")
-    , ("<F8>",        spawn "pamixer -d 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")  			    
-    , ("<F10>",       spawn "pamixer --default-source -t && notify-send -t 200 'Toggle mute Mic button'")   
+    , ("<XF86AudioMute>", spawn "pamixer -t && notify-send -t 200 'Toggle mute button!'") 	
+    , ("<F9>",         spawn "pamixer -i 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")
+    , ("<F8>",         spawn "pamixer -d 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")  			    
+    , ("<F10>",        spawn "pamixer --default-source -t && notify-send -t 200 'Toggle mute Mic button'")   
                    --- Brightenss ---
-    , ("<F5>",        spawn "xbacklight -dec 10 && notify-send -t 200 `xbacklight -get`")
-    , ("<F6>",        spawn "xbacklight -inc 10 && notify-send -t 200 `xbacklight -get`")
+    , ("<F5>",         spawn "xbacklight -dec 10 && notify-send -t 200 `xbacklight -get`")
+    , ("<F6>",         spawn "xbacklight -inc 10 && notify-send -t 200 `xbacklight -get`")
                    --- ScreenShoot --- 
-    , ("<Print>",     spawn "scrot -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"     )
-    , ("M-<Print>",   spawn "scrot -u -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"  )
-    , ("M-S-<Print>", spawn "scrot -s -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"  )
+    , ("<Print>",      spawn "scrot -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"     )
+    , ("M-<Print>",    spawn "scrot -u -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"  )
+    , ("M-S-<Print>",  spawn "scrot -s -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"  )
                    --- Scripts ---
-    , ("M-S-w",       spawn "bash ~/.config/rofi/scripts/wifiMenu.sh" )
-    , ("M-S-e",       spawn "bash ~/.config/rofi/scripts/powerMenu.sh")
-
-    -- Run Prompt
-    , ("M-S-d",       spawn "dmenu_run")                                                  
-    , ("M-d",         spawn "rofi -show drun -show-icons")                                           
+    , ("M-S-w",        spawn "bash ~/.config/rofi/scripts/wifiMenu.sh" )
+    , ("M-S-e",        spawn "bash ~/.config/rofi/scripts/powerMenu.sh")
 
     -- Apps
     , ("M-S-<Return>", spawn myTerminal)                                      
@@ -363,44 +408,60 @@ myKeys =
     , ("M-r",          spawn "redshift -O 3800K")                                        
     , ("M-x",          spawn "redshift -x")                                              
 
+    -- Run Prompt
+    , ("M-d",          spawn "rofi -show drun -show-icons")                                           
+    , ("M-S-d",        spawn "dmenu_run -fn 'JetBrains Mono:style=Bold:pixelsize=14' -nb '#11121D' -nf '#7aa2f7' -sb '#7aa2f7' -sf '#11121D' -l 5 -p 'Execute:'")
+
+    -- XMonad Prompt (XPConfig)
+    , ("C-p p",        shellPrompt myXPConfig)   
+    , ("C-p m",        manPrompt myXPConfig)
+    , ("C-p g",        windowPrompt myXPConfig Goto wsWindows)
+    , ("C-p b",        windowPrompt myXPConfig Bring allWindows)
+    
+    -- Prompt Search
+    , ("C-s g",        promptSearch myXPConfig google)
+    , ("C-s y",        promptSearch myXPConfig youtube)
+    , ("C-s i",        promptSearch myXPConfig images)
+    , ("C-s p",        promptSearch myXPConfig github)
+    , ("C-s a",        promptSearch myXPConfig archwiki)
+    , ("C-s u",        promptSearch myXPConfig aur)
+    , ("C-s r",        promptSearch myXPConfig reddit)
+    , ("C-s w",        promptSearch myXPConfig wallhaven)
+    
+   -- ScratchPads 
+    , ("M-s t",        namedScratchpadAction myScratchPads "terminal") -- Terminal
+    , ("M-s s",        namedScratchpadAction myScratchPads "cmus"    ) -- Cmus [Music Player]
+    , ("M-s w",        namedScratchpadAction myScratchPads "browser" ) -- Chromium      
 
     -- Window navigation
-    , ("M-<Return>",    promote                                 ) {-- Moves the focused window to the master pane --}
-    , ("M-t",           withFocused toggleFloat                 ) {-- Floating window --}
-    , ("M-f",           sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts) {--FuLL Screen--}
-    , ("M-S-f",         withFocused (sendMessage . maximizeRestore)) {-- For Maximaze With Paddings --}
-    , ("M-b",           sendMessage ToggleStruts                ) {-- ignore Bar --}
-    , ("M-e",           viewEmptyWorkspace                      ) {-- Find Empty Workspaces --}
-    , ("M-g",           tagToEmptyWorkspace                     ) {-- Go To workspaces --}
-    , ("M-n",           withFocused minimizeWindow              ) {-- For Minimize && Action minimize --}
-    , ("M-S-n",         withLastMinimized maximizeWindowAndFocus) {-- For Minimize && Action minimize --}
-    , ("M-S-a",         killAll                                 ) {-- Quite All --}
-    , ("M-S-t",         sinkAll                                 ) {-- Push ALL floating windows to tile.--}
-    , ("M-S-s",         sendMessage $ SwapWindow                ) {-- Compine Two Layout [XM-comboP]--}
-    , ("M-S-r",         rotSlavesDown                           ) {-- Don't Touch Layout in Master --}
-    , ("M-p",           gotoMenu                                ) {-- Find Window  in dmenu --}
-    , ("M-o",           bringMenu                               ) {-- swap window To Current WS --}
+    , ("M-<Return>",   promote                                 ) {-- Moves the focused window to the master pane --}
+    , ("M-t",          withFocused toggleFloat                 ) {-- Floating window --}
+    , ("M-f",          sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts) {--FuLL Screen--}
+    , ("M-S-f",        withFocused (sendMessage . maximizeRestore)) {-- For Maximaze With Paddings --}
+    , ("M-b",          sendMessage ToggleStruts                ) {-- ignore Bar --}
+    , ("M-e",          viewEmptyWorkspace                      ) {-- Find Empty Workspaces --}
+    , ("M-g",          tagToEmptyWorkspace                     ) {-- Go To workspaces --}
+    , ("M-n",          withFocused minimizeWindow              ) {-- For Minimize && Action minimize --}
+    , ("M-S-n",        withLastMinimized maximizeWindowAndFocus) {-- For Minimize && Action minimize --}
+    , ("M-S-a",        killAll                                 ) {-- Quite All --}
+    , ("M-S-t",        sinkAll                                 ) {-- Push ALL floating windows to tile.--}
+    , ("M-S-s",        sendMessage $ SwapWindow                ) {-- Compine Two Layout [XM-comboP]--}
+    , ("M-S-r",        rotSlavesDown                           ) {-- Don't Touch Layout in Master --}
    
    -- Resize layout
-    , ("M-a",           sendMessage MirrorExpand) {-- For Layout ResizableTile( Tiled ) -}
-    , ("M-z",           sendMessage MirrorShrink) {-- For Layout ResizableTile( Tiled ) -}
+    , ("M-a",          sendMessage MirrorExpand) {-- For Layout ResizableTile( Tiled ) -}
+    , ("M-z",          sendMessage MirrorShrink) {-- For Layout ResizableTile( Tiled ) -}
 
    -- Increase/decrease spacing (gaps)
-    , ("M-C-j",         decWindowSpacing 4     )  -- Decrease window spacing
-    , ("M-C-k",         incWindowSpacing 4     )  -- Increase window spacing
-    , ("M-C-h",         decScreenSpacing 4     )  -- Decrease screen spacing
-    , ("M-C-l",         incScreenSpacing 4     )  -- Increase screen spacing
-
-   -- Scratch Pads 
-    , ("M-s t",         namedScratchpadAction myScratchPads "terminal") -- Terminal
-    , ("M-s s",         namedScratchpadAction myScratchPads "cmus"    ) -- Cmus [Music Player]
-    , ("M-s w",         namedScratchpadAction myScratchPads "browser" ) -- Chromium      
+    , ("M-C-j",        decWindowSpacing 4     )  -- Decrease window spacing
+    , ("M-C-k",        incWindowSpacing 4     )  -- Increase window spacing
+    , ("M-C-h",        decScreenSpacing 4     )  -- Decrease screen spacing
+    , ("M-C-l",        incScreenSpacing 4     )  -- Increase screen spacing
     ]
     where 
         toggleFloat w = windows (\s -> if M.member w (W.floating s)
                     then W.sink w s
                     else (W.float w (W.RationalRect (1/6) (1/6) (2/3) (2/3)) s))
-
 ------------------------------------------------------------------------
 -- Main && XMobar
 ------------------------------------------------------------------------
@@ -427,13 +488,13 @@ main = xmonad
         , ppHidden = xmobarColor colorFG ""
 
         -- Type Of layout in xmobar
-        , ppLayout = xmobarColor colorPrimary ""   
+        , ppLayout = xmobarColor colorInactive ""   
 
 	      -- Title of active window
 	    , ppTitle = xmobarColor colorFG "" . shorten 70 
 	      
 	      -- Separator character
-	    , ppSep =  "<fc=#3d85c6> <fn=1>|</fn> </fc>"
+	    , ppSep =  "<fc=#3d85c6> <fn=2>\61762</fn> </fc>"
 
 	      -- WS Separator
 	    , ppWsSep = " "
@@ -442,7 +503,7 @@ main = xmonad
 	    , ppExtras = [windowCount]
 
 	      -- Order of things
-	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=4>" ++ ws ++ "</fn>"] ++ ex ++ ["<fc=" ++ colorPrimary ++ ">[" ++ l ++ "]</fc> " ++ t ]
+	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=4>" ++ ws ++ "</fn>"] ++ ex ++ ["<fc=" ++ black ++ "> { " ++ l ++ " } </fc> " ++ t ]
 	    }     
 	    where
 		colorBG :: String
@@ -479,7 +540,7 @@ myConfig = def
 		, startupHook               = myStartupHook
 		, layoutHook                = myLayoutHook
 		, manageHook                = myManageHook
+        , handleEventHook           = myHandleEventHook
 		, logHook		            = updatePointer (0.5, 0.5) (0, 0)
 					                >> fadeInactiveLogHook 0.95 
 	    } `additionalKeysP` myKeys
-
