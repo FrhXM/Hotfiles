@@ -3,20 +3,20 @@ Config {
        , additionalFonts    = [ "xft:FiraCode Nerd Font Mono:pixelsize=12:antialias=true:hinting=true"
                                 , "xft:Font Awesome 6 Free Solid:pixelsize=12"
                                 , "xft:Font Awesome 6 Brands:pixelsize=12"
-                                , "xft:JetBrains Mono:style=Bold:pixelsize=11"
+                                , "xft:JetBrains Mono:style=Bold:pixelsize=10"
                               ]
        , bgColor        = "#11121D"
-       , fgColor        = "#878787"
+       , fgColor        = "#a9b1d6"
        , alpha          = 240
-       , position       = Static {xpos = 0, ypos = 0, width = 1920, height = 35}
+       , position       = Static {xpos = 20, ypos = 2, width = 1885, height = 35}
        , border         = BottomB
        , borderWidth    = 0
-       , borderColor    = "#34363d"
+       , borderColor    = "#1d2021"
        , lowerOnStart   = True
        , hideOnStart    = False
-       , allDesktops    = True
+       , allDesktops    = False
        , overrideRedirect = True,
-       , pickBroadest = False,
+       , pickBroadest   = False,
        , persistent     = True
        , iconRoot       = "/home/frhxm/.config/xmobar/xpm/"  -- default: "[NERD]"
        , commands       = [ Run Date "<fn=2>\xf017</fn> %b %d %Y  %H:%M:%S" "date" 10
@@ -38,5 +38,6 @@ Config {
                             ]
        , sepChar        = "%"
        , alignSep       = "}{"
-       , template       = "<action=`bash ~/.config/rofi/scripts/powerMenu.sh` button=1><icon=arch.xpm/></action> <fc=#0db9d7> <fn=2></fn></fc> %XMonadLog% }{<box type=Bottom width=2 mb=2 color=#a9b1d6><fc=#a9b1d6><fn=3></fn> %uname%</fc></box>   <box type=Bottom width=2 mb=2 color=#f7768e><fc=#f7768e>%cpu%</fc></box>   <box type=Bottom width=2 mb=2 color=#9ece6a><fc=#9ece6a>%memory%</fc></box>   <box type=Bottom width=2 mb=2 color=#e0af68><fc=#e0af68>%disku%</fc></box>   <box type=Bottom width=2 mb=2 color=#7aa2f7><fc=#7aa2f7>%battery%</fc></box>   <box type=Bottom width=2 mb=2 color=#ad8ee6><fc=#ad8ee6>%uptime%</fc></box>   <action=`pamixer --toggle-mute` button=1><box type=Bottom width=2 mb=2 color=#449dab>%default:Master%</box></action>   <action=`xbacklight -set 100` button=1><box type=Bottom width=2 mb=2 color=#787c99><fc=#787c99>%bright%</fc></box></action>   <box type=Bottom width=2 mb=2 color=#7da6ff><fc=#7da6ff>%date%</fc></box> "
+       , template       = "   <action=`bash ~/.config/rofi/scripts/powerMenu.sh` button=1><icon=arch.xpm/></action> <fc=#0db9d7> <fn=2></fn></fc> %XMonadLog%}{<box type=Bottom width=2 mb=2 color=#a9b1d6><fc=#a9b1d6><fn=3></fn> %uname%</fc></box>   <box type=Bottom width=2 mb=2 color=#f7768e><fc=#f7768e>%cpu%</fc></box>   <box type=Bottom width=2 mb=2 color=#9ece6a><fc=#9ece6a>%memory%</fc></box>   <box type=Bottom width=2 mb=2 color=#e0af68><fc=#e0af68>%disku%</fc></box>   <box type=Bottom width=2 mb=2 color=#7aa2f7><fc=#7aa2f7>%battery%</fc></box>   <box type=Bottom width=2 mb=2 color=#ad8ee6><fc=#ad8ee6>%uptime%</fc></box>   <action=`pamixer --toggle-mute` button=1><box type=Bottom width=2 mb=2 color=#449dab>%default:Master%</box></action>   <action=`xbacklight -set 100` button=1><box type=Bottom width=2 mb=2 color=#787c99><fc=#787c99>%bright%</fc></box></action>   <box type=Bottom width=2 mb=2 color=#7da6ff><fc=#7da6ff>%date%</fc></box>   "
+
        }
