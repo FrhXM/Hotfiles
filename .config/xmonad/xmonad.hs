@@ -22,9 +22,8 @@ import XMonad.Actions.FindEmptyWorkspace (viewEmptyWorkspace, tagToEmptyWorkspac
 import XMonad.Actions.Minimize (minimizeWindow, withLastMinimized, maximizeWindowAndFocus)
 import XMonad.Actions.Promote (promote)
 import XMonad.Actions.WithAll (killAll, sinkAll)
-import XMonad.Actions.WindowGo (raiseBrowser)
 import XMonad.Actions.RotSlaves (rotSlavesDown)
-import XMonad.Actions.Search  (google, youtube, images, github, promptSearch, searchEngine)
+import XMonad.Actions.Search  (google, youtube, images, github, promptSearch, searchEngine, promptSearchBrowser)
 
 -- Hooks
 import XMonad.Hooks.StatusBar
@@ -120,9 +119,9 @@ myFocusedBorderColor = blue        :: String     -- Border color of focus window
 myFocusFollowsMouse  = True        :: Bool       -- focus follow config
 myClickJustFocuses   = False       :: Bool       -- focus click config
 
+myBrowser = "qutebrowser"          :: String    
 myFont    = "xft:JetBrains Mono:style=Bold:pixelsize=13" :: String
 myBigFont = "xft:FiraCode Nerd Font Mono:pixelsize=100"  :: String
-
 
 ------ Workspaces -------
 -- wsDEV           = "¹DEV"
@@ -144,15 +143,16 @@ myStartupHook = do
     spawnOnce "xwallpaper --zoom ~/pix/wall/anime.png"                        	    -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
-    spawnOnce "xset r rate 255 55"                                                  -- speeds cursor in urxvt
-    spawnOnce "picom --experimental-backends"                                       -- Compositor
+    -- spawnOnce "redshift -O 3800k"                                                   -- Safe your eyes
+    spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
+    spawnOnce "picom --experimental-backends"
     setDefaultCursor xC_left_ptr                                                    -- Default Cursor
 
 ------------------------------------------------------------------------
--- Floats
+-- ManageHooks
 ------------------------------------------------------------------------
 myManageHook = composeAll 
-     [ className =? "firefox"           --> doViewShift " 3 "
+     [ className =? "qutebrowser"       --> doViewShift " 3 "
      , className =? "Thunar"            --> doViewShift " 9 "
      , className =? "mpv"               --> doViewShift " 9 "
      , className =? "Sxiv"              --> doCenterFloat
@@ -191,8 +191,8 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  w = 0.9
                  t = 0.95 -h
                  l = 0.95 -w
-    spawnBrowser = "chromium"
-    findBrowser = className =? "Chromium"
+    spawnBrowser = "firefox"
+    findBrowser = className =? "firefox"
     manageBrowser = customFloating $ W.RationalRect l t w h
                where
                  h = 0.9
@@ -309,7 +309,7 @@ twoTabbed       = renamed [Replace "TWO TABBED"]
 -- Layout Hook
 ------------------------------------------------------------------------
 myHandleEventHook= swallowEventHook (className =? "kitty") (return True)
-mySpacings= spacingRaw False (Border 0 10 10 10) True (Border 10 10 10 10) True
+mySpacings       = spacingRaw False (Border 0 10 10 10) True (Border 10 10 10 10) True
 myGaps           = gaps [(U, 10),(D, 5),(L, 10),(R, 10)]
 myShowWNameTheme = def
                 { swn_font              = myBigFont
@@ -404,7 +404,7 @@ myKeys =
 
     -- Apps
     , ("M-S-<Return>", spawn myTerminal)                                      
-    , ("M-w",          raiseBrowser)
+    , ("M-w",          spawn myBrowser)
     , ("M-r",          spawn "redshift -O 3800K")                                        
     , ("M-x",          spawn "redshift -x")                                              
 
@@ -419,19 +419,19 @@ myKeys =
     , ("C-p b",        windowPrompt myXPConfig Bring allWindows)
     
     -- Prompt Search
-    , ("C-s g",        promptSearch myXPConfig google)
-    , ("C-s y",        promptSearch myXPConfig youtube)
-    , ("C-s i",        promptSearch myXPConfig images)
-    , ("C-s p",        promptSearch myXPConfig github)
-    , ("C-s a",        promptSearch myXPConfig archwiki)
-    , ("C-s u",        promptSearch myXPConfig aur)
-    , ("C-s r",        promptSearch myXPConfig reddit)
-    , ("C-s w",        promptSearch myXPConfig wallhaven)
+    , ("C-s g",        promptSearchBrowser myXPConfig myBrowser google) 
+    , ("C-s y",        promptSearchBrowser myXPConfig myBrowser youtube)
+    , ("C-s i",        promptSearchBrowser myXPConfig myBrowser images)
+    , ("C-s p",        promptSearchBrowser myXPConfig myBrowser github)
+    , ("C-s a",        promptSearchBrowser myXPConfig myBrowser archwiki)
+    , ("C-s u",        promptSearchBrowser myXPConfig myBrowser aur)
+    , ("C-s r",        promptSearchBrowser myXPConfig myBrowser reddit)
+    , ("C-s w",        promptSearchBrowser myXPConfig myBrowser wallhaven)
     
    -- ScratchPads 
     , ("M-s t",        namedScratchpadAction myScratchPads "terminal") -- Terminal
     , ("M-s s",        namedScratchpadAction myScratchPads "cmus"    ) -- Cmus [Music Player]
-    , ("M-s w",        namedScratchpadAction myScratchPads "browser" ) -- Chromium      
+    , ("M-s w",        namedScratchpadAction myScratchPads "browser" ) -- firefox
 
     -- Window navigation
     , ("M-<Return>",   promote                                 ) {-- Moves the focused window to the master pane --}
@@ -466,8 +466,8 @@ myKeys =
 -- Main && XMobar
 ------------------------------------------------------------------------
 main = xmonad
-     . ewmhFullscreen
      . ewmh
+     . ewmhFullscreen
      . withEasySB mySB defToggleStrutsKey
      . docks
      $ myConfig
@@ -542,5 +542,5 @@ myConfig = def
 		, manageHook                = myManageHook
         , handleEventHook           = myHandleEventHook
 		, logHook		            = updatePointer (0.5, 0.5) (0, 0)
-					                >> fadeInactiveLogHook 0.95 
+					                >> fadeInactiveLogHook 0.90
 	    } `additionalKeysP` myKeys
