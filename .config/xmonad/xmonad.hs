@@ -69,7 +69,6 @@ import XMonad.Layout.Circle
 import XMonad.Layout.Dishes
 import XMonad.Layout.HintedGrid
 import XMonad.Layout.Dwindle                                                    
-import XMonad.Layout.Accordion
 
 -- prompt
 import XMonad.Prompt
