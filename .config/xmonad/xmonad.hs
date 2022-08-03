@@ -7,7 +7,7 @@
 -- ╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝╚═════╝
 -- ===========================================================================
 -------------------------------------------------------------------------------
---          written by Farah Abderrazzak Aka FrhXM(https://github.com/FrhXM)  --
+--      written by Farah Abderrazzak Aka FrhXM(https://github.com/frhxm)     --
 -------------------------------------------------------------------------------
 -- Import modules                                                           {{{
 -------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ import XMonad.Prompt.FuzzyMatch
 
 -- Others
 import qualified XMonad.StackSet as W                                                        
-import qualified Data.Map 	     as M                                                              
+import qualified Data.Map 	 as M                                                              
 
 ------------------------------------------------------------------------
 -- Color Pallatte
@@ -144,7 +144,7 @@ myStartupHook = do
     spawnOnce "unclutter"                                                           -- hidden Mouse
     -- spawnOnce "redshift -O 3800k"                                                   -- Safe your eyes
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
-    spawnOnce "picom --experimental-backends"
+    spawnOnce "picom --experimental-backends -b"
     setDefaultCursor xC_left_ptr                                                    -- Default Cursor
 
 ------------------------------------------------------------------------
@@ -466,7 +466,7 @@ myKeys =
 ------------------------------------------------------------------------
 main = xmonad
      . ewmh
-     . ewmhFullscreen
+  -- . ewmhFullscreen  
      . withEasySB mySB defToggleStrutsKey
      . docks
      $ myConfig
