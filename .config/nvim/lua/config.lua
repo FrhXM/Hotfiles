@@ -1,11 +1,35 @@
+-------------------> simples <----------------------
+require("nvim-tree").setup()
+require("nvim-autopairs").setup {}
+require'colorizer'.setup()
+
+
+
 ----------------> ColorScheme <-----------------
+-- Trancperncy 
+require("transparent").setup({
+  enable = true, -- boolean: enable transparent
+  extra_groups = { -- table/string: additional groups that should be cleared
+    -- In particular, when you set it to 'all', that means all available groups
+
+    -- example of akinsho/nvim-bufferline.lua
+    "BufferLineTabClose",
+    "BufferlineBufferSelected",
+    "BufferLineFill",
+    "BufferLineBackground",
+    "BufferLineSeparator",
+    "BufferLineIndicatorSelected",
+  },
+  exclude = {}, -- table: groups you don't want to clear
+})
+-- tokyodark
 vim.g.tokyodark_transparent_background = false
 vim.g.tokyodark_enable_italic_comment = true
 vim.g.tokyodark_enable_italic = true
 vim.g.tokyodark_color_gamma = "1.0"
 vim.cmd("colorscheme tokyodark")
 
----------------> Lua line Status <--------------
+---------------> lualine Status <--------------
 -- Bubbles config for lualine
 -- Author: lokesh-krishna
 -- MIT license, see LICENSE for more details.
@@ -68,10 +92,6 @@ require('lualine').setup {
   tabline = {},
   extensions = {},
 }
--------------------> Tree <----------------------
-require("nvim-tree").setup()
-
----------------> Telescope <-------------------------
 
 --------------> Indent Blankline <-----------------------
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
@@ -82,8 +102,8 @@ vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
 
 vim.opt.list = true
+vim.opt.listchars:append "eol:↴"
 --vim.opt.listchars:append "space:⋅"
---vim.opt.listchars:append "eol:↴"
 
 require("indent_blankline").setup {
     space_char_blankline = " ",

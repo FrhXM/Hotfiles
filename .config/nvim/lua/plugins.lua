@@ -12,8 +12,10 @@ return require('packer').startup(function(use)
         -- ColorScheme
     use 'tiagovla/tokyodark.nvim' 
     use 'nvim-lualine/lualine.nvim' 
+    use 'xiyaowong/nvim-transparent'
     use 'kyazdani42/nvim-web-devicons' 
     use "lukas-reineke/indent-blankline.nvim"
+
         -- Tools
     use 'kyazdani42/nvim-tree.lua' 
     use {
@@ -24,9 +26,12 @@ return require('packer').startup(function(use)
     use 'tpope/vim-surround'
     use 'tpope/vim-commentary'
     use 'mattn/emmet-vim'
+    use 'norcalli/nvim-colorizer.lua'
     use 'sheerun/vim-polyglot'
     use 'windwp/nvim-autopairs'
+        -- AutoComplete
   if packer_bootstrap then
     require('packer').sync()
   end
 end)
+

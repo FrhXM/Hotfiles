@@ -44,3 +44,6 @@ set.swapfile = false
 -- set.backupdir = '/tmp/'
 -- set.directory = '/tmp/'
 -- set.undodir = '/tmp/'
+
+set.termguicolors = true
+
