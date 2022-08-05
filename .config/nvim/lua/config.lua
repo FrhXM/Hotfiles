@@ -1,11 +1,15 @@
--------------------> simples <----------------------
+-----------------------------------------------------
+-------------------> simples <-----------------------
+-----------------------------------------------------
 require("nvim-tree").setup()
 require("nvim-autopairs").setup {}
+require("bufferline").setup{}
 require'colorizer'.setup()
 
 
-
-----------------> ColorScheme <-----------------
+----------------------------------------------------
+------------------> ColorScheme <-------------------
+----------------------------------------------------
 -- Trancperncy 
 require("transparent").setup({
   enable = true, -- boolean: enable transparent
@@ -29,7 +33,9 @@ vim.g.tokyodark_enable_italic = true
 vim.g.tokyodark_color_gamma = "1.0"
 vim.cmd("colorscheme tokyodark")
 
----------------> lualine Status <--------------
+--------------------------------------------------------
+-------------------> lualine Status <-------------------
+--------------------------------------------------------
 -- Bubbles config for lualine
 -- Author: lokesh-krishna
 -- MIT license, see LICENSE for more details.
@@ -93,7 +99,9 @@ require('lualine').setup {
   extensions = {},
 }
 
---------------> Indent Blankline <-----------------------
+-----------------------------------------------------------
+--------------> Indent Blankline <-------------------------
+-----------------------------------------------------------
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]]

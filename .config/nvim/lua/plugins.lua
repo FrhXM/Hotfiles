@@ -15,11 +15,10 @@ return require('packer').startup(function(use)
     use 'xiyaowong/nvim-transparent'
     use 'kyazdani42/nvim-web-devicons' 
     use "lukas-reineke/indent-blankline.nvim"
-
         -- Tools
     use 'kyazdani42/nvim-tree.lua' 
-    use {
-          'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    use {'akinsho/bufferline.nvim', tag = "v2.*"}
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0',
           requires = { {'nvim-lua/plenary.nvim'} }
         }
         -- Programming
