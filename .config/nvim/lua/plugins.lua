@@ -12,9 +12,11 @@ return require('packer').startup(function(use)
           requires = { {'nvim-lua/plenary.nvim'} }
         }
         -- Programming
+    use 'tpope/vim-surround'
+    use 'tpope/vim-commentary'
     use 'mattn/emmet-vim'
-    use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-       }
+    use 'sheerun/vim-polyglot'
+    use 'windwp/nvim-autopairs'
 end)
+
+

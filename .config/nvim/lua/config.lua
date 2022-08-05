@@ -71,7 +71,6 @@ require('lualine').setup {
 -------------------> Tree <----------------------
 require("nvim-tree").setup()
 
-
 ---------------> Telescope <-------------------------
 
 --------------> Indent Blankline <-----------------------
