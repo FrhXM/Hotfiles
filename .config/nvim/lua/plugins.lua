@@ -1,3 +1,4 @@
+-----------------------> Automatic Install Plug <-----------------------------
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -5,6 +6,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
+------------------------->  Plugins <-----------------------------------------
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- Packer can manage itself
         -- ColorScheme
@@ -28,4 +30,3 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
-
