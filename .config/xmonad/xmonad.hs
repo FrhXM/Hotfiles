@@ -12,9 +12,9 @@
 -- Import modules                                                           {{{
 -------------------------------------------------------------------------------
 -- Main
-import XMonad                                                                                  
+import XMonad
 import System.Exit
-import Control.Monad (liftM2)                                                                 
+import Control.Monad (liftM2)
 
 -- Actions
 import XMonad.Actions.UpdatePointer (updatePointer)
@@ -28,23 +28,23 @@ import XMonad.Actions.Search  (google, youtube, images, github, promptSearch, se
 -- Hooks
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
-import XMonad.Hooks.EwmhDesktops 
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.WindowSwallowing
 import XMonad.Hooks.ManageDocks (avoidStruts, docks, ToggleStruts(..))
-import XMonad.ManageHook (doFloat)                                                         
-import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)              
+import XMonad.ManageHook (doFloat)
+import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook) 
 
 -- Utilities
-import XMonad.Util.EZConfig ( additionalKeysP )                                                 
-import XMonad.Util.SpawnOnce (spawnOnce)                                                    
+import XMonad.Util.EZConfig ( additionalKeysP )
+import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Cursor (setDefaultCursor)
 import XMonad.Util.NamedScratchpad 
 
 -- Layouts/Modifiers 
 import XMonad.Layout.ComboP
 import XMonad.Layout.Master
-import XMonad.Layout.PerWorkspace                                                               
+import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Maximize
 import XMonad.Layout.Minimize
 import XMonad.Layout.LimitWindows
@@ -68,7 +68,7 @@ import XMonad.Layout.SimplestFloat
 import XMonad.Layout.Circle
 import XMonad.Layout.Dishes
 import XMonad.Layout.HintedGrid
-import XMonad.Layout.Dwindle                                                    
+import XMonad.Layout.Dwindle
 
 -- prompt
 import XMonad.Prompt
@@ -78,8 +78,8 @@ import XMonad.Prompt.Man
 import XMonad.Prompt.FuzzyMatch
 
 -- Others
-import qualified XMonad.StackSet as W                                                        
-import qualified Data.Map 	     as M                                                              
+import qualified XMonad.StackSet as W
+import qualified Data.Map 	     as M
 
 ------------------------------------------------------------------------
 -- Color Pallatte
@@ -118,7 +118,7 @@ myFocusedBorderColor = blue        :: String     -- Border color of focus window
 myFocusFollowsMouse  = True        :: Bool       -- focus follow config
 myClickJustFocuses   = False       :: Bool       -- focus click config
 
-myBrowser = "qutebrowser"          :: String    
+myBrowser = "qutebrowser"          :: String
 myFont    = "xft:JetBrains Mono:style=Bold:pixelsize=13" :: String
 myBigFont = "xft:FiraCode Nerd Font Mono:pixelsize=100"  :: String
 
@@ -144,6 +144,7 @@ myStartupHook = do
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
     spawnOnce "blueman-applet"                                                      -- bluetooth-blueman-applte {systemTray}
+    spawnOnce "xfce4-power-manager"                                                      -- bluetooth-blueman-applte {systemTray}
     spawnOnce "~/.config/xmobar/scripts/tray.sh"                                    -- trayer 
     -- spawnOnce "redshift -O 3800k"                                                -- Safe your eyes
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
@@ -493,7 +494,7 @@ main = xmonad
         , ppLayout = xmobarColor colorInactive ""   
 
 	      -- Title of active window
-	    , ppTitle = xmobarColor colorFG "" . shorten 70 
+	    , ppTitle = xmobarColor colorFG "" . shorten 40
 	      
 	      -- Separator character
 	    , ppSep =  "<fc=#3d85c6> <fn=2>\61762</fn> </fc>"
