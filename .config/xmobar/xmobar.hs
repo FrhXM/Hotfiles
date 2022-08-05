@@ -26,6 +26,8 @@ Config {
                             , Run BatteryP ["BAT0"] ["-t", " <fn=2>\61671</fn> BAT: <acstatus><watts> (<left>%)"] 360
                             , Run Uptime ["-t", " <fn=2>\62036</fn> UP: <days>d <hours>h"] 36000
                             , Run Com "uname" ["-r"] "" 3600
+                            , Run Com "echo" ["<fn=2>\xf0f3</fn>"] "bell" 3600
+                            , Run Com "/home/frhxm/.config/xmobar/scripts/pacupdate.sh" [] "pacupdate" 36000
                             , Run Brightness [ "-t", "<fn=2></fn> BR: <percent>%", "--", "-D", "intel_backlight" ] 60
                             , Run Volume "default" "Master"
                                 [ "-t", "<status>", "--"
@@ -38,6 +40,5 @@ Config {
                             ]
        , sepChar        = "%"
        , alignSep       = "}{"
-       , template       = "   <action=`bash ~/.config/rofi/scripts/powerMenu.sh` button=1><icon=arch.xpm/></action> <fc=#0db9d7> <fn=2></fn></fc> %XMonadLog%}{<box type=Bottom width=2 mb=2 color=#a9b1d6><fc=#a9b1d6><fn=3></fn> %uname%</fc></box>   <box type=Bottom width=2 mb=2 color=#f7768e><fc=#f7768e>%cpu%</fc></box>   <box type=Bottom width=2 mb=2 color=#9ece6a><fc=#9ece6a>%memory%</fc></box>   <box type=Bottom width=2 mb=2 color=#e0af68><fc=#e0af68>%disku%</fc></box>   <box type=Bottom width=2 mb=2 color=#7aa2f7><fc=#7aa2f7>%battery%</fc></box>   <box type=Bottom width=2 mb=2 color=#ad8ee6><fc=#ad8ee6>%uptime%</fc></box>   <action=`pamixer --toggle-mute` button=1><box type=Bottom width=2 mb=2 color=#449dab>%default:Master%</box></action>   <action=`xbacklight -set 100` button=1><box type=Bottom width=2 mb=2 color=#787c99><fc=#787c99>%bright%</fc></box></action>   <box type=Bottom width=2 mb=2 color=#7da6ff><fc=#7da6ff>%date%</fc></box>   "
-
+       , template       = "   <action=`bash ~/.config/rofi/scripts/powerMenu.sh` button=1><icon=arch.xpm/></action> <fc=#0db9d7> <fn=2></fn></fc> %XMonadLog%}{<box type=Bottom width=2 mb=2 color=#a9b1d6><fc=#a9b1d6><fn=3></fn> %uname%</fc></box>   <box type=Bottom width=2 mb=2 color=#f7768e><fc=#f7768e>%cpu%</fc></box>   <box type=Bottom width=2 mb=2 color=#9ece6a><fc=#9ece6a>%memory%</fc></box>   <box type=Bottom width=2 mb=2 color=#e0af68><fc=#e0af68>%disku%</fc></box>   <box type=Bottom width=2 mb=2 color=#7aa2f7><fc=#7aa2f7>%battery%</fc></box>   <box type=Bottom width=2 mb=2 color=#ad8ee6><fc=#ad8ee6>%uptime%</fc></box>   <box type=Bottom width=2 mb=2 color=#A6ADC8><fc=#A6ADC8>%bell%  <action=`kitty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <action=`pamixer --toggle-mute` button=1><box type=Bottom width=2 mb=2 color=#449dab>%default:Master%</box></action>   <action=`xbacklight -set 100` button=1><box type=Bottom width=2 mb=2 color=#787c99><fc=#787c99>%bright%</fc></box></action>   <box type=Bottom width=2 mb=2 color=#7da6ff><fc=#7da6ff>%date%</fc></box>   "
        }
