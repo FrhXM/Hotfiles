@@ -64,17 +64,16 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-## Changing "ls" to "exa"
-alias l='exa --icons'
-alias ls='exa --color=auto'
-alias ll='exa -lh'
-alias la='exa -a'
-alias lt='exa --tree --level=2 --icons'
+# Changing "ls" to "exa"
+alias ls='exa -al --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias l.='exa -a | egrep "^\."'
 
 ## confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
+alias cp="cp -f"
+alias mv='mv -f'
 alias rm='trash-put'
 
 ## bat && find
@@ -82,8 +81,8 @@ alias cat='bat'
 alias find='fd'
 
 ## Editor Vim NeoVim
-alias v='vim'
-alias vi="vim"
+alias v='nvim'
+alias vi="nvim"
 alias nv="nvim"
 alias vim="nvim"
 
@@ -93,18 +92,17 @@ alias h='history'
 alias n='clear && neofetch'
 alias c='clear'
 alias cc='clear'
-alias ss='sxiv -b -f -t'
+alias ss='sxiv -b -f -t *'
 
 ## Pacman && yay
-alias 'update'='sudo pacman -Sy'
-alias 'upgrade'='sudo pacman -Syu && echo "UPGRADED"'
-alias 'ps'='sudo pacman -S'
-alias 'psy'='sudo pacman -Sy'
-alias 'pr'='sudo pacman -Rsn'
+alias update='sudo pacman -Sy'
+alias upgrade='sudo pacman -Syu && echo "UPGRADED"'
+alias ps='sudo pacman -Sy'
+alias pr='sudo pacman -Rsn'
 
 ## alias for configs	
-alias fishc="vim ~/.config/fish/config.fish"
-alias xmonadc="vim ~/.config/xmonad/xmonad.hs"
-alias xmobarc="vim ~/.config/xmobar/xmobar.hs"
-alias kittyc="vim ~/.config/kitty/kitty.conf"
-alias nvimc="vim ~/.config/nvim/init.vim"
+alias fishc="nvim ~/.config/fish/config.fish"
+alias xmonadc="nvim ~/.config/xmonad/xmonad.hs"
+alias xmobarc="nvim ~/.config/xmobar/xmobar.hs"
+alias kittyc="nvim ~/.config/kitty/kitty.conf"
+alias nvimc="nvim ~/.config/nvim/init.vim"
