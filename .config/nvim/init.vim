@@ -35,7 +35,6 @@ set numberwidth=5           " width of Number Line
 set hidden                  " Overwrite buffers 
 set mouse=a          	    " Activate the mouse, in all modes
 set undofile                " save undo chages even after computer restart
-" set showtabline=2           " Show nvim tab line even if only one file is open
 set clipboard+=unnamedplus  " use Clipboard To copy & paste To Vim
 
 set ignorecase              " make searching case insensitive
