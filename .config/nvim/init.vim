@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""" Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -35,7 +35,7 @@ set numberwidth=5           " width of Number Line
 set hidden                  " Overwrite buffers 
 set mouse=a          	    " Activate the mouse, in all modes
 set undofile                " save undo chages even after computer restart
-set showtabline=2           " Show nvim tab line even if only one file is open
+" set showtabline=2           " Show nvim tab line even if only one file is open
 set clipboard+=unnamedplus  " use Clipboard To copy & paste To Vim
 
 set ignorecase              " make searching case insensitive
@@ -64,11 +64,11 @@ endif
 """"""""""""""""""""""""""""""""""""""
 """" Plugine
 """""""""""""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 	"   Appearance  "
 Plug 'tiagovla/tokyodark.nvim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 	"   Tools  " 
@@ -95,15 +95,20 @@ hi LineNr guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""
 """" Fzf 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""
 nnoremap <C-f> :Files<CR>
 nnoremap <C-w> :BLines<CR>
 nnoremap <C-g> :GFiles<CR>
 
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 """"" emmet shortcuts
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_mode='n'
 let g:user_emmet_leader_key=','
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""" Plguins require lu Config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source ~/.config/nvim/plugins.vim
