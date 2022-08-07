@@ -40,6 +40,7 @@ import XMonad.Util.EZConfig ( additionalKeysP )
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Cursor (setDefaultCursor)
 import XMonad.Util.NamedScratchpad 
+import XMonad.Util.ClickableWorkspaces
 
 -- Layouts/Modifiers 
 import XMonad.Layout.ComboP
