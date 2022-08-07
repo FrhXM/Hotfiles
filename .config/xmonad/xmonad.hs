@@ -40,7 +40,6 @@ import XMonad.Util.EZConfig ( additionalKeysP )
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Cursor (setDefaultCursor)
 import XMonad.Util.NamedScratchpad 
-import XMonad.Util.ClickableWorkspaces
 
 -- Layouts/Modifiers 
 import XMonad.Layout.ComboP
@@ -477,7 +476,7 @@ main = xmonad
      where
      mySB = statusBarProp "xmobar" (pure myPP)
      	where
-	myPP = def 
+        myPP = def 
 	      -- Properties of current workspace
 	    { ppCurrent = xmobarColor colorPrimary "" . wrap "<box type=Bottom width=2> " " </box>"
 
