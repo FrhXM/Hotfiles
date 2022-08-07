@@ -1,39 +1,52 @@
+# Load existing settings made via :set
 config.load_autoconfig()
+config.set("auto_save.session", True)
+config.set("zoom.default", "90%")
+
+# How often (in milliseconds) to auto-save config/cookies/etc.
+c.auto_save.interval = 15000
 c.editor.command = ["kitty", "-e", "nvim", "{file}"]
-c.qt.args = ["enable-features=WebRTCPipeWireCapturer","ppapi-widevine-path=/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so"]
 c.downloads.location.directory = '~/dl'
+
+# Url
 c.url.default_page = 'https://start.duckduckgo.com/'
 c.url.start_pages = 'https://start.duckduckgo.com/'
-
-# Allow websites to show notifications.
-# Type: BoolAsk
-# Valid values:
-#   - true
-#   - false
-#   - ask
-config.set('content.notifications.enabled', True, 'https://www.youtube.com')
 
 ############################################
 #############       Font        ############
 ############################################
-c.fonts.default_size = "11pt"
+c.fonts.default_size = "10pt"
 c.fonts.default_family = "JetBrains Mono"
-c.fonts.completion.entry = '11pt "JetBrains Mono"'
-c.fonts.debug_console = '11pt "JetBrains Mono"'
+c.fonts.completion.entry = '10pt "JetBrains Mono"'
+c.fonts.debug_console = '10pt "JetBrains Mono"'
 c.fonts.prompts = 'default_size sans-serif'
-c.fonts.statusbar = '11pt "JetBrains Mono"'
+c.fonts.statusbar = '10pt "JetBrains Mono"'
 
 ###############################################
 ############       Tabs Config    #############
 ###############################################
-c.tabs.show = "multiple"
-c.tabs.position = "top"
+c.statusbar.show = 'always'
+c.statusbar.position = 'bottom'
+c.statusbar.widgets = ['progress', 'keypress', 'url', 'scroll', 'history', 'tabs']
+c.tabs.favicons.show = 'always'
+c.tabs.background = True
+c.tabs.last_close = 'ignore'
+c.tabs.position = 'top'
+c.tabs.show = 'multiple'
 c.tabs.padding = {
-        "left": 5,
-        "right": 5,
-        "bottom": 5,
-        "top": 5,
+        "left": 3,
+        "right": 3,
+        "bottom": 3,
+        "top": 3,
 }
+
+#################################################
+######## download manager
+##################################################
+c.downloads.position = 'bottom'
+c.downloads.location.remember = False
+c.downloads.location.suggestion = "both"
+c.downloads.remove_finished = 5000
 
 ###################################################
 ############### Bindings for normal mode ##########
@@ -43,14 +56,10 @@ config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 
-
 ##################################################
 ############      ColorScheme     ################
 ##################################################
 c.colors.webpage.preferred_color_scheme = "dark"
-# base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
-# Base16 qutebrowser template by theova
-# Catppuccin scheme by Pocco81 (https://github.com/pocco81)
 
 base00 = "#1e1e28"
 base01 = "#1a1826"
@@ -348,3 +357,4 @@ c.colors.tabs.selected.even.bg = base02
 # Background color for webpages if unset (or empty to use the theme's
 # color).
 # c.colors.webpage.bg = base00
+
