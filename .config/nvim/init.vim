@@ -107,7 +107,25 @@ nnoremap <C-g> :GFiles<CR>
 let g:user_emmet_mode='n'
 let g:user_emmet_leader_key=','
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""" Keybidings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle the highlighting or clear the highlight
+noremap <silent> <leader>hl :set hlsearch!<CR>
+noremap <silent> <SPACE> :noh<CR>
+
+"Center-, right-, or left-align one or more lines
+noremap <silent> <leader>c :center<CR>
+noremap <silent> <leader>r :right<CR>
+noremap <silent> <leader>l :left<CR>
+
+" Tabs
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <C-e> :tabnew<CR>
+nnoremap <C-x> :tabclose<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" Plguins require lu Config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source ~/.config/nvim/plugins.vim
