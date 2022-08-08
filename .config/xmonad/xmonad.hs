@@ -139,7 +139,7 @@ myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/anime.png"                        	    -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/game.jpg"                        	    -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
