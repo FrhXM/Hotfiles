@@ -1,6 +1,6 @@
 Config {
        font                 = "xft:JetBrains Mono:weight=bold:pixelsize=10:antialias=true:hinting=true"
-       , additionalFonts    = [ "xft:FiraCode Nerd Font Mono:pixelsize=12:antialias=true:hinting=true"
+       , additionalFonts    =  [ "xft:FiraCode Nerd Font Mono:pixelsize=12:antialias=true:hinting=true"
                                 , "xft:Font Awesome 6 Free Solid:pixelsize=12"
                                 , "xft:Font Awesome 6 Brands:pixelsize=12"
                                 , "xft:JetBrains Mono:style=Bold:pixelsize=10"
@@ -19,7 +19,7 @@ Config {
        , pickBroadest   = False,
        , persistent     = True
        , iconRoot       = "/home/frhxm/.config/xmobar/xpm/"  -- default: "[NERD]"
-       , commands       = [ Run Date "<fn=2>\xf017</fn> %b %d %Y  %H:%M:%S" "date" 10
+       , commands       =   [ Run Date "<fn=2>\xf017</fn> %b %d %Y  %H:%M:%S" "date" 10
                             , Run Cpu ["-t", "<fn=2>\xf108</fn>  CPU: (<total>%)","-H","50","--high","red"] 20
                             , Run Memory ["-t", "<fn=2>\xf233</fn>  MEM: (<usedratio>%)"] 20
                             , Run DiskU [("/", "<fn=2>\xf0c7</fn>  SSD: <free> free")] [] 60
