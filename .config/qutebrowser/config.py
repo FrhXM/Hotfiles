@@ -64,22 +64,26 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 ##################################################
 c.colors.webpage.preferred_color_scheme = "dark"
 
-base00 = "#1e1e28"
-base01 = "#1a1826"
-base02 = "#302d41"
-base03 = "#575268"
-base04 = "#6e6c7c"
-base05 = "#d7dae0"
-base06 = "#f5e0dc"
-base07 = "#c9cbff"
-base08 = "#f28fad"
-base09 = "#f8bd96"
-base0A = "#fae3b0"
-base0B = "#abe9b3"
-base0C = "#b5e8e0"
-base0D = "#96cdfb"
-base0E = "#ddb6f2"
-base0F = "#f2cdcd"
+# base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
+# Base16 qutebrowser template by theova
+# Ayu Dark scheme by Khue Nguyen &lt;Z5483Y@gmail.com&gt;
+
+base00 = "#0f1419"
+base01 = "#131721"
+base02 = "#272d38"
+base03 = "#3e4b59"
+base04 = "#bfbdb6"
+base05 = "#e6e1cf"
+base06 = "#e6e1cf"
+base07 = "#f3f4f5"
+base08 = "#f07178"
+base09 = "#ff8f40"
+base0A = "#ffb454"
+base0B = "#b8cc52"
+base0C = "#95e6cb"
+base0D = "#59c2ff"
+base0E = "#d2a6ff"
+base0F = "#e6b673"
 
 # set qutebrowser colors
 
