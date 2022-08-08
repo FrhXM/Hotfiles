@@ -1,7 +1,7 @@
 # Load existing settings made via :set
 config.load_autoconfig()
-config.set("auto_save.session", True)
 config.set("zoom.default", "90%")
+# config.set("auto_save.session", True)
 
 # How often (in milliseconds) to auto-save config/cookies/etc.
 c.auto_save.interval = 15000
@@ -9,8 +9,11 @@ c.editor.command = ["kitty", "-e", "nvim", "{file}"]
 c.downloads.location.directory = '~/dl'
 
 # Url
-c.url.default_page = 'https://start.duckduckgo.com/'
-c.url.start_pages = 'https://start.duckduckgo.com/'
+c.url.default_page = '~/prjcts/siteWeb/newtab/index.html'
+c.url.start_pages = '~/prjcts/siteWeb/newtab/index.html'
+
+# c.url.default_page = 'https://start.duckduckgo.com/'
+# c.url.start_pages = 'https://start.duckduckgo.com/'
 
 ############################################
 #############       Font        ############
