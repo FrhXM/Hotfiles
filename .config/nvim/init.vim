@@ -73,6 +73,7 @@ Plug 'sheerun/vim-polyglot'
 	"   Tools  " 
 Plug 'junegunn/fzf.vim'   | Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround' | Plug 'tpope/vim-commentary' 
+Plug 'preservim/nerdtree'  
 	" Programming "
 Plug 'alvan/vim-closetag'
 Plug 'mattn/emmet-vim'
@@ -95,11 +96,18 @@ hi SignColumn guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 """"""""""""""""""""""""""""""""""""""""
+"""" nerdTree 
+""""""""""""""""""""""""""""""""""""""""
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+""""""""""""""""""""""""""""""""""""""""
 """" Fzf 
 """"""""""""""""""""""""""""""""""""""""
-nnoremap <C-f> :Files<CR>
-nnoremap <C-w> :BLines<CR>
-nnoremap <C-g> :GFiles<CR>
+let mapleader=" " " use space to leader key
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>p :BLines<CR>
+nnoremap <leader>g :GFiles<CR>
 
 """""""""""""""""""""""""""""""""""""""
 """"" emmet shortcuts
