@@ -21,7 +21,7 @@ import XMonad.Actions.UpdatePointer (updatePointer)
 import XMonad.Actions.FindEmptyWorkspace (viewEmptyWorkspace, tagToEmptyWorkspace)
 import XMonad.Actions.Minimize (minimizeWindow, withLastMinimized, maximizeWindowAndFocus)
 import XMonad.Actions.Promote (promote)
-import XMonad.Actions.WithAll (killAll, sinkAll)
+import XMonad.Actions.WithAll (killAll, sinkAll, killOthers)
 import XMonad.Actions.RotSlaves (rotSlavesDown)
 import XMonad.Actions.Search  (google, youtube, images, github, promptSearch, searchEngine, promptSearchBrowser)
 
@@ -446,6 +446,7 @@ myKeys =
     , ("M-n",          withFocused minimizeWindow              ) {-- For Minimize && Action minimize --}
     , ("M-S-n",        withLastMinimized maximizeWindowAndFocus) {-- For Minimize && Action minimize --}
     , ("M-S-a",        killAll                                 ) {-- Quite All --}
+    , ("M-S-o",        killOthers                              ) {-- Quite All --}
     , ("M-S-t",        sinkAll                                 ) {-- Push ALL floating windows to tile.--}
     , ("M-S-s",        sendMessage $ SwapWindow                ) {-- Compine Two Layout [XM-comboP]--}
     , ("M-S-r",        rotSlavesDown                           ) {-- Don't Touch Layout in Master --}
