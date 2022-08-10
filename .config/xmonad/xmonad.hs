@@ -36,9 +36,10 @@ import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook) 
 
 -- Utilities
-import XMonad.Util.EZConfig ( additionalKeysP )
+import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Cursor (setDefaultCursor)
+import XMonad.Util.ClickableWorkspaces (clickablePP)
 import XMonad.Util.NamedScratchpad 
 
 -- Layouts/Modifiers 
@@ -475,7 +476,7 @@ main = xmonad
      . docks
      $ myConfig
      where
-     mySB = statusBarProp "xmobar" (pure myPP)
+     mySB = statusBarProp "xmobar" (clickablePP myPP)
      	where
         myPP = def 
 	      -- Properties of current workspace
