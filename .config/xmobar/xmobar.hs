@@ -3,7 +3,7 @@ Config {
        , additionalFonts    =  [ "xft:FiraCode Nerd Font Mono:pixelsize=12:antialias=true:hinting=true"
                                 , "xft:Font Awesome 6 Free Solid:pixelsize=12"
                                 , "xft:Font Awesome 6 Brands:pixelsize=12"
-                                , "xft:JetBrains Mono:style=Bold:pixelsize=10"
+                                , "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=13"
                               ]
        , bgColor        = "#11121D"
        , fgColor        = "#a9b1d6"
@@ -40,5 +40,5 @@ Config {
                             ]
        , sepChar        = "%"
        , alignSep       = "}{"
-       , template       = "   <action=`bash ~/.config/rofi/scripts/powerMenu.sh` button=1><icon=arch.xpm/></action> <fc=#0db9d7> <fn=2></fn></fc> %UnsafeXMonadLog%}{<box type=Bottom width=2 mb=2 color=#a9b1d6><fc=#a9b1d6><fn=3></fn> %uname%</fc></box>   <box type=Bottom width=2 mb=2 color=#f7768e><fc=#f7768e>%cpu%</fc></box>   <box type=Bottom width=2 mb=2 color=#9ece6a><fc=#9ece6a>%memory%</fc></box>   <box type=Bottom width=2 mb=2 color=#e0af68><fc=#e0af68>%disku%</fc></box>   <box type=Bottom width=2 mb=2 color=#7aa2f7><fc=#7aa2f7>%battery%</fc></box>   <box type=Bottom width=2 mb=2 color=#ad8ee6><fc=#ad8ee6>%uptime%</fc></box>   <box type=Bottom width=2 mb=2 color=#A6ADC8><fc=#A6ADC8>%bell%  <action=`kitty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <action=`pamixer --toggle-mute` button=1><box type=Bottom width=2 mb=2 color=#449dab>%default:Master%</box></action>   <action=`xbacklight -set 100` button=1><box type=Bottom width=2 mb=2 color=#787c99><fc=#787c99>%bright%</fc></box></action>   <box type=Bottom width=2 mb=2 color=#7da6ff><fc=#7da6ff>%date%</fc></box>   "
+       , template       = "   <action=`bash ~/.config/rofi/scripts/powerMenu.sh` button=1><icon=arch.xpm/></action>  <fc=#0db9d7><fn=2></fn></fc>  %UnsafeXMonadLog%}{<box type=Bottom width=2 mb=2 color=#a9b1d6><fc=#a9b1d6><fn=3></fn> %uname%</fc></box>   <box type=Bottom width=2 mb=2 color=#f7768e><fc=#f7768e>%cpu%</fc></box>   <box type=Bottom width=2 mb=2 color=#9ece6a><fc=#9ece6a>%memory%</fc></box>   <box type=Bottom width=2 mb=2 color=#e0af68><fc=#e0af68>%disku%</fc></box>   <box type=Bottom width=2 mb=2 color=#7aa2f7><fc=#7aa2f7>%battery%</fc></box>   <box type=Bottom width=2 mb=2 color=#ad8ee6><fc=#ad8ee6>%uptime%</fc></box>   <box type=Bottom width=2 mb=2 color=#A6ADC8><fc=#A6ADC8>%bell%  <action=`kitty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <action=`pamixer --toggle-mute` button=1><box type=Bottom width=2 mb=2 color=#449dab>%default:Master%</box></action>   <action=`xbacklight -set 100` button=1><box type=Bottom width=2 mb=2 color=#787c99><fc=#787c99>%bright%</fc></box></action>   <box type=Bottom width=2 mb=2 color=#7da6ff><fc=#7da6ff>%date%</fc></box>   "
        }
