@@ -119,9 +119,10 @@ myFocusedBorderColor = blue        :: String     -- Border color of focus window
 myFocusFollowsMouse  = True        :: Bool       -- focus follow config
 myClickJustFocuses   = False       :: Bool       -- focus click config
 
-myBrowser = "qutebrowser"          :: String
-myFont    = "xft:JetBrains Mono:style=Bold:pixelsize=13" :: String
-myBigFont = "xft:FiraCode Nerd Font Mono:pixelsize=100"  :: String
+myBrowser   = "qutebrowser"        :: String
+myFont      = "xft:JetBrains Mono:style=Bold:pixelsize=13"        :: String
+myFontJP    = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200" :: String
+myBigFont   = "xft:FiraCode Nerd Font Mono:pixelsize=100"         :: String
 
 ------ Workspaces -------
 -- wsDEV           = "¹DEV"
@@ -134,7 +135,8 @@ myBigFont = "xft:FiraCode Nerd Font Mono:pixelsize=100"  :: String
 -- wsSIT           = "⁸SIT"
 -- wsGME           = "⁹GME"
 -- myWorkspaces    = [wsDEV,wsGIT,wsWEB,wsYTB,wsCHT,wsMSC,wsVED,wsSIT, wsGME]
-myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "] 
+-- myWorkspaces    = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "] 
+myWorkspaces       = ["一", "二", "三", "四", "五", "六", "七", "八", "九"]
 
 ------------------------------------------------------------------------
 -- Startup Hooks
@@ -155,9 +157,8 @@ myStartupHook = do
 -- ManageHooks
 ------------------------------------------------------------------------
 myManageHook = composeAll 
-     [ className =? "qutebrowser"       --> doViewShift " 3 "
-     , className =? "Thunar"            --> doViewShift " 9 "
-     , className =? "mpv"               --> doViewShift " 9 "
+     [ className =? "Thunar"            --> doViewShift (myWorkspaces!!8)
+     , className =? "mpv"               --> doViewShift (myWorkspaces!!8)
      , className =? "Sxiv"              --> doCenterFloat
      , className =? "Nitrogen"          --> doCenterFloat
      , className =? "Xmessage"          --> doCenterFloat
@@ -315,7 +316,7 @@ myHandleEventHook= swallowEventHook (className =? "kitty") (return True)
 mySpacings       = spacingRaw False (Border 0 10 10 10) True (Border 10 10 10 10) True
 myGaps           = gaps [(U, 10),(D, 5),(L, 10),(R, 10)]
 myShowWNameTheme = def
-                { swn_font              = myBigFont
+                { swn_font              = myFontJP
                 , swn_fade              = 1.0
                 , swn_bgcolor           = bg
                 , swn_color             = blue
@@ -325,11 +326,10 @@ myLayoutHook    = showWName' myShowWNameTheme
                 $ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
                 $ limitWindows 12
                 $ avoidStruts
-                $ onWorkspaces [" 1 "," 2 "] codeLayouts
-                $ onWorkspaces [" 3 "," 4 "] webLayouts
-                $ onWorkspaces [" 5 "," 6 "] chatLayouts
-                $ onWorkspaces [" 7 "," 8 "] settingeLayouts
-                $ onWorkspace " 9 " mediaLayouts
+                $ onWorkspace (myWorkspaces !! 0) webLayouts
+                $ onWorkspace (myWorkspaces !! 1) codeLayouts
+                $ onWorkspace (myWorkspaces !! 2) chatLayouts
+                $ onWorkspace (myWorkspaces !! 8) mediaLayouts
                 $ allLayouts
                where 
     allLayouts = tall ||| threeColMid ||| dishes ||| oneBig ||| grid ||| twoPane ||| spirals ||| circle ||| floats ||| tabs
@@ -502,13 +502,13 @@ main = xmonad
 	    , ppSep =  "<fc=#3d85c6> <fn=2>\61762</fn> </fc>"
 
 	      -- WS Separator
-	    , ppWsSep = " "
+	    , ppWsSep = "  "
 
 	      -- Number of windows on workspace
 	    , ppExtras = [windowCount]
 
 	      -- Order of things
-	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=4>" ++ ws ++ "</fn>"] ++ ex ++ ["<fc=" ++ black ++ "> { " ++ l ++ " } </fc> " ++ t ]
+	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=4>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "> { " ++ l ++ " } </fc> " ++ t ]
 	    }     
 	    where
 		colorBG :: String
