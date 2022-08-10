@@ -23,7 +23,7 @@ import XMonad.Actions.Minimize (minimizeWindow, withLastMinimized, maximizeWindo
 import XMonad.Actions.Promote (promote)
 import XMonad.Actions.WithAll (killAll, sinkAll, killOthers)
 import XMonad.Actions.RotSlaves (rotSlavesDown)
-import XMonad.Actions.Search  (google, youtube, images, github, promptSearch, searchEngine, promptSearchBrowser)
+import XMonad.Actions.Search  (google, duckduckgo, youtube, images, github, promptSearch, searchEngine, promptSearchBrowser)
 
 -- Hooks
 import XMonad.Hooks.StatusBar
@@ -422,6 +422,7 @@ myKeys =
     , ("C-p b",        windowPrompt myXPConfig Bring allWindows)
     
     -- Prompt Search
+    , ("C-s d",        promptSearchBrowser myXPConfig myBrowser duckduckgo) 
     , ("C-s g",        promptSearchBrowser myXPConfig myBrowser google) 
     , ("C-s y",        promptSearchBrowser myXPConfig myBrowser youtube)
     , ("C-s i",        promptSearchBrowser myXPConfig myBrowser images)
