@@ -98,14 +98,14 @@ cyan          = "#449dab"
 white         = "#787c99"
 
 --- Two Pallate ---
-black_       = "#444b6a"
-red_         = "#ff7a93"
-green_       = "#b9f27c"
-yellow_      = "#ff9e64"
-blue_        = "#7da6ff"
-magenta_     = "#bb9af7"
-cyan_        = "#0db9d7"
-white_       = "#acb0d0"
+black_        = "#444b6a"
+red_          = "#ff7a93"
+green_        = "#b9f27c"
+yellow_       = "#ff9e64"
+blue_         = "#7da6ff"
+magenta_      = "#bb9af7"
+cyan_         = "#0db9d7"
+white_        = "#acb0d0"
 
 ------------------------------------------------------------------------
 -- VARIABLES
