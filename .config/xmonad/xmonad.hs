@@ -142,7 +142,7 @@ myWorkspaces       = ["一", "二", "三", "四", "五", "六", "七", "八", "�
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/anime.png"                        	    -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl.jpg"                        	    -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
@@ -385,14 +385,14 @@ wallhaven   = searchEngine "wallhaven" "https://wallhaven.cc/search?q="
 myKeys = 
     [
     -- Xmonad
-      ("M-q", spawn "xmonad --recompile && xmonad --restart")     
-    , ("M-S-q", io exitSuccess)                                  
+      ("M-q", spawn "xmonad --recompile && xmonad --restart")
+    , ("M-S-q", io exitSuccess)
     
     -- System 
                    --- Audio ---
     , ("<XF86AudioMute>", spawn "pamixer -t && notify-send -t 200 'Toggle mute button!'") 	
     , ("<F9>",         spawn "pamixer -i 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")
-    , ("<F8>",         spawn "pamixer -d 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")  			    
+    , ("<F8>",         spawn "pamixer -d 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")
     , ("<F10>",        spawn "pamixer --default-source -t && notify-send -t 200 'Toggle mute Mic button'")   
                    --- Brightenss ---
     , ("<F5>",         spawn "xbacklight -dec 10 && notify-send -t 200 `xbacklight -get`")
