@@ -121,7 +121,7 @@ myClickJustFocuses   = False       :: Bool       -- focus click config
 
 myBrowser   = "qutebrowser"        :: String
 myFont      = "xft:JetBrains Mono:style=Bold:pixelsize=13"        :: String
-myFontJP    = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200" :: String
+myFontJP    = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
 myBigFont   = "xft:FiraCode Nerd Font Mono:pixelsize=100"         :: String
 
 ------ Workspaces -------
@@ -142,7 +142,7 @@ myWorkspaces       = ["一", "二", "三", "四", "五", "六", "七", "八", "�
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/tokyo.png"                        	    -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/anime.png"                        	    -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
@@ -458,10 +458,10 @@ myKeys =
     , ("M-z",          sendMessage MirrorShrink) {-- For Layout ResizableTile( Tiled ) -}
 
    -- Increase/decrease spacing (gaps)
-    , ("M-C-j",        decWindowSpacing 4     )  -- Decrease window spacing
-    , ("M-C-k",        incWindowSpacing 4     )  -- Increase window spacing
-    , ("M-C-h",        decScreenSpacing 4     )  -- Decrease screen spacing
-    , ("M-C-l",        incScreenSpacing 4     )  -- Increase screen spacing
+    , ("M-C-j",        decWindowSpacing 4)  -- Decrease window spacing
+    , ("M-C-k",        incWindowSpacing 4)  -- Increase window spacing
+    , ("M-C-h",        decScreenSpacing 4)  -- Decrease screen spacing
+    , ("M-C-l",        incScreenSpacing 4)  -- Increase screen spacing
     ]
     where 
         toggleFloat w = windows (\s -> if M.member w (W.floating s)
