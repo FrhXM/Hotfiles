@@ -105,7 +105,7 @@ alias update='sudo pacman -Sy'
 alias upgrade='sudo pacman -Syu && echo "UPGRADED"'
 alias ps='sudo pacman -Sy'
 alias pr='sudo pacman -Rsn'
-alias clean='sudo pacman -Scc && echo "Cache Is Clean Now"'
+alias pc='sudo pacman -Scc && echo "Cache Is Clean Now"'
 
 ## alias for configs	
 alias fishc="nvim ~/.config/fish/config.fish"
