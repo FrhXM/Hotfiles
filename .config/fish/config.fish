@@ -14,12 +14,6 @@ if status is-interactive
 	set fish_cursor_insert      line       blink
 	set fish_cursor_replace_one underscore blink
 	set fish_cursor_visual      block
-
-	######################################################
-	## Fzf Fuzzy Finder
-	######################################################
-	set -g FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
-	
 	
 	###########################
 	## TokyoNight Color Palette
