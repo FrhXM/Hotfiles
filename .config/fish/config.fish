@@ -14,6 +14,12 @@ if status is-interactive
 	set fish_cursor_insert      line       blink
 	set fish_cursor_replace_one underscore blink
 	set fish_cursor_visual      block
+
+	######################################################
+	## Fzf Fuzzy Finder
+	######################################################
+	set -g FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
+	
 	
 	###########################
 	## TokyoNight Color Palette
@@ -99,6 +105,7 @@ alias update='sudo pacman -Sy'
 alias upgrade='sudo pacman -Syu && echo "UPGRADED"'
 alias ps='sudo pacman -Sy'
 alias pr='sudo pacman -Rsn'
+alias clean='sudo pacman -Scc && echo "Cache Is Clean Now"'
 
 ## alias for configs	
 alias fishc="nvim ~/.config/fish/config.fish"
