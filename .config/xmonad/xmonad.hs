@@ -26,14 +26,14 @@ import XMonad.Actions.RotSlaves (rotSlavesDown)
 import XMonad.Actions.Search  (google, duckduckgo, youtube, images, github, promptSearch, searchEngine, promptSearchBrowser)
 
 -- Hooks
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.WindowSwallowing
+import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
+import XMonad.Hooks.WindowSwallowing (swallowEventHook)
 import XMonad.Hooks.ManageDocks (avoidStruts, docks, ToggleStruts(..))
 import XMonad.ManageHook (doFloat)
 import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook) 
+import XMonad.Hooks.StatusBar 
+import XMonad.Hooks.StatusBar.PP
 
 -- Utilities
 import XMonad.Util.EZConfig (additionalKeysP)
@@ -393,7 +393,7 @@ myKeys =
     , ("<XF86AudioMute>", spawn "pamixer -t && notify-send -t 200 'Toggle mute button!'") 	
     , ("<F9>",         spawn "pamixer -i 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")
     , ("<F8>",         spawn "pamixer -d 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")
-    , ("<F10>",        spawn "pamixer --default-source -t && notify-send -t 200 'Toggle mute Mic button'")   
+    , ("<F10>",        spawn "pamixer --default-source -t && notify-send -t 200 'Toggle mute Mic button'")
                    --- Brightenss ---
     , ("<F5>",         spawn "xbacklight -dec 10 && notify-send -t 200 `xbacklight -get`")
     , ("<F6>",         spawn "xbacklight -inc 10 && notify-send -t 200 `xbacklight -get`")
@@ -406,13 +406,13 @@ myKeys =
     , ("M-S-e",        spawn "bash ~/.config/rofi/scripts/powerMenu.sh")
 
     -- Apps
-    , ("M-S-<Return>", spawn myTerminal)                                      
+    , ("M-S-<Return>", spawn myTerminal)
     , ("M-w",          spawn myBrowser)
-    , ("M-r",          spawn "redshift -O 3800K")                                        
-    , ("M-x",          spawn "redshift -x")                                              
+    , ("M-r",          spawn "redshift -O 3800K")
+    , ("M-x",          spawn "redshift -x")
 
     -- Run Prompt
-    , ("M-d",          spawn "rofi -show drun -show-icons")                                           
+    , ("M-d",          spawn "rofi -show drun -show-icons")
     , ("M-S-d",        spawn "dmenu_run -fn 'JetBrains Mono:style=Bold:pixelsize=14' -nb '#11121D' -nf '#7aa2f7' -sb '#7aa2f7' -sf '#11121D' -l 5 -p 'Execute:'")
 
     -- XMonad Prompt (XPConfig)
@@ -531,7 +531,7 @@ main = xmonad
 		windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 -------------------------------------------------------------------------------
--- 	   AllVaribles Not In Containers But In My Heart ==>               ---
+-- 	   AllVaribles Not In Containers But In My Heart ==>                   ---
 -------------------------------------------------------------------------------
 myConfig = def  
         { modMask                   = myModMask
@@ -546,6 +546,6 @@ myConfig = def
 		, layoutHook                = myLayoutHook
 		, manageHook                = myManageHook
         , handleEventHook           = myHandleEventHook
-		, logHook		            = updatePointer (0.5, 0.5) (0, 0)
+		, logHook                   = updatePointer (0.5, 0.5) (0, 0)
 					                >> fadeInactiveLogHook 0.90
 	    } `additionalKeysP` myKeys
