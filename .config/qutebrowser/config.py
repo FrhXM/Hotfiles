@@ -143,7 +143,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 ##### My Config 
 ################################################################
 # Load existing settings made via :set
-config.load_autoconfig()
+config.load_autoconfig(True)
 config.set("zoom.default", "90%")
 # config.set("auto_save.session", True)
 
@@ -198,6 +198,7 @@ c.downloads.remove_finished = 5000
 ###################################################
 ############### Bindings for normal mode ##########
 ###################################################
+config.bind('M',  'hint links spawn mpv {hint-url}')
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
@@ -205,26 +206,28 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 ##################################################
 ############      ColorScheme     ################
 ##################################################
+## Enable Dark Mode
+config.set("colors.webpage.darkmode.enabled", True)
+
 # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
 # Base16 qutebrowser template by theova
-# Tokyodark scheme by Tiagovla (https://github.com/tiagovla/)
-
-base00 = "#11121d"
-base01 = "#151621"
-base02 = "#43444f"
-base03 = "#393a45"
-base04 = "#1b1c27"
-base05 = "#abb2bf"
-base06 = "#555661"
-base07 = "#2c2d38"
-base08 = "#a485dd"
-base09 = "#a485dd"
-base0A = "#7199ee"
-base0B = "#d7a65f"
-base0C = "#a485dd"
-base0D = "#95c561"
-base0E = "#ee6d85"
-base0F = "#773440"
+# Ayu Dark scheme by Khue Nguyen &lt;Z5483Y@gmail.com&gt;
+base00 = "#0f1419"
+base01 = "#131721"
+base02 = "#272d38"
+base03 = "#3e4b59"
+base04 = "#bfbdb6"
+base05 = "#e6e1cf"
+base06 = "#e6e1cf"
+base07 = "#f3f4f5"
+base08 = "#f07178"
+base09 = "#ff8f40"
+base0A = "#ffb454"
+base0B = "#b8cc52"
+base0C = "#95e6cb"
+base0D = "#59c2ff"
+base0E = "#d2a6ff"
+base0F = "#e6b673"
 
 # set qutebrowser colors
 
@@ -505,3 +508,4 @@ c.colors.tabs.selected.even.bg = base02
 # Background color for webpages if unset (or empty to use the theme's
 # color).
 # c.colors.webpage.bg = base00
+
