@@ -32,6 +32,7 @@ import XMonad.Hooks.ManageDocks (avoidStruts, docks, ToggleStruts(..))
 import XMonad.ManageHook (doFloat)
 import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook) 
+import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.StatusBar 
 import XMonad.Hooks.StatusBar.PP
 
@@ -472,8 +473,9 @@ myKeys =
 ------------------------------------------------------------------------
 main = xmonad
      . ewmh
-  -- . ewmhFullscreen  
+     . ewmhFullscreen  
      . withEasySB mySB defToggleStrutsKey
+     . withUrgencyHook FocusHook
      . docks
      $ myConfig
      where
