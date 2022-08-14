@@ -95,8 +95,8 @@ alias cc='clear'
 alias ss='sxiv -b -f -t *'
 
 ## Pacman && yay
-alias update='sudo pacman -Sy'
-alias upgrade='sudo pacman -Syu && echo "UPGRADED"'
+alias update='sudo pacman -Syy'
+alias upgrade='sudo pacman -Syyu && echo "UPGRADED"'
 alias ps='sudo pacman -Sy'
 alias pr='sudo pacman -Rsn'
 alias pc='sudo pacman -Scc && echo "Cache Is Clean Now"'
