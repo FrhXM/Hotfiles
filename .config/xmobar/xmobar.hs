@@ -7,7 +7,7 @@ Config {
                               ]
        , bgColor        = "#11121D"
        , fgColor        = "#a9b1d6"
-       , alpha          = 244
+       , alpha          = 233
        , position       = Static {xpos = 18, ypos = 3, width = 1830, height = 30}
        , border         = BottomB
        , borderWidth    = 0
