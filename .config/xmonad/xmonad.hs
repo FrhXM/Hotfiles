@@ -23,7 +23,7 @@ import XMonad.Actions.Minimize (minimizeWindow, withLastMinimized, maximizeWindo
 import XMonad.Actions.Promote (promote)
 import XMonad.Actions.WithAll (killAll, sinkAll, killOthers)
 import XMonad.Actions.RotSlaves (rotSlavesDown)
-import XMonad.Actions.Search  (google, duckduckgo, youtube, images, github, promptSearch, searchEngine, promptSearchBrowser)
+import XMonad.Actions.Search  (google, duckduckgo, youtube, images, github, searchEngine, promptSearchBrowser)
 
 -- Hooks
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
@@ -535,7 +535,7 @@ main = xmonad
 -------------------------------------------------------------------------------
 -- 	   AllVaribles Not In Containers But In My Heart ==>                   ---
 -------------------------------------------------------------------------------
-myConfig = def  
+myConfig = def
         { modMask                   = myModMask
 		, terminal                  = myTerminal
 		, borderWidth               = myBorderWidth
