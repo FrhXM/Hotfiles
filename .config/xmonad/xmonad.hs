@@ -143,7 +143,7 @@ myWorkspaces       = ["一", "二", "三", "四", "五", "六", "七", "八", "�
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl.jpg"                        	    -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/myWorld.png"                        	-- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
@@ -351,7 +351,7 @@ myXPConfig = def
           , bgHLight            = green
           , fgHLight            = black
           , borderColor         = blue
-          , promptBorderWidth   = 3
+          , promptBorderWidth   = 6
           , position            = CenteredAt (1 / 4) (1 / 3)
           , alwaysHighlight     = True
           , height              = 40
