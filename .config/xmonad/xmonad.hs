@@ -13,7 +13,7 @@
 -------------------------------------------------------------------------------
 -- Main
 import XMonad
-import System.Exit
+import System.Exit (exitSuccess)
 import Control.Monad (liftM2)
 
 -- Actions
@@ -31,7 +31,7 @@ import XMonad.Hooks.WindowSwallowing (swallowEventHook)
 import XMonad.Hooks.ManageDocks (avoidStruts, docks, ToggleStruts(..))
 import XMonad.ManageHook (doFloat)
 import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)
-import XMonad.Hooks.FadeInactive (fadeInactiveLogHook) 
+import XMonad.Hooks.FadeWindows (fadeWindowsLogHook, fadeWindowsEventHook, isFloating, isUnfocused, transparency, solid)
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.StatusBar 
 import XMonad.Hooks.StatusBar.PP
@@ -143,7 +143,7 @@ myWorkspaces       = ["一", "二", "三", "四", "五", "六", "七", "八", "�
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/myWorld.png"                        	-- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl.jpg"                        	    -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
@@ -171,6 +171,16 @@ myManageHook = composeAll
      ] <+> namedScratchpadManageHook myScratchPads
     where
      doViewShift = doF . liftM2 (.) W.view W.shift
+
+------------------------------------------------------------------------
+-- FadeWindowHooks
+------------------------------------------------------------------------
+myFadeHook = composeAll 
+     [ className =? "kitty"             --> transparency 0.1
+     , className =? "Xmessage"          --> transparency 0.2
+     , isUnfocused                      --> transparency 0.2
+     , isFloating                       --> solid
+     ]
 
 ------------------------------------------------------------------------
 -- Scratch Pads
@@ -547,7 +557,8 @@ myConfig = def
 		, startupHook               = myStartupHook
 		, layoutHook                = myLayoutHook
 		, manageHook                = myManageHook
-        , handleEventHook           = myHandleEventHook
+        , handleEventHook           = myHandleEventHook 
+                                    >> fadeWindowsEventHook
 		, logHook                   = updatePointer (0.5, 0.5) (0, 0)
-					                >> fadeInactiveLogHook 0.90
+                                    >> fadeWindowsLogHook myFadeHook
 	    } `additionalKeysP` myKeys
