@@ -177,7 +177,6 @@ myManageHook = composeAll
 ------------------------------------------------------------------------
 myFadeHook = composeAll 
      [ className =? "kitty"             --> transparency 0.1
-     , className =? "Xmessage"          --> transparency 0.2
      , isUnfocused                      --> transparency 0.2
      , isFloating                       --> solid
      ]
