@@ -31,8 +31,8 @@ import XMonad.Hooks.WindowSwallowing (swallowEventHook)
 import XMonad.Hooks.ManageDocks (avoidStruts, docks, ToggleStruts(..))
 import XMonad.ManageHook (doFloat)
 import XMonad.Hooks.ManageHelpers (doCenterFloat, doFullFloat, isFullscreen)
-import XMonad.Hooks.FadeWindows (fadeWindowsLogHook, fadeWindowsEventHook, isFloating, isUnfocused, transparency, solid)
-import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.FadeWindows (fadeWindowsLogHook, isFloating, isUnfocused, transparency, solid)
+import XMonad.Hooks.UrgencyHook 
 import XMonad.Hooks.StatusBar 
 import XMonad.Hooks.StatusBar.PP
 
@@ -323,7 +323,7 @@ twoTabbed       = renamed [Replace "TWO TABBED"]
 ------------------------------------------------------------------------
 -- Layout Hook
 ------------------------------------------------------------------------
-myHandleEventHook= swallowEventHook (className =? "kitty") (return True)
+myHandleEventHook = swallowEventHook (className =? "kitty") (return True) 
 mySpacings       = spacingRaw False (Border 0 10 10 10) True (Border 10 10 10 10) True
 myGaps           = gaps [(U, 10),(D, 5),(L, 10),(R, 10)]
 myShowWNameTheme = def
@@ -558,7 +558,6 @@ myConfig = def
 		, layoutHook                = myLayoutHook
 		, manageHook                = myManageHook
         , handleEventHook           = myHandleEventHook 
-                                    >> fadeWindowsEventHook
 		, logHook                   = updatePointer (0.5, 0.5) (0, 0)
                                     >> fadeWindowsLogHook myFadeHook
 	    } `additionalKeysP` myKeys
