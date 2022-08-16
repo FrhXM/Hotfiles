@@ -21,7 +21,7 @@
 "          ███████▄░░░░░░░░░░░▄███████
 "          ██████████▄▄▄▄▄▄▄██████████
 "          ███████████████████████████
-"   
+"
 set noswapfile              " disable swapfile
 set nobackup                " disable backups
 set nowrap                  " wrap lines
@@ -38,7 +38,6 @@ set undofile                " save undo chages even after computer restart
 set clipboard+=unnamedplus  " use Clipboard To copy & paste To Vim
 
 set ignorecase              " make searching case insensitive
-set smartcase               " unless the query has capital letters
 set hlsearch                " highlights the string matched by the search
 
 set autoindent              " Auto-indentation des nouvelles lignes
@@ -98,6 +97,8 @@ hi EndOfBuffer guibg=NONE ctermbg=NONE
 """"""""""""""""""""""""""""""""""""""""
 """" nerdTree 
 """"""""""""""""""""""""""""""""""""""""
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
@@ -112,7 +113,7 @@ nnoremap <leader>g :GFiles<CR>
 """""""""""""""""""""""""""""""""""""""
 """"" emmet shortcuts
 """""""""""""""""""""""""""""""""""""""
-let g:user_emmet_mode='n'
+let g:user_emmet_mode='a'
 let g:user_emmet_leader_key=','
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
