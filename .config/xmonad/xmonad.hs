@@ -23,7 +23,7 @@ import XMonad.Actions.Minimize (minimizeWindow, withLastMinimized, maximizeWindo
 import XMonad.Actions.Promote (promote)
 import XMonad.Actions.WithAll (killAll, sinkAll, killOthers)
 import XMonad.Actions.RotSlaves (rotSlavesDown)
-import XMonad.Actions.Search  (google, duckduckgo, youtube, images, github, searchEngine, promptSearchBrowser)
+import XMonad.Actions.Search (google, duckduckgo, youtube, images, github, searchEngine, promptSearchBrowser)
 
 -- Hooks
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
@@ -148,6 +148,7 @@ myStartupHook = do
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
     spawnOnce "blueman-applet"                                                      -- bluetooth-blueman-applte {systemTray}
+    spawnOnce "xfce4-power-manager"                                                 -- bluetooth-blueman-applte {systemTray}
     spawnOnce "~/.config/xmobar/scripts/tray.sh"                                    -- trayer 
     -- spawnOnce "redshift -O 3800k"                                                -- Safe your eyes
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
@@ -410,7 +411,7 @@ myKeys =
                    --- ScreenShoot --- 
     , ("<Print>",      spawn "scrot -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"     )
     , ("M-<Print>",    spawn "scrot -u -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"  )
-    , ("M-S-<Print>",  spawn "scrot -s -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"  )
+    , ("S-<Print>",    spawn "scrot -s -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"  )
                    --- Scripts ---
     , ("M-S-w",        spawn "bash ~/.config/rofi/scripts/wifiMenu.sh" )
     , ("M-S-e",        spawn "bash ~/.config/rofi/scripts/powerMenu.sh")
