@@ -148,6 +148,7 @@ myStartupHook = do
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
     spawnOnce "blueman-applet"                                                      -- bluetooth-blueman-applte {systemTray}
+    spawnOnce "~/.config/xmobar/scripts/battnotify.sh"                              -- battery notifction
     spawnOnce "~/.config/xmobar/scripts/tray.sh"                                    -- trayer 
     -- spawnOnce "redshift -O 3800k"                                                -- Safe your eyes
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
@@ -396,6 +397,7 @@ myKeys =
     [
     -- Xmonad
       ("M-q", spawn "xmonad --recompile && xmonad --restart")
+    , ("M-p", spawn "slock")
     , ("M-S-q", io exitSuccess)
     
     -- System 
