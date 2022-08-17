@@ -207,7 +207,7 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 ############      ColorScheme     ################
 ##################################################
 ## Enable Dark Mode
-# config.set("colors.webpage.darkmode.enabled", True)
+config.set("colors.webpage.darkmode.enabled", True)
 
 # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
 # Base16 qutebrowser template by theova
