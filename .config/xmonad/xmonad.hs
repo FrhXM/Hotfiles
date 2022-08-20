@@ -546,7 +546,7 @@ myKeys =
 ------------------------------------------------------------------------
 main = xmonad
      . ewmh
-     . ewmhFullscreen  
+  -- . ewmhFullscreen  
      . withEasySB mySB defToggleStrutsKey
      . withUrgencyHook FocusHook
      . docks
