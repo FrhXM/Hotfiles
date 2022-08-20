@@ -71,7 +71,7 @@ alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -T --color=always --group-directories-first' # tree listing
 alias l.='exa -a | egrep "^\."'
 
-## confirm before overwriting something
+## force confirm before overwriting something
 alias cp="cp -f"
 alias mv='mv -f'
 alias rm='trash-put'
