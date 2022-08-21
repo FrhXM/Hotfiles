@@ -1,4 +1,4 @@
-require("myOpts")
-require("myPlugs")
-require("myConfigs")
-require("myKeys")
+require("plugs")
+require("keys")
+require("opts")
+require("set")
