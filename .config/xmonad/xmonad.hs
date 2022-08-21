@@ -619,7 +619,7 @@ myConfig = def
 		, startupHook               = myStartupHook
 		, layoutHook                = myLayoutHook
 		, manageHook                = myManageHook
-    , handleEventHook           = myHandleEventHook 
+        , handleEventHook           = myHandleEventHook 
 		, logHook                   = updatePointer (0.5, 0.5) (0, 0)
-                                >> fadeWindowsLogHook myFadeHook
+                                    >> fadeWindowsLogHook myFadeHook
     } `additionalKeysP` myKeys
