@@ -6,12 +6,12 @@ local set = vim.opt
 
 -- Indenting
 set.expandtab     = true
-set.shiftwidth    = 2
+set.shiftwidth    = 4
 set.smartindent   = true
 set.autoindent    = true
 set.wrap          = false
-set.tabstop       = 2
-set.softtabstop   = 2
+set.tabstop       = 4
+set.softtabstop   = 4
 
 -- numbers
 set.number 	      = true
