@@ -562,16 +562,19 @@ main = xmonad
 
 	      -- Properties of hidden workspaces without windows
 	    , ppHiddenNoWindows = xmobarColor colorInactive ""
-        
+
 	     -- Properties of hidden WS (Active)
-       	    , ppHidden = xmobarColor colorFG ""
+        , ppHidden = xmobarColor colorFG ""
+
+         -- Urgent workspace
+        , ppUrgent = xmobarColor colorSecondary "" . wrap "!" "!"
 
 	    -- Type Of layout in xmobar
 	    , ppLayout = xmobarColor colorInactive ""   
 
 	      -- Title of active window
 	    , ppTitle = xmobarColor colorFG "" . shorten 40
-	      
+
 	      -- Separator character
 	    , ppSep =  "<fc=#3d85c6> <fn=2>\61762</fn> </fc>"
 
