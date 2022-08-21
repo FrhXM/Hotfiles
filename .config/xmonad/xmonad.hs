@@ -165,8 +165,7 @@ projects =
 
     , Project { projectName = wsGIT
               , projectDirectory = "~/prjcts"
-              , projectStartHook = Just $ do spawn "kitty -e nvim"
-                                             spawn "qutebrowser --target=window github.com/frhxm"
+              , projectStartHook = Just $ do spawn "qutebrowser --target=window github.com/frhxm"
               }
 
     , Project { projectName = wsWEB
@@ -609,7 +608,7 @@ main = xmonad
 -- 	   AllVaribles Not In Containers But In My Heart ==>                   ---
 -------------------------------------------------------------------------------
 myConfig = def
-        { modMask                   = myModMask
+		{ modMask                   = myModMask
 		, terminal                  = myTerminal
 		, borderWidth               = myBorderWidth
 		, focusedBorderColor        = myFocusedBorderColor 
@@ -620,7 +619,7 @@ myConfig = def
 		, startupHook               = myStartupHook
 		, layoutHook                = myLayoutHook
 		, manageHook                = myManageHook
-        	, handleEventHook           = myHandleEventHook 
+    , handleEventHook           = myHandleEventHook 
 		, logHook                   = updatePointer (0.5, 0.5) (0, 0)
-                                    >> fadeWindowsLogHook myFadeHook
-	    } `additionalKeysP` myKeys
+                                >> fadeWindowsLogHook myFadeHook
+    } `additionalKeysP` myKeys
