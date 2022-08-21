@@ -419,15 +419,15 @@ myXPConfig = def
           , fgColor             = fg
           , bgHLight            = green
           , fgHLight            = black
-          , borderColor         = blue
-          , promptBorderWidth   = 6
+          , borderColor         = magenta
+          , promptBorderWidth   = 5
           , position            = CenteredAt (1 / 4) (1 / 3)
           , alwaysHighlight     = True
           , height              = 40
           , maxComplRows        = Just 5       -- set to Just 5 for 5 rows Or Nothing
           , maxComplColumns     = Just 2       -- set to Just 5 for 5 coulmn Or Nothing
           , historySize         = 256
-          , historyFilter       = id
+          , historyFilter       = deleteAllDuplicates
           , promptKeymap        = vimLikeXPKeymap
           , completionKey       = (0, xK_Tab)
           , changeModeKey       = xK_grave
@@ -625,4 +625,4 @@ myConfig = def
         , handleEventHook           = myHandleEventHook 
 		, logHook                   = updatePointer (0.5, 0.5) (0, 0)
                                     >> fadeWindowsLogHook myFadeHook
-    } `additionalKeysP` myKeys
+        } `additionalKeysP` myKeys
