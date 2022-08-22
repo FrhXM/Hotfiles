@@ -42,10 +42,11 @@ set.undofile 	  = true
 set.hidden	      = true
 set.splitbelow	  = true
 set.splitright	  = true
-set.termguicolors = true
 set.timeoutlen 	  = 400
 
 -- Others
-set.wildmenu 	    = true
+set.termguicolors = true
+set.showmode      = false
+set.wildmenu 	  = true
 set.completeopt   = "menuone,noselect"
 set.clipboard 	  = "unnamedplus"

@@ -14,8 +14,8 @@ return require('packer').startup(function(use)
         --Packer can manage itself
     use 'wbthomason/packer.nvim'
         -- Appearances
-    use 'tiagovla/tokyodark.nvim' 
-    use 'nvim-lualine/lualine.nvim'
+    use 'tiagovla/tokyodark.nvim'
+    use 'tamton-aquib/staline.nvim'
     use 'xiyaowong/nvim-transparent'
     use 'kyazdani42/nvim-web-devicons'
     use "lukas-reineke/indent-blankline.nvim"
