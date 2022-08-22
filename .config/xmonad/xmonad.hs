@@ -6,8 +6,10 @@
 -- ██╔╝ ██╗██║ ╚═╝ ██║╚██████╔╝██║ ╚████║██║  ██║██████╔╝
 -- ╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝╚═════╝
 -- ===========================================================================
--------------------------------------------------------------------------------
---      written by Farah Abderrazzak Aka FrhXM(https://github.com/frhxm)     --
+{-
+      written by Farah Abderrazzak Aka FrhXM(https://github.com/frhxm)
+      first Edit 25/4/2022 + (I think ?)
+-}
 -------------------------------------------------------------------------------
 -- Import modules                                                           {{{
 -------------------------------------------------------------------------------
@@ -415,24 +417,24 @@ myLayoutHook    = showWName' myShowWNameTheme
 ------------------------------------------------------------------------
 myXPConfig = def 
           { font                = myFontJP
-          , bgColor             = bg
+          , bgColor             = black
           , fgColor             = fg
           , bgHLight            = green
           , fgHLight            = black
-          , borderColor         = magenta
-          , promptBorderWidth   = 5
-          , position            = CenteredAt (1 / 4) (1 / 3)
+          , borderColor         = bg
+          , promptBorderWidth   = 6
+          , position            = CenteredAt (1 / 15) (1 / 3)
           , alwaysHighlight     = True
           , height              = 40
           , maxComplRows        = Just 5       -- set to Just 5 for 5 rows Or Nothing
-          , maxComplColumns     = Just 2       -- set to Just 5 for 5 coulmn Or Nothing
+          , maxComplColumns     = Just 5       -- set to Just 5 for 5 coulmn Or Nothing
           , historySize         = 256
           , historyFilter       = deleteAllDuplicates
           , promptKeymap        = vimLikeXPKeymap
           , completionKey       = (0, xK_Tab)
           , changeModeKey       = xK_grave
           , defaultText         = []
-          , autoComplete        = Nothing     -- set Just 100000 for .1 sec
+          , autoComplete        = Nothing       -- set Just 100000 for .1 sec
           , showCompletionOnTab = False
           , complCaseSensitivity= CaseInSensitive
           , defaultPrompter     = id
@@ -524,6 +526,7 @@ myKeys =
     , ("M-S-s",        sendMessage $ SwapWindow                ) {-- Compine Two Layout [XM-comboP]--}
     , ("M-S-r",        rotSlavesDown                           ) {-- Don't Touch Layout in Master --}
     , ("M-S-p",        shiftToProjectPrompt myXPConfig         ) {-- Create New Project --}
+    , ("M-C-p",        changeProjectDirPrompt myXPConfig       ) {-- Move To Project --}
     , ("M-p",          switchProjectPrompt myXPConfig          ) {-- Move To Project --}
    
    -- Resize layout
