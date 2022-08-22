@@ -27,15 +27,16 @@ set.scrolloff     = 8
 set.mouse 	      = "a"
 
 -- search
-set.hlsearch 	    = true
+set.hlsearch 	  = true
 set.incsearch     = true
 set.ignorecase    = true
 set.smartcase     = true
 
--- backup & swap && Undo
+-- Undo and backup options
 set.backup        = false
+set.writebackup   = false
 set.swapfile      = false
-set.undofile 	    = true
+set.undofile 	  = true
 
 -- buffers && Window && Split
 set.hidden	      = true
