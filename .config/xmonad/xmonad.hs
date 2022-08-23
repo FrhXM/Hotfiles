@@ -142,6 +142,9 @@ myFontJPBig = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
 -- wsSIT           = "⁸SIT"
 -- wsGME           = "⁹GME"
 -- myWorkspaces    = [wsDEV,wsGIT,wsWEB,wsYTB,wsCHT,wsMSC,wsVED,wsSIT, wsGME]
+-- myWorkspaces    = ["\63083", "\63288", "\63306", "\61723", "\63107", "\63601", "\63391", "\61713", "\61884"]
+-- myWorkspaces    = ["\xf120", "\xf268", "\xe7c5", "\xfad9", "\xf292", "\xf200", "\xf040", "\xfa6f", "\xf49c"]
+-- myWorkspaces    = ["一", "二", "三", "四", "五", "六", "七", "八", "九"]
 
 ------ Workspaces -------
 wsDEV           = "一"
@@ -153,7 +156,6 @@ wsANM           = "六"
 wsMED           = "七"
 wsSIT           = "八"
 wsAll           = "九"
--- myWorkspaces    = ["一", "二", "三", "四", "五", "六", "七", "八", "九"]
 myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsANM, wsMED, wsSIT, wsAll]
 
 -- =========================================================================
