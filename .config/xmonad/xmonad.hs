@@ -125,11 +125,12 @@ myFocusedBorderColor = blue        :: String     -- Border color of focus window
 myFocusFollowsMouse  = True        :: Bool       -- focus follow config
 myClickJustFocuses   = False       :: Bool       -- focus click config
 
-myBrowser   = "qutebrowser"        :: String
-myFont      = "xft:JetBrains Mono:style=Bold:pixelsize=13"        :: String
-myBigFont   = "xft:FiraCode Nerd Font Mono:pixelsize=100"         :: String
-myFontJP    = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=15" :: String
-myFontJPBig = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
+myBrowser    = "qutebrowser"       :: String
+myFont       = "xft:JetBrains Mono:style=Bold:pixelsize=13"        :: String
+myNerdFont   = "xft:FiraCode Nerd Font Mono:pixelsize=14"         :: String
+myNerdFontBig= "xft:FiraCode Nerd Font Mono:pixelsize=200"         :: String
+myJPFont     = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=15" :: String
+myJPFontBig  = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
 
 ------ Workspaces -------
 -- wsDEV           = "¹DEV"
@@ -142,9 +143,22 @@ myFontJPBig = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
 -- wsSIT           = "⁸SIT"
 -- wsGME           = "⁹GME"
 -- myWorkspaces    = [wsDEV,wsGIT,wsWEB,wsYTB,wsCHT,wsMSC,wsVED,wsSIT, wsGME]
+-- myWorkspaces    = ["一", "二", "三", "四", "五", "六", "七", "八", "九"]
 -- myWorkspaces    = ["\63083", "\63288", "\63306", "\61723", "\63107", "\63601", "\63391", "\61713", "\61884"]
 -- myWorkspaces    = ["\xf120", "\xf268", "\xe7c5", "\xfad9", "\xf292", "\xf200", "\xf040", "\xfa6f", "\xf49c"]
--- myWorkspaces    = ["一", "二", "三", "四", "五", "六", "七", "八", "九"]
+-- myWorkspaces    = ["\xf269", "\xf7a1", "\xf687", "\xe795", "\xf1b2", "\xf16a", "\xf001", "\xf7b3", "\xf013"]
+
+-- ------ Workspaces -------
+-- wsDEV           = "\xf120"
+-- wsGIT           = "\xf7a1"
+-- wsWEB           = "\xf26b"
+-- wsYTB           = "\xf16a"
+-- wsCHT           = "\xf687"
+-- wsANM           = "\63391"
+-- wsMED           = "\63306"
+-- wsSIT           = "\xf013"
+-- wsAll           = "\61713"
+-- myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsANM, wsMED, wsSIT, wsAll]
 
 ------ Workspaces -------
 wsDEV           = "一"
@@ -388,7 +402,7 @@ myHandleEventHook= swallowEventHook (className =? "kitty") (return True)
 mySpacings       = spacingRaw False (Border 0 10 10 10) True (Border 10 10 10 10) True
 myGaps           = gaps [(U, 10),(D, 5),(L, 10),(R, 10)]
 myShowWNameTheme = def
-                { swn_font              = myFontJPBig
+                { swn_font              = myJPFontBig
                 , swn_fade              = 1.0
                 , swn_bgcolor           = bg
                 , swn_color             = blue
@@ -418,7 +432,7 @@ myLayoutHook    = showWName' myShowWNameTheme
 -- XPrompt
 ------------------------------------------------------------------------
 myXPConfig = def 
-          { font                = myFontJP
+          { font                = myJPFont
           , bgColor             = black
           , fgColor             = fg
           , bgHLight            = green
