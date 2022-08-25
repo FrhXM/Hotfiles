@@ -145,7 +145,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # Load existing settings made via :set
 config.load_autoconfig(True)
 config.set("zoom.default", "90%")
-# config.set("auto_save.session", True)
+config.set("auto_save.session", True)
 
 # How often (in milliseconds) to auto-save config/cookies/etc.
 c.auto_save.interval = 15000
@@ -155,7 +155,6 @@ c.downloads.location.directory = '~/dl'
 # Url
 c.url.default_page = '~/prjcts/siteWeb/newtab/index.html'
 c.url.start_pages = '~/prjcts/siteWeb/newtab/index.html'
-
 # c.url.default_page = 'https://start.duckduckgo.com/'
 # c.url.start_pages = 'https://start.duckduckgo.com/'
 
@@ -207,7 +206,7 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 ############      ColorScheme     ################
 ##################################################
 ## Enable Dark Mode
-config.set("colors.webpage.darkmode.enabled", True)
+# config.set("colors.webpage.darkmode.enabled", True)
 
 # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
 # Base16 qutebrowser template by theova
