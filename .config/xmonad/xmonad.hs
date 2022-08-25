@@ -26,6 +26,7 @@ import XMonad.Actions.Promote (promote)
 import XMonad.Actions.WithAll (killAll, sinkAll, killOthers)
 import XMonad.Actions.RotSlaves (rotSlavesDown)
 import XMonad.Actions.Search (google, duckduckgo, youtube, images, github, searchEngine, promptSearchBrowser)
+import XMonad.Actions.FloatKeys (keysMoveWindow, keysResizeWindow)
 import XMonad.Actions.DynamicProjects
 
 -- Hooks
@@ -554,6 +555,20 @@ myKeys =
     , ("M-C-k",        incWindowSpacing 4)  -- Increase window spacing
     , ("M-C-h",        decScreenSpacing 4)  -- Decrease screen spacing
     , ("M-C-l",        incScreenSpacing 4)  -- Increase screen spacing
+    
+    -- float
+    , ("M-<L>", withFocused (keysMoveWindow (-20,0))) -- move float left
+    , ("M-<R>", withFocused (keysMoveWindow (20,0))) -- move float right
+    , ("M-<U>", withFocused (keysMoveWindow (0,-20))) -- move float up
+    , ("M-<D>", withFocused (keysMoveWindow (0,20))) -- move float down
+    , ("M-S-<L>", withFocused (keysResizeWindow (-20,0) (0,0))) --shrink float at right
+    , ("M-S-<R>", withFocused (keysResizeWindow (20,0) (0,0))) --expand float at right
+    , ("M-S-<D>", withFocused (keysResizeWindow (0,20) (0,0))) --expand float at bottom
+    , ("M-S-<U>", withFocused (keysResizeWindow (0,-20) (0,0))) --shrink float at bottom
+    , ("M-C-<L>", withFocused (keysResizeWindow (20,0) (1,0))) --expand float at left
+    , ("M-C-<R>", withFocused (keysResizeWindow (-20,0) (1,0))) --shrink float at left
+    , ("M-C-<U>", withFocused (keysResizeWindow (0,20) (0,1))) --expand float at top
+    , ("M-C-<D>", withFocused (keysResizeWindow (0,-20) (0,1))) --shrink float at top
     ]
     where 
         toggleFloat w = windows (\s -> if M.member w (W.floating s)
