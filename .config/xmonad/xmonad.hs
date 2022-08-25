@@ -75,7 +75,7 @@ import XMonad.Layout.SimplestFloat
 import XMonad.Layout.Circle
 import XMonad.Layout.Dishes
 import XMonad.Layout.HintedGrid
-import XMonad.Layout.Dwindle
+import XMonad.Layout.Spiral
 
 -- prompt
 import XMonad.Prompt
@@ -87,7 +87,7 @@ import XMonad.Prompt.FuzzyMatch
 
 -- Others
 import qualified XMonad.StackSet as W
-import qualified Data.Map 	 as M
+import qualified Data.Map 	     as M
 
 ------------------------------------------------------------------------
 -- Color Pallatte
@@ -128,7 +128,7 @@ myClickJustFocuses   = False       :: Bool       -- focus click config
 
 myBrowser    = "qutebrowser"       :: String
 myFont       = "xft:JetBrains Mono:style=Bold:pixelsize=13"        :: String
-myNerdFont   = "xft:FiraCode Nerd Font Mono:pixelsize=14"         :: String
+myNerdFont   = "xft:FiraCode Nerd Font Mono:pixelsize=14"          :: String
 myNerdFontBig= "xft:FiraCode Nerd Font Mono:pixelsize=200"         :: String
 myJPFont     = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=15" :: String
 myJPFontBig  = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
@@ -367,7 +367,7 @@ spirals         = renamed [Replace "spirals"]
                 $ maximizeWithPadding 10
                 $ minimize
                 $ mySpacings
-                $ Dwindle R CW 1.5 1.1
+                $ spiral (6/7)
 
 full            = renamed [Replace "FULL"]       
                 $ maximizeWithPadding 10 
@@ -557,18 +557,18 @@ myKeys =
     , ("M-C-l",        incScreenSpacing 4)  -- Increase screen spacing
     
     -- float
-    , ("M-<L>", withFocused (keysMoveWindow (-20,0))) -- move float left
-    , ("M-<R>", withFocused (keysMoveWindow (20,0))) -- move float right
-    , ("M-<U>", withFocused (keysMoveWindow (0,-20))) -- move float up
-    , ("M-<D>", withFocused (keysMoveWindow (0,20))) -- move float down
-    , ("M-S-<L>", withFocused (keysResizeWindow (-20,0) (0,0))) --shrink float at right
-    , ("M-S-<R>", withFocused (keysResizeWindow (20,0) (0,0))) --expand float at right
-    , ("M-S-<D>", withFocused (keysResizeWindow (0,20) (0,0))) --expand float at bottom
-    , ("M-S-<U>", withFocused (keysResizeWindow (0,-20) (0,0))) --shrink float at bottom
-    , ("M-C-<L>", withFocused (keysResizeWindow (20,0) (1,0))) --expand float at left
-    , ("M-C-<R>", withFocused (keysResizeWindow (-20,0) (1,0))) --shrink float at left
-    , ("M-C-<U>", withFocused (keysResizeWindow (0,20) (0,1))) --expand float at top
-    , ("M-C-<D>", withFocused (keysResizeWindow (0,-20) (0,1))) --shrink float at top
+    , ("M-<L>",        withFocused (keysMoveWindow (-20,0))) -- move float left
+    , ("M-<R>",        withFocused (keysMoveWindow (20,0))) -- move float right
+    , ("M-<U>",        withFocused (keysMoveWindow (0,-20))) -- move float up
+    , ("M-<D>",        withFocused (keysMoveWindow (0,20))) -- move float down
+    , ("M-S-<L>",      withFocused (keysResizeWindow (-20,0) (0,0))) --shrink float at right
+    , ("M-S-<R>",      withFocused (keysResizeWindow (20,0) (0,0))) --expand float at right
+    , ("M-S-<D>",      withFocused (keysResizeWindow (0,20) (0,0))) --expand float at bottom
+    , ("M-S-<U>",      withFocused (keysResizeWindow (0,-20) (0,0))) --shrink float at bottom
+    , ("M-C-<L>",      withFocused (keysResizeWindow (20,0) (1,0))) --expand float at left
+    , ("M-C-<R>",      withFocused (keysResizeWindow (-20,0) (1,0))) --shrink float at left
+    , ("M-C-<U>",      withFocused (keysResizeWindow (0,20) (0,1))) --expand float at top
+    , ("M-C-<D>",      withFocused (keysResizeWindow (0,-20) (0,1))) --shrink float at top
     ]
     where 
         toggleFloat w = windows (\s -> if M.member w (W.floating s)
