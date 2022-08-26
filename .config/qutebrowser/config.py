@@ -145,7 +145,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # Load existing settings made via :set
 config.load_autoconfig(True)
 config.set("zoom.default", "90%")
-config.set("auto_save.session", True)
+# config.set("auto_save.session", True)
 
 # How often (in milliseconds) to auto-save config/cookies/etc.
 c.auto_save.interval = 15000
