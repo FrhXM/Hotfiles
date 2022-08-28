@@ -128,8 +128,8 @@ myClickJustFocuses   = False       :: Bool       -- focus click config
 
 myBrowser    = "qutebrowser"       :: String
 myFont       = "xft:JetBrains Mono:style=Bold:pixelsize=13"        :: String
-myNerdFont   = "xft:FiraCode Nerd Font Mono:pixelsize=14"          :: String
-myNerdFontBig= "xft:FiraCode Nerd Font Mono:pixelsize=200"         :: String
+myNerdFont   = "xft:FiraCode Nerd Font Mono:Bold:pixelsize=14"          :: String
+myNerdFontBig= "xft:FiraCode Nerd Font Mono:Bold:pixelsize=200"         :: String
 myJPFont     = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=15" :: String
 myJPFontBig  = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
 
@@ -149,28 +149,28 @@ myJPFontBig  = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
 -- myWorkspaces    = ["\xf120", "\xf268", "\xe7c5", "\xfad9", "\xf292", "\xf200", "\xf040", "\xfa6f", "\xf49c"]
 -- myWorkspaces    = ["\xf269", "\xf7a1", "\xf687", "\xe795", "\xf1b2", "\xf16a", "\xf001", "\xf7b3", "\xf013"]
 
--- ------ Workspaces -------
--- wsDEV           = "\xf120"
--- wsGIT           = "\xf7a1"
--- wsWEB           = "\xf26b"
--- wsYTB           = "\xf16a"
--- wsCHT           = "\xf687"
--- wsANM           = "\63391"
--- wsMED           = "\63306"
--- wsSIT           = "\xf013"
--- wsAll           = "\61713"
+------ Workspaces -------
+-- wsDEV           = "一"
+-- wsGIT           = "二"
+-- wsWEB           = "三"
+-- wsYTB           = "四"
+-- wsCHT           = "五"
+-- wsANM           = "六"
+-- wsMED           = "七"
+-- wsSIT           = "八"
+-- wsAll           = "九"
 -- myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsANM, wsMED, wsSIT, wsAll]
 
------- Workspaces -------
-wsDEV           = "一"
-wsGIT           = "二"
-wsWEB           = "三"
-wsYTB           = "四"
-wsCHT           = "五"
-wsANM           = "六"
-wsMED           = "七"
-wsSIT           = "八"
-wsAll           = "九"
+-- ------ Workspaces -------
+wsDEV           = "\xf120"
+wsGIT           = "\xf7a1"
+wsWEB           = "\xf26b"
+wsYTB           = "\xf16a"
+wsCHT           = "\xf687"
+wsANM           = "\xf79f"
+wsMED           = "\xf07b"
+wsSIT           = "\xf013"
+wsAll           = "\xf49c"
 myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsANM, wsMED, wsSIT, wsAll]
 
 -- =========================================================================
@@ -403,7 +403,7 @@ myHandleEventHook= swallowEventHook (className =? "kitty") (return True)
 mySpacings       = spacingRaw False (Border 0 10 10 10) True (Border 10 10 10 10) True
 myGaps           = gaps [(U, 10),(D, 5),(L, 10),(R, 10)]
 myShowWNameTheme = def
-                { swn_font              = myJPFontBig
+                { swn_font              = myNerdFontBig
                 , swn_fade              = 1.0
                 , swn_bgcolor           = bg
                 , swn_color             = blue
@@ -433,7 +433,7 @@ myLayoutHook    = showWName' myShowWNameTheme
 -- XPrompt
 ------------------------------------------------------------------------
 myXPConfig = def 
-          { font                = myJPFont
+          { font                = myNerdFont
           , bgColor             = black
           , fgColor             = fg
           , bgHLight            = green
@@ -619,7 +619,7 @@ main = xmonad
 	    , ppExtras = [windowCount]
 
 	      -- Order of things
-	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=4>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "> { " ++ l ++ " } </fc> " ++ t ]
+	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "> { " ++ l ++ " } </fc> " ++ t ]
 	    }     
 	    where
 		colorBG :: String
