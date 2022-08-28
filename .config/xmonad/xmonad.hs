@@ -166,7 +166,7 @@ wsDEV           = "\xf120"
 wsGIT           = "\xf7a1"
 wsWEB           = "\xf26b"
 wsYTB           = "\xf16a"
-wsCHT           = "\xf687"
+wsCHT           = "\xf099"
 wsANM           = "\xf79f"
 wsMED           = "\xf07b"
 wsSIT           = "\xf013"
@@ -218,7 +218,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl.jpg"                            -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/dream.jpg"                              -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
@@ -610,7 +610,7 @@ main = xmonad
 	    , ppTitle = xmobarColor colorFG "" . shorten 40
 
 	      -- Separator character
-	    , ppSep =  "<fc=#3d85c6> <fn=2>\61762</fn> </fc>"
+	    , ppSep =  "<fc=#3d85c6> <fn=1>\61762</fn> </fc>"
 
 	      -- WS Separator
 	    , ppWsSep = "  "
@@ -619,7 +619,7 @@ main = xmonad
 	    , ppExtras = [windowCount]
 
 	      -- Order of things
-	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "><fn=4>               " ++ l ++ "</fn></fc>  "]
+	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "><fn=4>             " ++ l ++ "</fn></fc>  "]
      -- , ppOrder  = \(ws:l:t:ex) -> ["<fn=4>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "> { " ++ l ++ " } </fc> " ++ t ]  -- With TitleWindow Focused
 	    }
 	    where
