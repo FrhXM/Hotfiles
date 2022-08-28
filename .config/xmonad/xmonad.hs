@@ -128,8 +128,8 @@ myClickJustFocuses   = False       :: Bool       -- focus click config
 
 myBrowser    = "qutebrowser"       :: String
 myFont       = "xft:JetBrains Mono:style=Bold:pixelsize=13"        :: String
-myNerdFont   = "xft:FiraCode Nerd Font Mono:Bold:pixelsize=14"          :: String
-myNerdFontBig= "xft:FiraCode Nerd Font Mono:Bold:pixelsize=200"         :: String
+myNerdFont   = "xft:FiraCode Nerd Font Mono:Bold:pixelsize=14"     :: String
+myNerdFontBig= "xft:FiraCode Nerd Font Mono:Bold:pixelsize=200"    :: String
 myJPFont     = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=15" :: String
 myJPFontBig  = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
 
@@ -225,7 +225,7 @@ myStartupHook = do
     spawnOnce "blueman-applet"                                                      -- bluetooth-blueman-applte {systemTray}
     spawnOnce "~/.config/xmobar/scripts/battnotify.sh"                              -- battery notifction
     spawnOnce "~/.config/xmobar/scripts/tray.sh"                                    -- trayer 
-    -- spawnOnce "redshift -O 3800k"                                                -- Safe your eyes
+    -- spawnOnce "redshift -O 3800k"                                                   -- Safe your eyes
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
     spawnOnce "picom --experimental-backends -b"                                    -- Compositor
     setDefaultCursor xC_left_ptr                                                    -- Default Cursor
