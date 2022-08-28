@@ -107,7 +107,7 @@ require('bufferline').setup {
     numbers = function(opts)
 		return string.format('%s.', opts.ordinal)
 	  end,
-    indicator_icon = '▎',
+    -- indicator_icon = ' ▎',
     buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
