@@ -1,6 +1,6 @@
 Config {
-       font                 = "xft:JetBrains Mono:weight=bold:pixelsize=10:antialias=true:hinting=true"
-       , additionalFonts    =  [ "xft:FiraCode Nerd Font Mono:pixelsize=17:antialias=true:hinting=true"
+       font                 =    "xft:JetBrains Mono:weight=bold:pixelsize=10:antialias=true:hinting=true"
+       , additionalFonts    =  [ "xft:FiraCode Nerd Font Mono:Regular:pixelsize=18"
                                 , "xft:Font Awesome 6 Free Solid:pixelsize=12"
                                 , "xft:Font Awesome 6 Brands:pixelsize=12"
                                 , "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=13"
@@ -8,7 +8,7 @@ Config {
        , bgColor        = "#11121D"
        , fgColor        = "#a9b1d6"
        , alpha          = 233
-       , position       = Static {xpos = 18, ypos = 3, width = 1830, height = 35}
+       , position       = Static {xpos = 18, ypos = 3, width = 1835, height = 35}
        , border         = BottomB
        , borderWidth    = 0
        , borderColor    = "#1d2021"
