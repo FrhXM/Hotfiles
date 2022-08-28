@@ -619,7 +619,7 @@ main = xmonad
 	    , ppExtras = [windowCount]
 
 	      -- Order of things
-	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "> { " ++ l ++ " } </fc> " ++ t ]
+	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "><fn=4>               " ++ l ++ "</fn></fc> "]
 	    }     
 	    where
 		colorBG :: String
