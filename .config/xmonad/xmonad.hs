@@ -218,7 +218,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/dream.jpg"                              -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl.jpg"                              -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
@@ -363,7 +363,7 @@ grid            = renamed [Replace "GRID"]
                 $ limitWindows 12
                 $ GridRatio (4/3) False
 
-spirals         = renamed [Replace "spirals"]
+spirals         = renamed [Replace "SPIRALS"]
                 $ maximizeWithPadding 10
                 $ minimize
                 $ mySpacings
@@ -619,7 +619,7 @@ main = xmonad
 	    , ppExtras = [windowCount]
 
 	      -- Order of things
-	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "><fn=4>             " ++ l ++ "</fn></fc>  "]
+	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "><fn=5>          " ++ l ++ "</fn></fc>  "]
      -- , ppOrder  = \(ws:l:t:ex) -> ["<fn=4>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "> { " ++ l ++ " } </fc> " ++ t ]  -- With TitleWindow Focused
 	    }
 	    where
