@@ -225,7 +225,7 @@ myStartupHook = do
     spawnOnce "blueman-applet"                                                      -- bluetooth-blueman-applte {systemTray}
     spawnOnce "~/.config/xmobar/scripts/battnotify.sh"                              -- battery notifction
     spawnOnce "~/.config/xmobar/scripts/tray.sh"                                    -- trayer 
-    -- spawnOnce "redshift -O 3800k"                                                -- Safe your eyes
+    spawnOnce "redshift -O 3800k"                                                   -- Safe your eyes
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
     spawnOnce "picom --experimental-backends -b"                                    -- Compositor
     setDefaultCursor xC_left_ptr                                                    -- Default Cursor
