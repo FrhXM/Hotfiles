@@ -1,10 +1,11 @@
 Config {
        font                 =    "xft:JetBrains Mono:weight=bold:pixelsize=10:antialias=true:hinting=true"
        , additionalFonts    =  [ "xft:FiraCode Nerd Font Mono:weight=Bold:pixelsize=20"
-                                , "xft:Font Awesome 6 Free Solid:pixelsize=12"
-                                , "xft:Font Awesome 6 Brands:pixelsize=12"
-                                , "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=13"
-                              ]
+                               , "xft:Font Awesome 6 Free Solid:pixelsize=12"
+                               , "xft:Font Awesome 6 Brands:pixelsize=12"
+                               , "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=13"
+                               , "xft:JetBrains Mono:weight=Bold:pixelsize=14:antialias=true:hinting=true"
+                               ]
        , bgColor        = "#11121D"
        , fgColor        = "#a9b1d6"
        , alpha          = 233
