@@ -27,6 +27,7 @@ import XMonad.Actions.WithAll (killAll, sinkAll, killOthers)
 import XMonad.Actions.RotSlaves (rotSlavesDown)
 import XMonad.Actions.Search (google, duckduckgo, youtube, images, github, searchEngine, promptSearchBrowser)
 import XMonad.Actions.FloatKeys (keysMoveWindow, keysResizeWindow)
+import XMonad.Actions.CycleWindows (rotUnfocusedDown, rotUnfocusedUp)
 import XMonad.Actions.DynamicProjects
 
 -- Hooks
@@ -218,7 +219,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/tokyo.png"                              -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl.jpg"                             -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
@@ -526,7 +527,7 @@ myKeys =
     , ("M-s s",        namedScratchpadAction myScratchPads "cmus"    ) -- Cmus [Music Player]
     , ("M-s w",        namedScratchpadAction myScratchPads "browser" ) -- firefox
 
-    -- Window navigation
+    -- XMonad Extras
     , ("M-<Return>",   promote                                 ) {-- Moves the focused window to the master pane --}
     , ("M-t",          withFocused toggleFloat                 ) {-- Floating window --}
     , ("M-f",          sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts) {--FuLL Screen--}
@@ -545,7 +546,11 @@ myKeys =
     , ("M-S-p",        shiftToProjectPrompt myXPConfig         ) {-- Create New Project --}
     , ("M-C-p",        changeProjectDirPrompt myXPConfig       ) {-- Move To Project --}
     , ("M-p",          switchProjectPrompt myXPConfig          ) {-- Move To Project --}
-   
+
+    -- Rotate all of the unfocused windows in either direction.
+    , ("M-C-.", rotUnfocusedUp  ) {-Rotate Unfocused UP-}
+    , ("M-C-,", rotUnfocusedDown) {-Rotate Unfocused Down-}
+
    -- Resize layout
     , ("M-a",          sendMessage MirrorExpand) {-- For Layout ResizableTile( Tiled ) --}
     , ("M-z",          sendMessage MirrorShrink) {-- For Layout ResizableTile( Tiled ) --}
@@ -555,7 +560,7 @@ myKeys =
     , ("M-C-k",        incWindowSpacing 4)  -- Increase window spacing
     , ("M-C-h",        decScreenSpacing 4)  -- Decrease screen spacing
     , ("M-C-l",        incScreenSpacing 4)  -- Increase screen spacing
-    
+
     -- float
     , ("M-<L>",        withFocused (keysMoveWindow (-20,0))) -- move float left
     , ("M-<R>",        withFocused (keysMoveWindow (20,0))) -- move float right
