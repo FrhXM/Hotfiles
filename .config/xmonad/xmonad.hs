@@ -184,7 +184,7 @@ projects =
               }
 
     , Project { projectName = wsGIT
-              , projectDirectory = "~/prjcts"
+              , projectDirectory = "~/"
               , projectStartHook = Just $ do spawn "qutebrowser --target=window github.com/frhxm"
               }
 
@@ -219,7 +219,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl.jpg"                             -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/lookup.jpg"                             -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
@@ -426,7 +426,7 @@ myLayoutHook    = showWName' myShowWNameTheme
     webLayouts = oneBig ||| threeColMid ||| dishes ||| tall ||| grid ||| twoPane ||| spirals ||| circle ||| floats ||| tabs
     codeLayouts = dishes ||| twoPane ||| tabs
     chatLayouts = grid ||| threeColMid ||| dishes ||| oneBig ||| tall ||| twoPane ||| spirals ||| circle ||| floats ||| tabs
-    youtubeLayouts = oneBig ||| full
+    youtubeLayouts = oneBig ||| spirals ||| full
     settingeLayouts = circle ||| grid ||| spirals ||| floats
     mediaLayouts = twoTabbed ||| oneUp ||| masterTabbed ||| tabs 
 
