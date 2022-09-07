@@ -50,8 +50,6 @@ import XMonad.Util.NamedScratchpad
 
 -- Layouts/Modifiers 
 import XMonad.Layout.MagicFocus
-import XMonad.Layout.ComboP
-import XMonad.Layout.Master
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Maximize
 import XMonad.Layout.Minimize
@@ -69,9 +67,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.OneBig
 import XMonad.Layout.TwoPanePersistent
-import XMonad.Layout.TwoPane
 import XMonad.Layout.Tabbed
-import XMonad.Layout.Simplest
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.Circle
 import XMonad.Layout.Dishes
@@ -163,15 +159,15 @@ myJPFontBig  = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
 -- myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsANM, wsMED, wsSIT, wsAll]
 
 -- ------ Workspaces -------
-wsDEV           = "\xf120"
-wsGIT           = "\xf7a1"
-wsWEB           = "\xf26b"
-wsYTB           = "\xf16a"
-wsCHT           = "\xf099"
-wsANM           = "\xf79f"
-wsMED           = "\xf07b"
-wsSIT           = "\xf013"
-wsAll           = "\xf49c"
+wsDEV           = "¹\xf120"
+wsGIT           = "²\xf7a1"
+wsWEB           = "³\xf26b"
+wsYTB           = "⁴\xf16a"
+wsCHT           = "⁵\xf099"
+wsANM           = "⁶\xf79f"
+wsMED           = "⁷\xf07b"
+wsSIT           = "⁸\xf013"
+wsAll           = "⁹\xf49c"
 myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsANM, wsMED, wsSIT, wsAll]
 
 -- =========================================================================
@@ -205,7 +201,7 @@ projects =
 
     , Project { projectName = wsMED
               , projectDirectory = "~/"
-              , projectStartHook = Just $ do spawn "thunar"
+              , projectStartHook = Just $ do spawn "nemo"
               }
 
     , Project { projectName = wsSIT
@@ -236,7 +232,7 @@ myStartupHook = do
 ------------------------------------------------------------------------
 myManageHook = composeAll 
      [ className =? "Thunar"            --> doViewShift wsMED
-     , className =? "mpv"               --> doViewShift wsMED
+     , className =? "mpv"               --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
      , className =? "Sxiv"              --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
      , className =? "Nitrogen"          --> doCenterFloat
      , className =? "Xmessage"          --> doCenterFloat
@@ -294,7 +290,6 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
 ------------------------------------------------------------------------
 -- Tiling Layouts
 ------------------------------------------------------------------------
--------------------- Base Layout ------------------------
 myTabTheme      = def
                 { fontName              = myFont
                 , activeColor           = blue
@@ -312,7 +307,7 @@ tabs            = renamed [Replace "TABBED"]
                 $ myGaps 
                 $ tabbed shrinkText myTabTheme
 
-threeColMid     = renamed [Replace "THREECOLMID"] 
+threeColMid     = renamed [Replace "MID"] 
                 $ maximizeWithPadding 10 
                 $ minimize 
                 $ mySpacings 
@@ -376,27 +371,6 @@ full            = renamed [Replace "FULL"]
                 $ mySpacings 
                 $ limitWindows 20 Full
 
-    --------- Compine Layout ------------
-masterTabbed    = renamed [Replace "MASTER TABBED"]       
-                $ maximizeWithPadding 10 
-                $ minimize 
-                $ mastered (1/100) (1/2) $ tabbed shrinkText myTabTheme
-
-oneUp           = renamed [Replace "1UP"]
-                $ maximizeWithPadding 10 
-                $ mySpacings 
-                $ combineTwoP (ThreeCol 1 (3/100) (1/2))
-                                    (Simplest)
-                                    (Tall 1 0.03 0.5)
-                                    (ClassName "mpv")
-
-twoTabbed       = renamed [Replace "TWO TABBED"]
-                $ maximizeWithPadding 10 
-                $ combineTwoP (TwoPane 0.03 0.5) 
-                              (tabbed shrinkText myTabTheme) 
-                              (tabbed shrinkText myTabTheme) 
-                              (ClassName "mpv")
-
 ------------------------------------------------------------------------
 -- Layout Hook
 ------------------------------------------------------------------------
@@ -419,7 +393,6 @@ myLayoutHook    = showWName' myShowWNameTheme
                 $ onWorkspace wsYTB youtubeLayouts
                 $ onWorkspace wsCHT chatLayouts
                 $ onWorkspace wsSIT settingeLayouts
-                $ onWorkspace wsMED mediaLayouts
                 $ allLayouts
                where 
     allLayouts = tall ||| threeColMid ||| dishes ||| oneBig ||| grid ||| twoPane ||| spirals ||| circle ||| floats ||| tabs
@@ -428,7 +401,6 @@ myLayoutHook    = showWName' myShowWNameTheme
     chatLayouts = grid ||| threeColMid ||| dishes ||| oneBig ||| tall ||| twoPane ||| spirals ||| circle ||| floats ||| tabs
     youtubeLayouts = oneBig ||| spirals ||| full
     settingeLayouts = circle ||| grid ||| spirals ||| floats
-    mediaLayouts = twoTabbed ||| oneUp ||| masterTabbed ||| tabs 
 
 ------------------------------------------------------------------------
 -- XPrompt
@@ -539,12 +511,11 @@ myKeys =
     , ("M-S-n",        withLastMinimized maximizeWindowAndFocus) {-- For Minimize && Action minimize --}
     , ("M-S-a",        confirmPrompt myXPConfig "kill All"    $ killAll    ) {-- Quite All --}
     , ("M-S-o",        confirmPrompt myXPConfig "kill Others" $ killOthers ) {-- Quite Others --}
-    , ("M-S-t",        sinkAll                                 		   ) {-- Push ALL floating windows to tile.--}
+    , ("M-S-t",        sinkAll                                 		       ) {-- Push ALL floating windows to tile.--}
     , ("M-S-m",        gets windowset >>= mapM_ (windows . W.shiftWin wsAll) . W.allWindows) {-- Move All Window To wsDEV --}
-    , ("M-S-s",        sendMessage $ SwapWindow                ) {-- Compine Two Layout [XM-comboP]--}
-    , ("M-S-r",        rotSlavesDown                           ) {-- Don't Touch Layout in Master --}
+    , ("M-S-r",        rotSlavesDown                           ) {-- Don't Touch window Master --}
     , ("M-S-p",        shiftToProjectPrompt myXPConfig         ) {-- Create New Project --}
-    , ("M-C-p",        changeProjectDirPrompt myXPConfig       ) {-- Move To Project --}
+    , ("M-C-p",        changeProjectDirPrompt myXPConfig       ) {-- change Directory To Project --}
     , ("M-p",          switchProjectPrompt myXPConfig          ) {-- Move To Project --}
 
     -- Rotate all of the unfocused windows in either direction.
@@ -624,7 +595,7 @@ main = xmonad
 	    , ppExtras = [windowCount]
 
 	      -- Order of things
-	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "><fn=5>          " ++ l ++ "</fn></fc>  "]
+	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "><fn=5>        " ++ l ++ "</fn></fc>  "]
      -- , ppOrder  = \(ws:l:t:ex) -> ["<fn=4>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "> { " ++ l ++ " } </fc> " ++ t ]  -- With TitleWindow Focused
 	    }
 	    where
