@@ -201,7 +201,7 @@ projects =
 
     , Project { projectName = wsMED
               , projectDirectory = "~/"
-              , projectStartHook = Just $ do spawn "nemo"
+              , projectStartHook = Just $ do spawn "nautilus"
               }
 
     , Project { projectName = wsSIT
@@ -215,7 +215,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl.jpg"                             -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl2.jpg"                            -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
@@ -231,7 +231,7 @@ myStartupHook = do
 -- ManageHooks
 ------------------------------------------------------------------------
 myManageHook = composeAll 
-     [ className =? "Thunar"            --> doViewShift wsMED
+     [ className =? "nemo"              --> doViewShift wsMED
      , className =? "mpv"               --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
      , className =? "Sxiv"              --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
      , className =? "Nitrogen"          --> doCenterFloat
@@ -249,9 +249,10 @@ myManageHook = composeAll
 -- FadeWindowHooks
 ------------------------------------------------------------------------
 myFadeHook = composeAll 
-     [ className =? "kitty"             --> transparency 0.1
-     , isUnfocused                      --> transparency 0.2
-     , isFloating                       --> solid
+     [ className =? "kitty"              --> transparency 0.1
+     , className =? "Org.gnome.Nautilus" --> transparency 0.1
+     , isUnfocused                       --> transparency 0.2
+     , isFloating                        --> solid
      ]
 
 ------------------------------------------------------------------------
