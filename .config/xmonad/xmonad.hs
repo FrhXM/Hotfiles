@@ -218,6 +218,7 @@ myStartupHook = do
     spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl2.jpg"                            -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
+    spawnOnce "udiskie"                                                             -- Auto Mount USB
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
     spawnOnce "blueman-applet"                                                      -- bluetooth-blueman-applte {systemTray}
     spawnOnce "~/.config/xmobar/scripts/battnotify.sh"                              -- battery notifction
