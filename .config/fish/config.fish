@@ -94,6 +94,9 @@ alias c='clear'
 alias cc='clear'
 alias ss='sxiv -b -f -t *'
 
+## Drive
+alias nt='nautilus'
+alias drive='nautilus /run/media/frhxm/'
 ## Pacman && yay
 alias update='sudo pacman -Syy'
 alias upgrade='sudo pacman -Syyu && echo "UPGRADED"'
