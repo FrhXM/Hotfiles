@@ -215,7 +215,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl2.jpg"                            -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/girl.jpg"                               -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "udiskie"                                                             -- Auto Mount USB
@@ -624,18 +624,18 @@ main = xmonad
 -- 	   AllVaribles Not In Containers But In My Heart ==>                   ---
 -------------------------------------------------------------------------------
 myConfig = def
-		{ modMask                   = myModMask
-		, terminal                  = myTerminal
-		, borderWidth               = myBorderWidth
-		, focusedBorderColor        = myFocusedBorderColor 
-		, normalBorderColor         = myNormalBorderColor
-		, focusFollowsMouse         = myFocusFollowsMouse  
-		, clickJustFocuses          = myClickJustFocuses
-		, workspaces                = myWorkspaces
-		, startupHook               = myStartupHook
-		, layoutHook                = myLayoutHook
-		, manageHook                = myManageHook
-        , handleEventHook           = myHandleEventHook 
-		, logHook                   = updatePointer (0.5, 0.5) (0, 0)
-                                    >> fadeWindowsLogHook myFadeHook
-        } `additionalKeysP` myKeys
+              { modMask                   = myModMask
+              , terminal                  = myTerminal
+              , borderWidth               = myBorderWidth
+              , focusedBorderColor        = myFocusedBorderColor 
+              , normalBorderColor         = myNormalBorderColor
+              , focusFollowsMouse         = myFocusFollowsMouse  
+              , clickJustFocuses          = myClickJustFocuses
+              , workspaces                = myWorkspaces
+              , startupHook               = myStartupHook
+              , layoutHook                = myLayoutHook
+              , manageHook                = myManageHook
+              , handleEventHook           = myHandleEventHook 
+              , logHook                   = updatePointer (0.5, 0.5) (0, 0)
+                                          >> fadeWindowsLogHook myFadeHook
+              } `additionalKeysP` myKeys
