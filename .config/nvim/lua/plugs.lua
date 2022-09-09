@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
           requires = { {'nvim-lua/plenary.nvim'} }
         }
 	      -- Programming
+    use 'sheerun/vim-polyglot'
     use 'terrortylor/nvim-comment'
     use 'windwp/nvim-autopairs'
     use 'norcalli/nvim-colorizer.lua'

@@ -15,6 +15,7 @@ keymap('n', 'm.',              '<cmd> BufferLineMoveNext <cr>')
 keymap('n', 'm,',              '<cmd> BufferLineMovePrev <cr>')
 
 -- Other bindings 
+keymap('n', '<Leader>q',       '<cmd> q! <cr>')
 keymap('n', '<F7>',            '<cmd> NvimTreeToggle <cr>')
 keymap('n', '<Leader>cc',      '<cmd> ColorizerToggle <cr>')
 keymap('n', '<Leader>n',       '<cmd> enew <cr>')
