@@ -49,6 +49,7 @@ import XMonad.Util.ClickableWorkspaces (clickablePP)
 import XMonad.Util.NamedScratchpad 
 
 -- Layouts/Modifiers 
+import XMonad.Layout.CenteredIfSingle
 import XMonad.Layout.MagicFocus
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Maximize
@@ -348,7 +349,7 @@ circle          = renamed [Replace "CIRCLE"]
                 $ Circle
 
 
-floats          =  renamed [Replace "FLOAT"]    
+floats          = renamed [Replace "FLOAT"]    
                 $ maximizeWithPadding 10
                 $ minimize 
                 $ myGaps 
@@ -360,6 +361,7 @@ grid            = renamed [Replace "GRID"]
                 $ maximizeWithPadding 10
                 $ minimize
                 $ limitWindows 12
+                $ centeredIfSingle 0.7 0.9
                 $ GridRatio (4/3) False
 
 spirals         = renamed [Replace "SPIRALS"]
