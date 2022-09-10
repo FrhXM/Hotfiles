@@ -215,7 +215,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/girl.jpg"                               -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/tokyo.png"                              -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "udiskie"                                                             -- Auto Mount USB
@@ -251,6 +251,7 @@ myManageHook = composeAll
 ------------------------------------------------------------------------
 myFadeHook = composeAll 
      [ className =? "kitty"              --> transparency 0.1
+     , className =? "code-oss"           --> transparency 0.1
      , className =? "Org.gnome.Nautilus" --> transparency 0.1
      , isUnfocused                       --> transparency 0.2
      , isFloating                        --> solid
