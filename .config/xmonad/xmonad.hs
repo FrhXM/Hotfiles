@@ -626,7 +626,7 @@ main = xmonad
 -------------------------------------------------------------------------------
 -- 	   AllVaribles Not In Containers But In My Heart ==>                   ---
 -------------------------------------------------------------------------------
-myConfig = def { modMask                   = myModMask
+myConfig = def { modMask                  = myModMask
               , terminal                  = myTerminal
               , borderWidth               = myBorderWidth
               , focusedBorderColor        = myFocusedBorderColor 
