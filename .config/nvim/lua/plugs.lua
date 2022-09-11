@@ -28,6 +28,9 @@ return require('packer').startup(function(use)
         }
 	      -- Programming
     use 'sheerun/vim-polyglot'
+    use 'alvan/vim-closetag'
+    use 'mattn/emmet-vim'
+    use 'tpope/vim-surround'
     use 'terrortylor/nvim-comment'
     use 'windwp/nvim-autopairs'
     use 'norcalli/nvim-colorizer.lua'
