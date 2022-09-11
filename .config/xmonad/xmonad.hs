@@ -216,7 +216,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl2.jpg"                            -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/myWorld.png"                            -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "udiskie"                                                             -- Auto Mount USB
