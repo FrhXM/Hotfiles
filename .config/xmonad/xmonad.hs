@@ -202,7 +202,7 @@ projects =
 
     , Project { projectName = wsMED
               , projectDirectory = "~/"
-              , projectStartHook = Just $ do spawn "nautilus"
+              , projectStartHook = Just $ do spawn "nemo"
               }
 
     , Project { projectName = wsSIT
@@ -216,7 +216,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/tokyo.png"                              -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl2.jpg"                            -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "udiskie"                                                             -- Auto Mount USB
@@ -233,14 +233,15 @@ myStartupHook = do
 -- ManageHooks
 ------------------------------------------------------------------------
 myManageHook = composeAll 
-     [ className =? "nemo"              --> doViewShift wsMED
+     [ className =? "Thunar"            --> doViewShift wsMED 
+     , className =? "cmus"              --> doViewShift wsMED
+     , className =? "Gimp"              --> doViewShift wsMED 
      , className =? "mpv"               --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
      , className =? "Sxiv"              --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
      , className =? "Nitrogen"          --> doCenterFloat
      , className =? "Xmessage"          --> doCenterFloat
      , className =? "download"          --> doFloat
      , className =? "error"             --> doFloat
-     , className =? "Gimp"              --> doFloat
      , className =? "notification"      --> doFloat
      , isFullscreen                     -->  doFullFloat
      ] <+> namedScratchpadManageHook myScratchPads
@@ -252,8 +253,8 @@ myManageHook = composeAll
 ------------------------------------------------------------------------
 myFadeHook = composeAll 
      [ className =? "kitty"              --> transparency 0.1
+     , className =? "Nemo"               --> transparency 0.1
      , className =? "code-oss"           --> transparency 0.1
-     , className =? "Org.gnome.Nautilus" --> transparency 0.1
      , isUnfocused                       --> transparency 0.2
      , isFloating                        --> solid
      ]
@@ -348,20 +349,12 @@ circle          = renamed [Replace "CIRCLE"]
                 $ mySpacings
                 $ Circle
 
-
-floats          = renamed [Replace "FLOAT"]    
-                $ maximizeWithPadding 10
-                $ minimize 
-                $ myGaps 
-                $ mySpacings 
-                $ simplestFloat
-
 grid            = renamed [Replace "GRID"]
                 $ mySpacings
                 $ maximizeWithPadding 10
                 $ minimize
                 $ limitWindows 12
-                $ centeredIfSingle 0.7 0.9
+                $ centeredIfSingle 0.8 1
                 $ GridRatio (4/3) False
 
 spirals         = renamed [Replace "SPIRALS"]
@@ -369,6 +362,13 @@ spirals         = renamed [Replace "SPIRALS"]
                 $ minimize
                 $ mySpacings
                 $ spiral (6/7)
+
+floats          = renamed [Replace "FLOAT"]    
+                $ maximizeWithPadding 10
+                $ minimize 
+                $ myGaps 
+                $ mySpacings 
+                $ simplestFloat
 
 full            = renamed [Replace "FULL"]       
                 $ maximizeWithPadding 10 
