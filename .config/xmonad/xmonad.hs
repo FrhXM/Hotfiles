@@ -322,7 +322,6 @@ oneBig          = renamed [Replace "ONEBIG"]
                 $ maximizeWithPadding 10 
                 $ minimize 
                 $ mySpacings 
-                $ centeredIfSingle 0.8 1
                 $ OneBig (3/4) (3/4)
 
 tall            = renamed [Replace "TILD"]  
