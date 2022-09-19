@@ -28,7 +28,7 @@ Config {
                             , Run Uptime ["-t", " <fn=2>\62036</fn> UP: <days>d <hours>h"] 36000
                             , Run Com "uname" ["-r"] "" 3600
                             , Run Com "echo" ["<fn=2>\xf0f3</fn>"] "bell" 3600
-                            , Run Com "/home/frhxm/.config/xmobar/scripts/pacupdate.sh" [] "pacupdate" 36000
+                            , Run Com "/home/frhxm/.config/xmobar/scripts/pacupdate.sh" [] "pacupdate" 360
                             , Run Brightness [ "-t", "<fn=2></fn> BR: <percent>%", "--", "-D", "intel_backlight" ] 60
                             , Run Volume "default" "Master"
                                 [ "-t", "<status>", "--"
