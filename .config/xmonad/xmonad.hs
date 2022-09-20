@@ -28,6 +28,7 @@ import XMonad.Actions.RotSlaves (rotSlavesDown)
 import XMonad.Actions.Search (google, duckduckgo, youtube, images, github, searchEngine, promptSearchBrowser)
 import XMonad.Actions.FloatKeys (keysMoveWindow, keysResizeWindow)
 import XMonad.Actions.CycleWindows (rotUnfocusedDown, rotUnfocusedUp)
+import XMonad.Actions.SpawnOn (spawnOn, manageSpawn)
 import XMonad.Actions.DynamicProjects
 
 -- Hooks
@@ -177,32 +178,34 @@ myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsANM, wsMED, wsSIT, wsAll
 projects =
     [ Project { projectName = wsDEV
               , projectDirectory = "~/prjcts"
-              , projectStartHook = Just $ do spawn "kitty -e nvim"
+              , projectStartHook = Just $ do spawnOn wsDEV "kitty -e nvim"
+                                             spawnOn wsDEV "kitty -e nvim"
+                                             spawnOn wsDEV myTerminal
               }
 
     , Project { projectName = wsGIT
               , projectDirectory = "~/"
-              , projectStartHook = Just $ do spawn "qutebrowser --target=window github.com/frhxm"
+              , projectStartHook = Just $ do spawnOn wsGIT "qutebrowser --target=window github.com/frhxm"
               }
 
     , Project { projectName = wsWEB
               , projectDirectory = "~/dl"
-              , projectStartHook = Just $ do spawn "qutebrowser --target=window"
+              , projectStartHook = Just $ do spawnOn wsWEB "qutebrowser --target=window"
               }
 
     , Project { projectName = wsYTB
               , projectDirectory = "~/vids"
-              , projectStartHook = Just $ do spawn "qutebrowser --target=window youtube.com"
+              , projectStartHook = Just $ do spawnOn wsYTB "qutebrowser --target=window youtube.com"
               }
 
     , Project { projectName = wsANM
               , projectDirectory = "~/"
-              , projectStartHook = Just $ do spawn "qutebrowser --target=window anime4up.com"
+              , projectStartHook = Just $ do spawnOn wsANM "qutebrowser --target=window anime4up.com"
               }
 
     , Project { projectName = wsMED
               , projectDirectory = "~/"
-              , projectStartHook = Just $ do spawn "nemo"
+              , projectStartHook = Just $ do spawnOn wsMED "nemo"
               }
 
     , Project { projectName = wsSIT
@@ -245,6 +248,7 @@ myManageHook = composeAll
      , className =? "notification"      --> doFloat
      , isFullscreen                     -->  doFullFloat
      ] <+> namedScratchpadManageHook myScratchPads
+       <+> manageSpawn
     where
      doViewShift = doF . liftM2 (.) W.view W.shift
 
