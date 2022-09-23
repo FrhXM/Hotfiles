@@ -179,8 +179,6 @@ projects =
     [ Project { projectName = wsDEV
               , projectDirectory = "~/prjcts"
               , projectStartHook = Just $ do spawnOn wsDEV "kitty -e nvim"
-                                             spawnOn wsDEV "kitty -e nvim"
-                                             spawnOn wsDEV myTerminal
               }
 
     , Project { projectName = wsGIT
@@ -219,7 +217,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/tokyo.png"                              -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl2.jpg"                            -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "udiskie"                                                             -- Auto Mount USB
@@ -241,6 +239,7 @@ myManageHook = composeAll
      , className =? "Gimp"              --> doViewShift wsMED 
      , className =? "mpv"               --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
      , className =? "Sxiv"              --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
+     , className =? "Lxappearance"      --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
      , className =? "Nitrogen"          --> doCenterFloat
      , className =? "Xmessage"          --> doCenterFloat
      , className =? "download"          --> doFloat
