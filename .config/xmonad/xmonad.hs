@@ -257,7 +257,6 @@ myManageHook = composeAll
 myFadeHook = composeAll 
      [ className =? "kitty"              --> transparency 0.1
      , className =? "Nemo"               --> transparency 0.1
-     , className =? "code-oss"           --> transparency 0.1
      , isUnfocused                       --> transparency 0.2
      , isFloating                        --> solid
      ]
@@ -356,7 +355,6 @@ grid            = renamed [Replace "GRID"]
                 $ mySpacings
                 $ maximizeWithPadding 10
                 $ minimize
-                $ limitWindows 12
                 $ centeredIfSingle 0.8 1
                 $ GridRatio (4/3) False
 
@@ -394,7 +392,7 @@ myShowWNameTheme = def
 
 myLayoutHook    = showWName' myShowWNameTheme
                 $ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
-                $ limitWindows 12
+                $ limitWindows 6
                 $ avoidStruts
                 $ onWorkspaces [wsDEV, wsGIT] codeLayouts
                 $ onWorkspace wsWEB webLayouts
@@ -564,7 +562,7 @@ myKeys =
 ------------------------------------------------------------------------
 main = xmonad
      . ewmh
-     . ewmhFullscreen  
+  -- . ewmhFullscreen  
      . withEasySB mySB defToggleStrutsKey
      . withUrgencyHook FocusHook
      . docks
