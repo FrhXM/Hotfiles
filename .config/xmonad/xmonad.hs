@@ -521,7 +521,7 @@ myKeys =
     , ("M-S-t",        sinkAll                                 		       ) {-- Push ALL floating windows to tile.--}
     , ("M-S-m",        gets windowset >>= mapM_ (windows . W.shiftWin wsAll) . W.allWindows) {-- Move All Window To wsDEV --}
     , ("M-S-r",        rotSlavesDown                           ) {-- Don't Touch window Master --}
-    , ("M-C-r",        rotAllDown                            ) {-- Don't Touch window Master --}
+    , ("M-C-r",        rotAllDown                              ) {-- Touch window Master & Slave --}
     , ("M-S-p",        shiftToProjectPrompt myXPConfig         ) {-- Create New Project --}
     , ("M-C-p",        changeProjectDirPrompt myXPConfig       ) {-- change Directory To Project --}
     , ("M-p",          switchProjectPrompt myXPConfig          ) {-- Move To Project --}
