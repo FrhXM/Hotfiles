@@ -24,10 +24,10 @@ import XMonad.Actions.FindEmptyWorkspace (viewEmptyWorkspace, tagToEmptyWorkspac
 import XMonad.Actions.Minimize (minimizeWindow, withLastMinimized, maximizeWindowAndFocus)
 import XMonad.Actions.Promote (promote)
 import XMonad.Actions.WithAll (killAll, sinkAll, killOthers)
-import XMonad.Actions.RotSlaves (rotSlavesDown)
 import XMonad.Actions.Search (google, duckduckgo, youtube, images, github, searchEngine, promptSearchBrowser)
 import XMonad.Actions.FloatKeys (keysMoveWindow, keysResizeWindow)
 import XMonad.Actions.CycleWindows (rotUnfocusedDown, rotUnfocusedUp)
+import XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
 import XMonad.Actions.SpawnOn (spawnOn, manageSpawn)
 import XMonad.Actions.DynamicProjects
 
@@ -217,7 +217,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl2.jpg"                            -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/tokyo.png"                              -- Wallpapers
     spawnOnce "dunst"                                                               -- notfiction
     spawnOnce "unclutter"                                                           -- hidden Mouse
     spawnOnce "udiskie"                                                             -- Auto Mount USB
@@ -521,6 +521,7 @@ myKeys =
     , ("M-S-t",        sinkAll                                 		       ) {-- Push ALL floating windows to tile.--}
     , ("M-S-m",        gets windowset >>= mapM_ (windows . W.shiftWin wsAll) . W.allWindows) {-- Move All Window To wsDEV --}
     , ("M-S-r",        rotSlavesDown                           ) {-- Don't Touch window Master --}
+    , ("M-C-r",        rotAllDown                            ) {-- Don't Touch window Master --}
     , ("M-S-p",        shiftToProjectPrompt myXPConfig         ) {-- Create New Project --}
     , ("M-C-p",        changeProjectDirPrompt myXPConfig       ) {-- change Directory To Project --}
     , ("M-p",          switchProjectPrompt myXPConfig          ) {-- Move To Project --}
