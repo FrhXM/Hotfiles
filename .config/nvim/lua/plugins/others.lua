@@ -1,11 +1,18 @@
+-------------------------------------------------------
+-------------------> EMMET VIM <-----------------------
+-------------------------------------------------------
+vim.g.user_emmet_mode='a'    -- enable all function in all mode.
+vim.g.user_emmet_leader_key=','
+
 -----------------------------------------------------
 -------------------> COLORIZER <-----------------------
 -----------------------------------------------------
--- require'colorizer'.setup()
+require'colorizer'.setup()
 
----------------
+-----------------------------------------------------
+-------------------> TRANSPERNCY <-------------------
+-----------------------------------------------------
 -- Trancperncy
----------------
 require("transparent").setup({
   enable = true, -- boolean: enable transparent
   extra_groups = { -- table/string: additional groups that should be cleared
@@ -21,3 +28,5 @@ require("transparent").setup({
   },
   exclude = {}, -- table: groups you don't want to clear
 })
+
+
