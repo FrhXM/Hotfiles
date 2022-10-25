@@ -78,6 +78,12 @@ return packer.startup(function(use)
   --   },
   -- }
 
+  -- Use buffers as Tab
+  use {
+  'akinsho/bufferline.nvim', tag = "v3.*",
+  requires = {'kyazdani42/nvim-web-devicons'}
+  }
+
   -- File explorer
   use 'kyazdani42/nvim-tree.lua'
 
@@ -96,6 +102,7 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
 
   -- Color schemes
+  use 'navarasu/onedark.nvim'
   use 'tiagovla/tokyodark.nvim'
   use 'xiyaowong/nvim-transparent'
 
