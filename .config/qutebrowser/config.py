@@ -162,7 +162,7 @@ c.url.start_pages = '~/prjcts/siteWeb/newtab/index.html'
 #############       Font        ############
 ############################################
 c.fonts.default_size = "10pt"
-c.fonts.default_family = "JetBrains Mono"
+c.fonts.default_family = "FiraCode Nerd Font Mono"
 c.fonts.completion.entry = '10pt "JetBrains Mono"'
 c.fonts.debug_console = '10pt "JetBrains Mono"'
 c.fonts.prompts = 'default_size sans-serif'
