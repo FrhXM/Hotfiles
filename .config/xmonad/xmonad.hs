@@ -1,3 +1,4 @@
+
 -- ===========================================================================
 -- ██╗  ██╗███╗   ███╗ ██████╗ ███╗   ██╗ █████╗ ██████╗
 -- ╚██╗██╔╝████╗ ████║██╔═══██╗████╗  ██║██╔══██╗██╔══██╗
@@ -40,16 +41,16 @@ import XMonad.Hooks.ManageHelpers (doCenterFloat, doRectFloat, doFullFloat, isFu
 import XMonad.Hooks.FadeWindows (fadeWindowsLogHook, isFloating, isUnfocused, transparency, solid)
 import XMonad.Hooks.StatusBar (withEasySB, statusBarProp, defToggleStrutsKey)
 import XMonad.Hooks.StatusBar.PP (PP (ppCurrent, ppExtras, ppHidden, ppOrder, ppSep, ppWsSep, ppUrgent, ppVisible, ppTitle, ppLayout, ppHiddenNoWindows), shorten, wrap, xmobarColor)
-import XMonad.Hooks.UrgencyHook 
+import XMonad.Hooks.UrgencyHook
 
 -- Utilities
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Cursor (setDefaultCursor)
 import XMonad.Util.ClickableWorkspaces (clickablePP)
-import XMonad.Util.NamedScratchpad 
+import XMonad.Util.NamedScratchpad
 
--- Layouts/Modifiers 
+-- Layouts/Modifiers
 import XMonad.Layout.CenteredIfSingle
 import XMonad.Layout.MagicFocus
 import XMonad.Layout.PerWorkspace
@@ -208,8 +209,7 @@ projects =
 
     , Project { projectName = wsSIT
               , projectDirectory = "~/.config"
-              , projectStartHook = Just $ do spawn "kitty -e nvim ~/.config/xmobar/xmobar.hs"
-                                             spawn "kitty -e nvim ~/.config/xmonad/xmonad.hs"
+              , projectStartHook = Nothing
               }
     ]
 
@@ -224,7 +224,7 @@ myStartupHook = do
     spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
     spawnOnce "blueman-applet"                                                      -- bluetooth-blueman-applte {systemTray}
     spawnOnce "~/.config/xmobar/scripts/battnotify.sh"                              -- battery notifction
-    spawnOnce "~/.config/xmobar/scripts/tray.sh"                                    -- trayer 
+    spawnOnce "~/.config/xmobar/scripts/tray.sh"                                    -- trayer
     -- spawnOnce "redshift -O 4800k"                                                -- Safe your eyes
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
     spawnOnce "picom --experimental-backends -b"                                    -- Compositor
@@ -233,10 +233,10 @@ myStartupHook = do
 ------------------------------------------------------------------------
 -- ManageHooks
 ------------------------------------------------------------------------
-myManageHook = composeAll 
-     [ className =? "Thunar"            --> doViewShift wsMED 
+myManageHook = composeAll
+     [ className =? "Thunar"            --> doViewShift wsMED
      , className =? "cmus"              --> doViewShift wsMED
-     , className =? "Gimp"              --> doViewShift wsMED 
+     , className =? "Gimp"              --> doViewShift wsMED
      , className =? "mpv"               --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
      , className =? "Sxiv"              --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
      , className =? "Lxappearance"      --> doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
@@ -254,7 +254,7 @@ myManageHook = composeAll
 ------------------------------------------------------------------------
 -- FadeWindowHooks
 ------------------------------------------------------------------------
-myFadeHook = composeAll 
+myFadeHook = composeAll
      [ className =? "kitty"              --> transparency 0.1
      , className =? "Nemo"               --> transparency 0.1
      , isUnfocused                       --> transparency 0.2
@@ -307,29 +307,29 @@ myTabTheme      = def
                 , inactiveTextColor     = fg
                 }
 
-tabs            = renamed [Replace "TABBED"]      
+tabs            = renamed [Replace "TABBED"]
                 $ noBorders
                 $ maximizeWithPadding 10
-                $ minimize 
-                $ myGaps 
+                $ minimize
+                $ myGaps
                 $ tabbed shrinkText myTabTheme
 
-threeColMid     = renamed [Replace "MID"] 
-                $ maximizeWithPadding 10 
-                $ minimize 
-                $ mySpacings 
+threeColMid     = renamed [Replace "MID"]
+                $ maximizeWithPadding 10
+                $ minimize
+                $ mySpacings
                 $ ThreeColMid 1 (3/100) (1/2)
 
-oneBig          = renamed [Replace "ONEBIG"]      
-                $ maximizeWithPadding 10 
-                $ minimize 
-                $ mySpacings 
+oneBig          = renamed [Replace "ONEBIG"]
+                $ maximizeWithPadding 10
+                $ minimize
+                $ mySpacings
                 $ OneBig (3/4) (3/4)
 
-tall            = renamed [Replace "TILD"]  
+tall            = renamed [Replace "TILD"]
                 $ maximizeWithPadding 10
-                $ minimize 
-                $ mySpacings 
+                $ minimize
+                $ mySpacings
                 $ ResizableTall 1 (3/100) (1/2) []
 
 twoPane         = renamed [Replace "TWOPANE"]
@@ -364,23 +364,23 @@ spirals         = renamed [Replace "SPIRALS"]
                 $ mySpacings
                 $ spiral (6/7)
 
-floats          = renamed [Replace "FLOAT"]    
+floats          = renamed [Replace "FLOAT"]
                 $ maximizeWithPadding 10
-                $ minimize 
-                $ myGaps 
-                $ mySpacings 
+                $ minimize
+                $ myGaps
+                $ mySpacings
                 $ simplestFloat
 
-full            = renamed [Replace "FULL"]       
-                $ maximizeWithPadding 10 
-                $ minimize 
-                $ mySpacings 
+full            = renamed [Replace "FULL"]
+                $ maximizeWithPadding 10
+                $ minimize
+                $ mySpacings
                 $ limitWindows 20 Full
 
 ------------------------------------------------------------------------
 -- Layout Hook
 ------------------------------------------------------------------------
-myHandleEventHook= swallowEventHook (className =? "kitty") (return True) 
+myHandleEventHook= swallowEventHook (className =? "kitty") (return True)
 mySpacings       = spacingRaw False (Border 0 10 10 10) True (Border 10 10 10 10) True
 myGaps           = gaps [(U, 10),(D, 5),(L, 10),(R, 10)]
 myShowWNameTheme = def
@@ -400,7 +400,7 @@ myLayoutHook    = showWName' myShowWNameTheme
                 $ onWorkspace wsCHT chatLayouts
                 $ onWorkspace wsSIT settingeLayouts
                 $ allLayouts
-               where 
+               where
     allLayouts = tall ||| threeColMid ||| dishes ||| oneBig ||| grid ||| twoPane ||| spirals ||| circle ||| floats ||| tabs
     webLayouts = oneBig ||| threeColMid ||| dishes ||| tall ||| grid ||| twoPane ||| spirals ||| circle ||| floats ||| tabs
     codeLayouts = dishes ||| twoPane ||| tabs
@@ -411,7 +411,7 @@ myLayoutHook    = showWName' myShowWNameTheme
 ------------------------------------------------------------------------
 -- XPrompt
 ------------------------------------------------------------------------
-myXPConfig = def 
+myXPConfig = def
           { font                = myNerdFont
           , bgColor             = black
           , fgColor             = fg
@@ -440,32 +440,32 @@ myXPConfig = def
           }
 
 ------------------------------------------------------------------------
--- XP Search 
+-- XP Search
 ------------------------------------------------------------------------
 aur         = searchEngine "aur" "https://aur.archlinux.org/packages?O=0&K="
 archwiki    = searchEngine "archwiki" "http://wiki.archlinux.org/index.php/Special:Search?search="
 reddit      = searchEngine "reddit" "https://www.reddit.com/r/unixporn/search/?q="
 wallhaven   = searchEngine "wallhaven" "https://wallhaven.cc/search?q="
- 
+
 ------------------------------------------------------------------------
 -- Custom Keys
 ------------------------------------------------------------------------
-myKeys = 
+myKeys =
     [
     -- Xmonad
       ("M-q",  	       spawn "xmonad --recompile && xmonad --restart")
     , ("M-S-q",        confirmPrompt myXPConfig "Quit XMonad" $ io exitSuccess)
-    
-    -- System 
+
+    -- System
                    --- Audio ---
-    , ("<XF86AudioMute>",spawn "pamixer -t && notify-send -t 200 'Toggle mute button!'") 	
+    , ("<XF86AudioMute>",spawn "pamixer -t && notify-send -t 200 'Toggle mute button!'")
     , ("<F9>",         spawn "pamixer -i 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")
     , ("<F8>",         spawn "pamixer -d 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")
     , ("<F10>",        spawn "pamixer --default-source -t && notify-send -t 200 'Toggle mute Mic button'")
                    --- Brightenss ---
     , ("<F5>",         spawn "xbacklight -dec 10 && notify-send -t 200 `xbacklight -get`")
     , ("<F6>",         spawn "xbacklight -inc 10 && notify-send -t 200 `xbacklight -get`")
-                   --- ScreenShoot --- 
+                   --- ScreenShoot ---
     , ("<Print>",      spawn "scrot -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"     )
     , ("M-<Print>",    spawn "scrot -u -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"  )
     , ("S-<Print>",    spawn "scrot -s -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"  )
@@ -485,14 +485,14 @@ myKeys =
     , ("M-S-d",        spawn "dmenu_run -fn 'JetBrains Mono:style=Bold:pixelsize=14' -nb '#11121D' -nf '#7aa2f7' -sb '#7aa2f7' -sf '#11121D' -l 5 -p 'Execute:'")
 
     -- XMonad Prompt (XPConfig)
-    , ("C-p p",        shellPrompt myXPConfig)   
+    , ("C-p p",        shellPrompt myXPConfig)
     , ("C-p m",        manPrompt myXPConfig)
     , ("C-p g",        windowPrompt myXPConfig Goto wsWindows)
     , ("C-p b",        windowPrompt myXPConfig Bring allWindows)
-    
+
     -- Prompt Search
-    , ("C-s d",        promptSearchBrowser myXPConfig myBrowser duckduckgo) 
-    , ("C-s g",        promptSearchBrowser myXPConfig myBrowser google) 
+    , ("C-s d",        promptSearchBrowser myXPConfig myBrowser duckduckgo)
+    , ("C-s g",        promptSearchBrowser myXPConfig myBrowser google)
     , ("C-s y",        promptSearchBrowser myXPConfig myBrowser youtube)
     , ("C-s i",        promptSearchBrowser myXPConfig myBrowser images)
     , ("C-s p",        promptSearchBrowser myXPConfig myBrowser github)
@@ -500,8 +500,8 @@ myKeys =
     , ("C-s u",        promptSearchBrowser myXPConfig myBrowser aur)
     , ("C-s r",        promptSearchBrowser myXPConfig myBrowser reddit)
     , ("C-s w",        promptSearchBrowser myXPConfig myBrowser wallhaven)
-    
-   -- ScratchPads 
+
+   -- ScratchPads
     , ("M-s t",        namedScratchpadAction myScratchPads "terminal") -- Terminal
     , ("M-s s",        namedScratchpadAction myScratchPads "cmus"    ) -- Cmus [Music Player]
     , ("M-s w",        namedScratchpadAction myScratchPads "browser" ) -- firefox
@@ -554,7 +554,7 @@ myKeys =
     , ("M-C-<U>",      withFocused (keysResizeWindow (0,20) (0,1))) --expand float at top
     , ("M-C-<D>",      withFocused (keysResizeWindow (0,-20) (0,1))) --shrink float at top
     ]
-    where 
+    where
         toggleFloat w = windows (\s -> if M.member w (W.floating s)
                     then W.sink w s
                     else (W.float w (W.RationalRect (1/6) (1/6) (2/3) (2/3)) s))
@@ -563,7 +563,7 @@ myKeys =
 ------------------------------------------------------------------------
 main = xmonad
      . ewmh
-  -- . ewmhFullscreen  
+  -- . ewmhFullscreen
      . withEasySB mySB defToggleStrutsKey
      . withUrgencyHook FocusHook
      . docks
@@ -571,7 +571,7 @@ main = xmonad
      where
      mySB = statusBarProp "xmobar" (clickablePP myPP)
      	where
-        myPP = def 
+        myPP = def
 	      -- Properties of current workspace
 	    { ppCurrent = xmobarColor colorPrimary "" . wrap "<box type=Bottom width=2> " " </box>"
 
@@ -588,7 +588,7 @@ main = xmonad
         , ppUrgent = xmobarColor colorSecondary "" . wrap "!" "!"
 
 	    -- Type Of layout in xmobar
-	    , ppLayout = xmobarColor colorInactive ""   
+	    , ppLayout = xmobarColor colorInactive ""
 
 	      -- Title of active window
 	    , ppTitle = xmobarColor colorFG "" . shorten 40
@@ -621,7 +621,7 @@ main = xmonad
 
 		colorSecondary :: String
 		colorSecondary = "#c13e63"
-		
+
 		-- this is to show the number of windows in each workspace.
 		windowCount :: X (Maybe String)
 		windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
@@ -632,15 +632,15 @@ main = xmonad
 myConfig = def { modMask                  = myModMask
               , terminal                  = myTerminal
               , borderWidth               = myBorderWidth
-              , focusedBorderColor        = myFocusedBorderColor 
+              , focusedBorderColor        = myFocusedBorderColor
               , normalBorderColor         = myNormalBorderColor
-              , focusFollowsMouse         = myFocusFollowsMouse  
+              , focusFollowsMouse         = myFocusFollowsMouse
               , clickJustFocuses          = myClickJustFocuses
               , workspaces                = myWorkspaces
               , startupHook               = myStartupHook
               , layoutHook                = myLayoutHook
               , manageHook                = myManageHook
-              , handleEventHook           = myHandleEventHook 
+              , handleEventHook           = myHandleEventHook
               , logHook                   = updatePointer (0.5, 0.5) (0, 0)
                                           >> fadeWindowsLogHook myFadeHook
               } `additionalKeysP` myKeys
