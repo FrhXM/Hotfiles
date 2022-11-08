@@ -3,7 +3,7 @@
 -----------------------------------------------------------
 
 -- Change leader to space
-vim.g.mapleader = ' '
+-- vim.g.mapleader = ' '
 
 -- Change leader to a comma
 -- vim.g.mapleader = ','
