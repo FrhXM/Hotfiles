@@ -102,14 +102,12 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
 
   -- Color schemes
-  use 'navarasu/onedark.nvim'
   use 'tiagovla/tokyodark.nvim'
+  use 'folke/tokyonight.nvim'
   use 'xiyaowong/nvim-transparent'
 
   -- Color HEX
    use 'norcalli/nvim-colorizer.lua'
-
-
 
   -- Statusline
   use {
