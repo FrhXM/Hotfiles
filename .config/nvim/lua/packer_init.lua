@@ -45,18 +45,6 @@ return packer.startup(function(use)
   -- Add you plugins here:
   use 'wbthomason/packer.nvim' -- packer can manage itself
 
-  -- git labels
-  -- use {
-  --   'lewis6991/gitsigns.nvim',
-  --   requires = { 'nvim-lua/plenary.nvim' },
-  --   config = function()
-  --     require('gitsigns').setup{}
-  --   end
-  -- }
-
-  -- Tag viewer
-  -- use 'preservim/tagbar'
-
   -- Treesitter interface
   -- use {
   --   'nvim-treesitter/nvim-treesitter',
