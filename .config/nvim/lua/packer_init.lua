@@ -87,6 +87,9 @@ return packer.startup(function(use)
   -- File explorer
   use 'kyazdani42/nvim-tree.lua'
 
+  -- Terminal Toggle
+	use 'akinsho/toggleterm.nvim'
+
   -- Indent line
   use 'lukas-reineke/indent-blankline.nvim'
 
