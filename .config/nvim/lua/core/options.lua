@@ -12,9 +12,13 @@ local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
-opt.mouse = 'a'                       -- Enable mouse support
+opt.mouse = 'v'                       -- Enable mouse support
+opt.scrolloff = 8                     -- Scroll Just 8 line
 opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
 opt.swapfile = false                  -- Don't use swapfile
+opt.backup = false                    -- Don't use backup
+vim.opt.writebackup = false           -- Don't write backup File
+opt.undofile = true                   -- Enable undofile after quite
 opt.compatible = false                -- Nedded for Vim Polglot
 opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
 
@@ -22,7 +26,10 @@ opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
 -- Neovim UI
 -----------------------------------------------------------
 opt.number = true           -- Show line number
+opt.relativenumber = true   -- number relative
+vim.opt.numberwidth = 4     -- width of number
 opt.showmatch = true        -- Highlight matching parenthesis
+opt.showmode = false        -- don't show me Mode(i,v...)
 opt.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
 opt.colorcolumn = '80'      -- Line lenght marker at 80 columns
 opt.cursorline = true       -- highlight ccurent cursorline
