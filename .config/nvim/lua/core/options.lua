@@ -13,7 +13,6 @@ local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
 -- General
 -----------------------------------------------------------
 opt.mouse = 'v'                       -- Enable mouse support
-opt.scrolloff = 8                     -- Scroll Just 8 line
 opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
 opt.swapfile = false                  -- Don't use swapfile
 opt.backup = false                    -- Don't use backup
