@@ -46,10 +46,7 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim' -- packer can manage itself
 
   -- Treesitter interface
-  -- use {
-  --   'nvim-treesitter/nvim-treesitter',
-  --   run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  -- }
+  -- use { 'nvim-treesitter/nvim-treesitter', run = function() require('nvim-treesitter.install').update({ with_sync = true }) end, }
 
   -- LSP
   -- use 'neovim/nvim-lspconfig'
@@ -67,10 +64,7 @@ return packer.startup(function(use)
   -- }
 
   -- Use buffers as Tab
-  use {
-  'akinsho/bufferline.nvim', tag = "v3.*",
-  requires = {'kyazdani42/nvim-web-devicons'}
-  }
+  use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = {'kyazdani42/nvim-web-devicons'} }
 
   -- File explorer
   use 'kyazdani42/nvim-tree.lua'
@@ -82,12 +76,7 @@ return packer.startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
 
   -- Autopair
-  use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup{}
-    end
-  }
+  use 'windwp/nvim-autopairs'
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
@@ -101,16 +90,10 @@ return packer.startup(function(use)
    use 'norcalli/nvim-colorizer.lua'
 
   -- Statusline
-  use {
-    'feline-nvim/feline.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  }
+  use { 'feline-nvim/feline.nvim', requires = { 'kyazdani42/nvim-web-devicons' }, }
 
   -- Dashboard (start screen)
-  use {
-    'goolord/alpha-nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  }
+  use { 'goolord/alpha-nvim', requires = { 'kyazdani42/nvim-web-devicons' }, }
 
   -- Vim Plugins
   use 'tpope/vim-surround'
