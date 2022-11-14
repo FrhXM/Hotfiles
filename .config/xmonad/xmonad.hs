@@ -459,8 +459,8 @@ myKeys =
     -- System
                    --- Audio ---
     , ("<XF86AudioMute>",spawn "pamixer -t && notify-send -t 200 'Toggle mute button!'")
-    , ("<F9>",         spawn "pamixer -i 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")
-    , ("<F8>",         spawn "pamixer -d 5 && notify-send -t 200 `pulsemixer --get-volume | awk '{print $1}'`")
+    , ("<F9>",         spawn "pamixer -i 5 && ~/.config/xmobar/scripts/volume.sh")
+    , ("<F8>",         spawn "pamixer -d 5 && ~/.config/xmobar/scripts/volume.sh")
     , ("<F10>",        spawn "pamixer --default-source -t && notify-send -t 200 'Toggle mute Mic button'")
                    --- Brightenss ---
     , ("<F5>",         spawn "xbacklight -dec 10 && notify-send -t 200 `xbacklight -get`")
@@ -527,8 +527,8 @@ myKeys =
     , ("M-p",          switchProjectPrompt myXPConfig          ) {-- Move To Project --}
 
     -- Rotate all of the unfocused windows in either direction.
-    , ("M-C-.", rotUnfocusedUp  ) {-Rotate Unfocused UP-}
-    , ("M-C-,", rotUnfocusedDown) {-Rotate Unfocused Down-}
+    , ("M-C-.",        rotUnfocusedUp  ) {-Rotate Unfocused UP-}
+    , ("M-C-,",        rotUnfocusedDown) {-Rotate Unfocused Down-}
 
    -- Resize layout
     , ("M-a",          sendMessage MirrorExpand) {-- For Layout ResizableTile( Tiled ) --}
