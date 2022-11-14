@@ -6,8 +6,3 @@ dunstify \
   -r 28223 \
   -h int:value:$(pamixer --get-volume)
 
-# vol=$(pamixer --get-volume-human)
-# echo VOL: $vol
-
-# exit 0
-
