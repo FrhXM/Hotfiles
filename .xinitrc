@@ -49,7 +49,7 @@ fi
 ################################
 ## Start Network Manager applte
 ################################
-/usr/bin/nm-applet --no-agent &
+/usr/bin/nm-applet --no-agent & # --no-agent fix worning destroy in tty
 
 ################################
 ## SystemTray (stalonetray)
