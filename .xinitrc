@@ -32,8 +32,33 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-###################################
-######## Start WindowManager ######
-###################################
+#------------- App Demon --------------
+## Auto Mount devaice
+/usr/bin/unclutter &
+## Auto Hideen Mouse
+/usr/bin/udiskie &
+## Notify Demon
+/usr/bin/dunst &
+
+#-------------- SystemTray ------------
+################################
+#### Start bluetooth applte
+################################
+#/usr/bin/blueman-applet &
+
+################################
+## Start Network Manager applte
+################################
+/usr/bin/nm-applet --no-agent &
+
+################################
+## SystemTray (stalonetray)
+################################
+/usr/bin/stalonetray &
+#----------- end System Tray ----------
+
+###########################################################
+##################### Start WindowManager #################
+###########################################################
 ## I am In Love with XMonad
-exec xmonad
+exec /usr/bin/xmonad
