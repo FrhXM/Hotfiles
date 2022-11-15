@@ -1,4 +1,3 @@
-
 -- ===========================================================================
 -- ██╗  ██╗███╗   ███╗ ██████╗ ███╗   ██╗ █████╗ ██████╗
 -- ╚██╗██╔╝████╗ ████║██╔═══██╗████╗  ██║██╔══██╗██╔══██╗
@@ -218,16 +217,10 @@ projects =
 ------------------------------------------------------------------------
 myStartupHook = do
     spawnOnce "xwallpaper --zoom ~/pix/wall/tokyo.png"                              -- Wallpapers
-    spawnOnce "dunst"                                                               -- notfiction
-    spawnOnce "unclutter"                                                           -- hidden Mouse
-    spawnOnce "udiskie"                                                             -- Auto Mount USB
-    spawnOnce "nm-applet"                                                           -- networkManager-applte {systemTray}
-    spawnOnce "blueman-applet"                                                      -- bluetooth-blueman-applte {systemTray}
     spawnOnce "~/.config/xmobar/scripts/battnotify.sh"                              -- battery notifction
-    spawnOnce "~/.config/xmobar/scripts/tray.sh"                                    -- trayer
-    -- spawnOnce "redshift -O 4800k"                                                -- Safe your eyes
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
     spawnOnce "picom --experimental-backends -b"                                    -- Compositor
+    -- spawnOnce "redshift -O 4800k"                                                -- Safe your eyes
     setDefaultCursor xC_left_ptr                                                    -- Default Cursor
 
 ------------------------------------------------------------------------
