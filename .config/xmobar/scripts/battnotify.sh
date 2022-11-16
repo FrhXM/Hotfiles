@@ -16,7 +16,7 @@ alarm="/your/path/battery_notification.ogg"
 warning_level=30
 
 # How often to check battery status, in minutes
-check_interval=2
+check_interval=5
 
 while true; do
   battery_level=$(acpi -b \
@@ -33,6 +33,6 @@ while true; do
       " Plug into mains power " -t 8000
     DISPLAY=:0 xmessage -buttons okay:0 -center -default okay -print "Help Me, Battery Is Low, Please Connect The Charger"
   fi
-  
+
   sleep ${check_interval}m
 done
