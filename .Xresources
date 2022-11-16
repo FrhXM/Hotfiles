@@ -40,7 +40,7 @@
 !!!!!!!!!!!!!!!!!!!
 !!!!!!! Font !!!!!!
 !!!!!!!!!!!!!!!!!!!
-*.font: xft:JetBrains Mono:style=Regular:size=12
-*.boldFont: xft:JetBrains Mono:style=Bold:size=10
-*.italicFont: xft:JetBrains Mono:style=Italic:size=12
-*.boldItalicFont: xft:JetBrains Mono:style=Bold Italic:size=10
+Sxiv.font: xft:FiraCode Nerd Font Mono:style=Bold:size=12
+Sxiv.boldFont: xft:JetBrains Mono:style=Bold:size=10
+Sxiv.italicFont: xft:JetBrains Mono:style=Italic:size=12
+Sxiv.boldItalicFont: xft:JetBrains Mono:style=Bold Italic:size=10
