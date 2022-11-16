@@ -36,15 +36,15 @@ c.tabs.padding = {
 ###############################################
 ############       URL     ####################
 ###############################################
-# c.url.default_page = '~/prjcts/siteWeb/newtab/index.html'
-# c.url.start_pages = '~/prjcts/siteWeb/newtab/index.html'
+c.url.default_page = '~/prjcts/siteWeb/newtab/index.html'
+c.url.start_pages = '~/prjcts/siteWeb/newtab/index.html'
 # c.url.default_page = 'https://start.duckduckgo.com/'
 # c.url.start_pages = 'https://start.duckduckgo.com/'
 
 ###############################################
 ################       Others  ################
 ###############################################
-config.set("zoom.default", "100%")
+config.set("zoom.default", "90%")
 config.set("auto_save.session", True)
 
 ##################################################
