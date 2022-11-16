@@ -216,10 +216,10 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/tokyo.png"                              -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/dream.jpg"                              -- Wallpapers
     spawnOnce "~/.config/xmobar/scripts/battnotify.sh"                              -- battery notifction
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
-    spawnOnce "picom --experimental-backends -b"                                    -- Compositor
+    spawnOnce "picom -b"                                                            -- Compositor
     -- spawnOnce "redshift -O 4800k"                                                -- Safe your eyes
     setDefaultCursor xC_left_ptr                                                    -- Default Cursor
 
