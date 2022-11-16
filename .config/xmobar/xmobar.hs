@@ -55,7 +55,7 @@ Config {
                         -- Echos a "bell" icon in front of the pacman updates.
                     , Run Com "echo" ["<fn=2>\xf0f3</fn>"] "bell" 3600
                         -- Check for pacman updates (/home/frhxm/xmobar/scripts/pacupdate)
-                    , Run Com ".config/xmobar/scripts/pacupdate.sh" [] "pacupdate" 3600
+                    , Run Com ".config/xmobar/scripts/pacupdate.sh" [] "pacupdate" 360
                         -- Echos a "battery" icon in front of the pacman updates.
                     , Run Com "echo" ["<fn=2>\xf242</fn>"] "baticon" 3600
                         -- Battery
