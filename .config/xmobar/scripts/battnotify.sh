@@ -16,7 +16,7 @@ alarm="/your/path/battery_notification.ogg"
 warning_level=30
 
 # How often to check battery status, in minutes
-check_interval=5
+check_interval=10
 
 while true; do
   battery_level=$(acpi -b \
@@ -30,7 +30,7 @@ while true; do
   then
     # play -q -v 0.40 "$alarm" &
     notify-send --urgency=critical " Low battery: ${battery_level}% " \
-      " Plug into mains power " -t 8000
+      " Plug into mains power "
     DISPLAY=:0 xmessage -buttons okay:0 -center -default okay -print "Help Me, Battery Is Low, Please Connect The Charger"
   fi
 
