@@ -44,8 +44,8 @@ c.url.start_pages = '~/prjcts/siteWeb/newtab/index.html'
 ###############################################
 ################       Others  ################
 ###############################################
-config.set("zoom.default", "90%")
-config.set("auto_save.session", True)
+config.set("zoom.default", "100%")
+# config.set("auto_save.session", True)
 
 ##################################################
 ######## download manager  #######################
