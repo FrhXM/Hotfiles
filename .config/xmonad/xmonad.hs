@@ -119,7 +119,7 @@ white_        = "#acb0d0"
 myTerminal           = "kitty"     :: String     -- Terminal
 myModMask            = mod1Mask    :: KeyMask    -- leader key (Alt)
 myWinMask            = mod4Mask    :: KeyMask    -- Windows Key (Super)
-myBorderWidth        = 2           :: Dimension  -- Border size
+myBorderWidth        = 3           :: Dimension  -- Border size
 myNormalBorderColor  = black       :: String     -- Border color of unfocus window
 myFocusedBorderColor = blue        :: String     -- Border color of focus window
 myFocusFollowsMouse  = True        :: Bool       -- focus follow config
@@ -216,7 +216,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/myGirl2.jpg"                            -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/dream.jpg"                              -- Wallpapers
     spawnOnce "~/.config/xmobar/scripts/battnotify.sh"                              -- battery notifction
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
     spawnOnce "picom -b"                                                            -- Compositor
