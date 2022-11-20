@@ -4,12 +4,12 @@ config.load_autoconfig(True)
 ############################################
 #############       Font        ############
 ############################################
-c.fonts.default_size = '11pt'
-c.fonts.default_family = "JetBrains Mono"
-c.fonts.completion.entry = '11pt "Source Code Pro"'
-c.fonts.debug_console = '11pt "Source Code Pro"'
+c.fonts.default_size = '10pt'
+c.fonts.default_family = "FiraCode Nerd Font Mono"
+c.fonts.completion.entry = '10pt "Source Code Pro"'
+c.fonts.debug_console = '10pt "Source Code Pro"'
 c.fonts.prompts = 'default_size sans-serif'
-c.fonts.statusbar = '11pt "Source Code Pro"'
+c.fonts.statusbar = '10pt "Source Code Pro"'
 
 ############################################
 #############      statusbar    ############
@@ -22,6 +22,7 @@ c.statusbar.widgets = ['progress', 'keypress', 'url', 'scroll', 'history', 'tabs
 ############       Tabs     ###################
 ###############################################
 c.tabs.favicons.show = 'always'
+c.tabs.favicons.scale=1.6
 c.tabs.background = True
 c.tabs.last_close = 'ignore'
 c.tabs.position = 'top'
@@ -41,12 +42,6 @@ c.url.start_pages = '~/prjcts/siteWeb/newtab/index.html'
 # c.url.default_page = 'https://start.duckduckgo.com/'
 # c.url.start_pages = 'https://start.duckduckgo.com/'
 
-###############################################
-################       Others  ################
-###############################################
-config.set("zoom.default", "100%")
-# config.set("auto_save.session", True)
-
 ##################################################
 ######## download manager  #######################
 ##################################################
@@ -56,18 +51,27 @@ c.downloads.location.remember = True
 c.downloads.position = 'bottom'
 c.downloads.remove_finished = 5000
 
+###############################################
+################       Others  ################
+###############################################
+c.auto_save.session=True
+c.scrolling.smooth=True
+c.completion.height=200
+c.confirm_quit=["multiple-tabs", "downloads"]
+config.set("zoom.default", "80%")
+
 ##################################################
 ############      ColorScheme     ################
 ##################################################
 ## Enable Dark Mode
 # config.set("colors.webpage.darkmode.enabled", True)
 
+
 # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
 # Scheme name: Catppuccin
 # Scheme author: Pocco81 (https://github.com/pocco81)
 # Template author: theova
 # Commentary: Tinted Theming: (https://github.com/tinted-theming)
-
 base00 = "#1e1e28"
 base01 = "#1a1826"
 base02 = "#302d41"
@@ -361,6 +365,5 @@ c.colors.tabs.selected.even.fg = base05
 # Background color of selected even tabs.
 c.colors.tabs.selected.even.bg = base02
 
-# Background color for webpages if unset (or empty to use the theme's
-# color).
+# Background color for webpages if unset (or empty to use the theme's color).
 # c.colors.webpage.bg = base00
