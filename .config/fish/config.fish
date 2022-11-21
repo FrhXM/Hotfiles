@@ -3,7 +3,7 @@
 ##############################################################################
 if status is-interactive
 	####################
-	## greeting Message 
+	## greeting Message
 	####################
 	set fish_greeting # find Coustom in ~/.config/fish/functions/fish_greeting.fish
 
@@ -23,10 +23,10 @@ if status is-interactive
     set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND "--type=f"
     set -gx FZF_CTRL_T_OPTS "--preview='bat --style=numbers --color=always {}'"
     set -gx FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND "--type=d"
-	set -gx FZF_ALT_C_OPTS "--preview='exa -T {}'" 
+	set -gx FZF_ALT_C_OPTS "--preview='exa -T {}'"
 	  # https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
     set -gx FZF_CTRL_R_OPTS "--preview='echo {}' --preview-window=down:3:hidden:wrap --bind='?:toggle-preview'"
-	
+
 	###########################
 	## TokyoNight Color Palette
 	###########################
@@ -112,13 +112,12 @@ alias drive='nemo /run/media/frhxm/'
 alias usb='cd /run/media/frhxm/ && ls'
 
 ## Pacman && yay
-alias update='sudo pacman -Syy'
-alias upgrade='sudo pacman -Syyu && echo "UPGRADED"'
-alias ps='sudo pacman -Sy'
+alias update='sudo pacman -Syu'
+alias upgrade='sudo pacman -Syu && echo "UPGRADED"'
 alias pr='sudo pacman -Rsn'
 alias pc='sudo pacman -Scc && echo "Cache Is Clean Now"'
 
-## alias for configs	
+## alias for configs
 alias fishc="nvim ~/.config/fish/config.fish"
 alias xmonadc="nvim ~/.config/xmonad/xmonad.hs"
 alias xmobarc="nvim ~/.config/xmobar/xmobar.hs"
