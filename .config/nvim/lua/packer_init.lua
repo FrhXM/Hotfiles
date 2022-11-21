@@ -82,6 +82,7 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
 
   -- Color schemes
+use { "catppuccin/nvim", as = "catppuccin" }
   use 'tiagovla/tokyodark.nvim'
   use 'folke/tokyonight.nvim'
   use 'xiyaowong/nvim-transparent'
