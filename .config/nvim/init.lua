@@ -7,10 +7,10 @@ Website: https://github.com/brainfucksec/neovim-lua
 --]]
 
 -- Import Lua modules
-require('packer_init')
 require('core/options')
-require('core/autocmds')
 require('core/keymaps')
+require('packer_init')
+require('core/autocmds')
 -- require('plugins/nvim-treesitter')
 require('plugins/nvim-colors')
 require('plugins/nvim-statusline')
