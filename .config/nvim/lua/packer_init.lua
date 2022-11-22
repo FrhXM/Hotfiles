@@ -30,7 +30,7 @@ end
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost packer_init.lua source <afile> | PackerSync
+    autocmd BufWritePost packer_init.lua source <afile> | PackerCompile
   augroup end
 ]]
 
@@ -82,10 +82,11 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
 
   -- Color schemes
-use { "catppuccin/nvim", as = "catppuccin" }
-  use 'tiagovla/tokyodark.nvim'
-  use 'folke/tokyonight.nvim'
   use 'xiyaowong/nvim-transparent'
+  use { 'tiagovla/tokyodark.nvim',
+    config = function()
+    vim.cmd("colorscheme tokyodark")
+    end }
 
   -- Color HEX
    use 'norcalli/nvim-colorizer.lua'
