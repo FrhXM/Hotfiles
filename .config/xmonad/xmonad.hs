@@ -456,8 +456,8 @@ myKeys =
     , ("<F8>",         spawn "pamixer -d 5 && ~/.config/xmobar/scripts/volume.sh")
     , ("<F10>",        spawn "pamixer --default-source -t && notify-send -t 200 'Toggle mute Mic button'")
                    --- Brightenss ---
-    , ("<F5>",         spawn "xbacklight -dec 10 && notify-send -t 200 `xbacklight -get`")
-    , ("<F6>",         spawn "xbacklight -inc 10 && notify-send -t 200 `xbacklight -get`")
+    , ("<F5>",         spawn "xbacklight -dec 5 && notify-send -t 200 `xbacklight -get`")
+    , ("<F6>",         spawn "xbacklight -inc 30 && notify-send -t 200 `xbacklight -get`")
                    --- ScreenShoot ---
     , ("<Print>",      spawn "scrot -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"     )
     , ("M-<Print>",    spawn "scrot -u -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"  )
