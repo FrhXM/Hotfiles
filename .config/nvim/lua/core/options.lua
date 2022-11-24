@@ -1,98 +1,45 @@
------------------------------------------------------------
--- General Neovim settings and configuration
------------------------------------------------------------
+local options = {
+  autoindent = true,
+  smartindent = true,
+  tabstop = 2,
+  shiftwidth = 2,
+  expandtab = true,
+  showtabline = 2,
 
--- Default options are not included
--- See: https://neovim.io/doc/user/vim_diff.html
--- [2] Defaults - *nvim-defaults*
+  number = true,
+  relativenumber = true,
+  numberwidth = 4,
+  incsearch = true,
+  hlsearch = false,
+  ignorecase = true,
+  smartcase = true,
 
-local g = vim.g       -- Global variables
-local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
+  splitbelow = true,
+  splitright = true,
 
------------------------------------------------------------
--- General
------------------------------------------------------------
-opt.mouse = 'v'                       -- Enable mouse support
-opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
-opt.swapfile = false                  -- Don't use swapfile
-opt.backup = false                    -- Don't use backup
-vim.opt.writebackup = false           -- Don't write backup File
-opt.undofile = true                   -- Enable undofile after quite
-opt.compatible = false                -- Nedded for Vim Polglot
-opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
+  termguicolors = true,
+  hidden = true,
+  signcolumn = "yes",
+  showmode = false,
+  backup = false,
+  writebackup = false,
+  errorbells = false,
+  swapfile = false,
+  wrap = false,
+  cursorline = true,
+  fileencoding = "utf-8",
 
------------------------------------------------------------
--- Neovim UI
------------------------------------------------------------
-opt.number = true           -- Show line number
-opt.relativenumber = true   -- number relative
-vim.opt.numberwidth = 4     -- width of number
-opt.showmatch = true        -- Highlight matching parenthesis
-opt.showmode = false        -- don't show me Mode(i,v...)
-opt.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
-opt.colorcolumn = '80'      -- Line lenght marker at 80 columns
-opt.cursorline = true       -- highlight ccurent cursorline
-opt.splitright = true       -- Vertical split to the right
-opt.splitbelow = true       -- Horizontal split to the bottom
-opt.ignorecase = true       -- Ignore case letters when search
-opt.smartcase = true        -- Ignore lowercase for the whole pattern
-opt.linebreak = true        -- Wrap on word boundary
-opt.wrap = false            -- Wrap lines break
-opt.termguicolors = true    -- Enable 24-bit RGB colors
-opt.laststatus=3            -- Set global statusline
+  colorcolumn = "80",
+  updatetime = 200,
+  scrolloff = 10,
+  mouse = 'a',
+  guicursor = 'a:block',
 
------------------------------------------------------------
--- Tabs, indent
------------------------------------------------------------
-opt.expandtab = true        -- Use spaces instead of tabs
-opt.shiftwidth = 4          -- Shift 4 spaces when tab
-opt.tabstop = 4             -- 1 tab == 4 spaces
-opt.smartindent = true      -- Autoindent new lines
-
------------------------------------------------------------
--- Memory, CPU
------------------------------------------------------------
-opt.hidden = true           -- Enable background buffers
-opt.history = 100           -- Remember N lines in history
-opt.lazyredraw = true       -- Faster scrolling
-opt.synmaxcol = 240         -- Max column for syntax highlight
-opt.updatetime = 700        -- ms to wait for trigger an event
-
------------------------------------------------------------
--- Startup
------------------------------------------------------------
--- Disable nvim intro
-opt.shortmess:append "sI"
-
--- -- Disable builtin plugins
-local disabled_built_ins = {
-   "2html_plugin",
-   "getscript",
-   "getscriptPlugin",
-   "gzip",
-   "logipat",
-   "netrw",
-   "netrwPlugin",
-   "netrwSettings",
-   "netrwFileHandlers",
-   "matchit",
-   "tar",
-   "tarPlugin",
-   "rrhelper",
-   "spellfile_plugin",
-   "vimball",
-   "vimballPlugin",
-   "zip",
-   "zipPlugin",
-   "tutor",
-   "rplugin",
-   "synmenu",
-   "optwin",
-   "compiler",
-   "bugreport",
-   "ftplugin",
+  title = true,
+  guifont = "MesloLGS NF:h18"
+  -- clipboard = "unnamedplus",
 }
 
-for _, plugin in pairs(disabled_built_ins) do
-   g["loaded_" .. plugin] = 1
-end
+vim.opt.shortmess:append("I") -- don't show default startup message
+
+for option, value in pairs(options) do vim.opt[option] = value end
