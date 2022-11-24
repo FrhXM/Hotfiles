@@ -59,18 +59,17 @@ return packer.startup(function(use)
   use 'preservim/tagbar'
 
   -- Color schemes
+  use 'xiyaowong/nvim-transparent'
   use 'navarasu/onedark.nvim'
+  use 'tiagovla/tokyodark.nvim'
   use 'tanvirtin/monokai.nvim'
-  use { 'rose-pine/neovim', as = 'rose-pine' }
 
   -- Statusline
   use { 'feline-nvim/feline.nvim', requires = { 'kyazdani42/nvim-web-devicons' }, }
 
   -- Dashboard (start screen)
-  use {
-    'goolord/alpha-nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  }
+  use { 'goolord/alpha-nvim', requires = { 'kyazdani42/nvim-web-devicons' }, }
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
