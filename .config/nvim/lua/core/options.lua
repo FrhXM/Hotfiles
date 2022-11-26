@@ -1,45 +1,72 @@
-local options = {
-  autoindent = true,
-  smartindent = true,
-  tabstop = 2,
-  shiftwidth = 2,
-  expandtab = true,
-  showtabline = 2,
+------------------------------------------------------
+---                   My Options                   ---
+------------------------------------------------------
+-- varible
+local opt = vim.opt
+local g = vim.g
+local indent = 2
 
-  number = true,
-  relativenumber = true,
-  numberwidth = 4,
-  incsearch = true,
-  hlsearch = false,
-  ignorecase = true,
-  smartcase = true,
+-- misc
+opt.syntax = 'enable'
+opt.encoding = 'utf-8'
+opt.clipboard = 'unnamedplus'
+opt.hidden = true
+opt.backspace = { 'eol', 'start', 'indent' }
+opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
 
-  splitbelow = true,
-  splitright = true,
+-- indention
+opt.autoindent = true
+opt.expandtab = true
+opt.shiftwidth = indent
+opt.smartindent = true
+opt.softtabstop = indent
+opt.tabstop = indent
 
-  termguicolors = true,
-  hidden = true,
-  signcolumn = "yes",
-  showmode = false,
-  backup = false,
-  writebackup = false,
-  errorbells = false,
-  swapfile = false,
-  wrap = false,
-  cursorline = true,
-  fileencoding = "utf-8",
+-- search
+opt.hlsearch = false
+opt.ignorecase = true
+opt.smartcase = true
+opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
+opt.wildmenu = true
 
-  colorcolumn = "80",
-  updatetime = 200,
-  scrolloff = 10,
-  mouse = 'a',
-  guicursor = 'a:block',
-
-  title = true,
-  guifont = "MesloLGS NF:h18"
-  -- clipboard = "unnamedplus",
+-- ui
+opt.cursorline = true
+opt.laststatus = 2
+opt.lazyredraw = true
+opt.list = true
+opt.listchars = {
+  tab = '❘-',
+  trail = '·',
+  lead = '·',
+  extends = '»',
+  precedes = '«',
+  nbsp = '×',
 }
+opt.mouse = 'a'
+opt.number = true
+opt.rnu = true
+opt.scrolloff = 18
+opt.showmode = false
+opt.sidescrolloff = 3
+opt.signcolumn = 'yes'
+opt.splitbelow = true
+opt.splitright = true
+opt.wrap = false
 
-vim.opt.shortmess:append("I") -- don't show default startup message
+-- backups
+opt.backup = false
+opt.swapfile = false
+opt.writebackup = false
 
-for option, value in pairs(options) do vim.opt[option] = value end
+-- autocomplete
+opt.completeopt = { 'menu', 'menuone', 'noselect' }
+opt.shortmess = opt.shortmess + { c = true }
+
+-- perfomance
+opt.redrawtime = 1500
+opt.timeoutlen = 250
+opt.ttimeoutlen = 10
+opt.updatetime = 100
+
+-- theme
+opt.termguicolors = true
