@@ -154,11 +154,11 @@ myJPFontBig  = "xft:Noto Sans Mono CJK JP:style=Bold:pixelsize=200":: String
 -- wsWEB           = "三"
 -- wsYTB           = "四"
 -- wsCHT           = "五"
--- wsANM           = "六"
+-- wsPEN           = "六"
 -- wsMED           = "七"
 -- wsSIT           = "八"
 -- wsAll           = "九"
--- myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsANM, wsMED, wsSIT, wsAll]
+-- myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsPEN, wsMED, wsSIT, wsAll]
 
 -- ------ Workspaces -------
 wsDEV           = "¹\xf120"
@@ -166,11 +166,11 @@ wsGIT           = "²\xf7a1"
 wsWEB           = "³\xf26b"
 wsYTB           = "⁴\xf16a"
 wsCHT           = "⁵\xf099"
-wsANM           = "⁶\xf79f"
+wsPEN           = "⁶\xf79f"
 wsMED           = "⁷\xf07b"
 wsSIT           = "⁸\xf013"
 wsAll           = "⁹\xf49c"
-myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsANM, wsMED, wsSIT, wsAll]
+myWorkspaces    = [wsDEV, wsGIT, wsWEB, wsYTB, wsCHT, wsPEN, wsMED, wsSIT, wsAll]
 
 -- =========================================================================
 --  Projects
@@ -196,9 +196,9 @@ projects =
               , projectStartHook = Just $ do spawnOn wsYTB "qutebrowser --target=window youtube.com"
               }
 
-    , Project { projectName = wsANM
+    , Project { projectName = wsPEN
               , projectDirectory = "~/"
-              , projectStartHook = Just $ do spawnOn wsANM "qutebrowser --target=window anime4up.com"
+              , projectStartHook = Just $ do spawnOn wsPEN "qutebrowser --target=window https://codepen.io/pen/"
               }
 
     , Project { projectName = wsMED
