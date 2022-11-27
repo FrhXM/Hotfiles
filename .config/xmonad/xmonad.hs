@@ -216,7 +216,7 @@ projects =
 -- Startup Hooks
 ------------------------------------------------------------------------
 myStartupHook = do
-    spawnOnce "xwallpaper --zoom ~/pix/wall/dream.jpg"                              -- Wallpapers
+    spawnOnce "xwallpaper --zoom ~/pix/wall/anime.png"                              -- Wallpapers
     spawnOnce "~/.config/xmobar/scripts/battnotify.sh"                              -- battery notifction
     spawnOnce "xset r rate 200 80"                                                  -- speeds cursor in urxvt
     spawnOnce "picom -b"                                                            -- Compositor
