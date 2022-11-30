@@ -34,14 +34,7 @@ opt.cursorline = true
 opt.laststatus = 2
 opt.lazyredraw = true
 opt.list = true
-opt.listchars = {
-  tab = '❘-',
-  trail = '·',
-  lead = '·',
-  extends = '»',
-  precedes = '«',
-  nbsp = '×',
-}
+opt.listchars:append "eol:↴"
 opt.mouse = 'a'
 opt.number = true
 opt.rnu = true
