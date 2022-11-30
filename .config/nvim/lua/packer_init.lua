@@ -88,8 +88,6 @@ return packer.startup(function(use)
 
     -- navigation
     use("kyazdani42/nvim-tree.lua")
-    use("nvim-telescope/telescope.nvim")
-    use("ggandor/leap.nvim")
     use("akinsho/bufferline.nvim")
 
   -- Automatically set up your configuration after cloning packer.nvim
