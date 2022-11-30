@@ -87,6 +87,7 @@ return packer.startup(function(use)
         end })
 
     -- navigation
+    use("ibhagwan/fzf-lua")
     use("kyazdani42/nvim-tree.lua")
     use("akinsho/bufferline.nvim")
 
