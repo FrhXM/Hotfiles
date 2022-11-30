@@ -70,3 +70,10 @@ opt.updatetime = 100
 
 -- theme
 opt.termguicolors = true
+
+------------------------------------------------------
+---               My Options For Plugins           ---
+------------------------------------------------------
+------ emmet Nvim -----------
+g.user_emmet_mode='a'
+g.user_emmet_leader_key=','
