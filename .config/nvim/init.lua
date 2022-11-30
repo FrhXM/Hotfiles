@@ -1,14 +1,14 @@
------------------------------------------
---- FrhxM
------------------------------------------
+-------------------------------------------
+--- FrhxM				---
+-------------------------------------------
 require('packer_init')
 require('core/options')
 require('core/autocmds')
 require('core/keymaps')
-require('plugins/nvim-tree')
-require('plugins/nvim-toggleterm')
-require('plugins/nvim-others')
-require('plugins/nvim-indentline')
-require('plugins/nvim-colors')
-require('plugins/nvim-bufferline')
-require('plugins/nvim-alpha')
+require('plugins/tree-nvim')
+require('plugins/bufferline-nvim')
+require('plugins/toggleterm-nvim')
+require('plugins/indentline-nvim')
+require('plugins/colors-nvim')
+require('plugins/statusline-nvim')
+require('plugins/alpha-nvim')
