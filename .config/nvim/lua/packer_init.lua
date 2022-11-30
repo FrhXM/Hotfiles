@@ -45,19 +45,7 @@ end
 ------------------------------------
 return packer.startup(function(use)
   -- Add you plugins here:
-  use "wbthomason/packer.nvim" -- packer can manage itself
-
-    -- LSP
-    -- use("neovim/nvim-lspconfig")
-    -- use("hrsh7th/cmp-nvim-lsp")
-    -- use("hrsh7th/cmp-buffer")
-    -- use("hrsh7th/cmp-path")
-    -- use("hrsh7th/cmp-cmdline")
-    -- use("hrsh7th/nvim-cmp")
-    -- use("onsails/lspkind-nvim")
-    -- use("nvim-lua/lsp_extensions.nvim")
-    -- use("glepnir/lspsaga.nvim")
-    -- use("simrat39/symbols-outline.nvim")
+    use "wbthomason/packer.nvim" -- packer can manage itself
 
     -- Vim Plugins
     use("tpope/vim-surround")
@@ -66,7 +54,6 @@ return packer.startup(function(use)
     use("alvan/vim-closetag")
     use("lilydjwg/colorizer")
     use("sheerun/vim-polyglot")
-
     -- easier coding
     use("nvim-tree/nvim-web-devicons")
     use("goolord/alpha-nvim")
@@ -75,21 +62,17 @@ return packer.startup(function(use)
     use("akinsho/toggleterm.nvim")
     use("windwp/nvim-autopairs")
     use('feline-nvim/feline.nvim')
-
-
+    -- navigation
+    use("ibhagwan/fzf-lua")
+    use("kyazdani42/nvim-tree.lua")
+    use("akinsho/bufferline.nvim")
    -- Color theme
     use("xiyaowong/nvim-transparent")
-    use("catppuccin/nvim")
     use("folke/tokyonight.nvim")
     use({ 'tiagovla/tokyodark.nvim',
         config = function()
         vim.cmd("colorscheme tokyodark")
         end })
-
-    -- navigation
-    use("ibhagwan/fzf-lua")
-    use("kyazdani42/nvim-tree.lua")
-    use("akinsho/bufferline.nvim")
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
