@@ -59,6 +59,14 @@ return packer.startup(function(use)
     -- use("glepnir/lspsaga.nvim")
     -- use("simrat39/symbols-outline.nvim")
 
+    -- Vim Plugins
+    use("tpope/vim-surround")
+    use("tpope/vim-commentary")
+    use("mattn/emmet-vim")
+    use("alvan/vim-closetag")
+    use("lilydjwg/colorizer")
+    use("sheerun/vim-polyglot")
+
     -- easier coding
     use("nvim-tree/nvim-web-devicons")
     use("goolord/alpha-nvim")
@@ -68,13 +76,6 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs")
     use('feline-nvim/feline.nvim')
 
-
-    -- Vim Plugins
-    use("tpope/vim-surround")
-    use("tpope/vim-commentary")
-    use("mattn/emmet-vim")
-    use("alvan/vim-closetag")
-    use("sheerun/vim-polyglot")
 
    -- Color theme
     use("xiyaowong/nvim-transparent")
