@@ -6,10 +6,10 @@ config.load_autoconfig(True)
 ############################################
 c.fonts.default_size = '10pt'
 c.fonts.default_family = "FiraCode Nerd Font Mono"
-c.fonts.completion.entry = '10pt "Source Code Pro"'
-c.fonts.debug_console = '10pt "Source Code Pro"'
+c.fonts.completion.entry = '10pt "FiraCode Nerd Font Mono"'
+c.fonts.debug_console = '10pt "FiraCode Nerd Font Mono"'
 c.fonts.prompts = 'default_size sans-serif'
-c.fonts.statusbar = '10pt "Source Code Pro"'
+c.fonts.statusbar = '10pt "FiraCode Nerd Font Mono"'
 
 ############################################
 #############      statusbar    ############
@@ -58,7 +58,7 @@ c.downloads.remove_finished = 5000
 c.scrolling.smooth=True
 c.completion.height=200
 c.confirm_quit=["multiple-tabs", "downloads"]
-config.set("zoom.default", "80%")
+config.set("zoom.default", "90%")
 
 ##################################################
 ############      ColorScheme     ################
