@@ -387,10 +387,10 @@ myKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
         , ("M-S-9",  addName "Send to workspace 9"     $ (windows $ W.shift $ myWorkspaces !! 8))]
         --- Increase/decrease windows in the master pane or the stack
         ^++^
-        [ ("M-;",   addName "Increase clients in master pane" $ sendMessage (IncMasterN 1))
-        , ("M-.",   addName "Decrease clients in master pane" $ sendMessage (IncMasterN (-1)))
-        , ("M-=",   addName "Increase max # of windows for layout" $ increaseLimit)
-        , ("M--",   addName "Decrease max # of windows for layout" $ decreaseLimit)]
+        [ ("M-;",    addName "Increase clients in master pane" $ sendMessage (IncMasterN 1))
+        , ("M-.",    addName "Decrease clients in master pane" $ sendMessage (IncMasterN (-1)))
+        , ("M-=",    addName "Increase max # of windows for layout" $ increaseLimit)
+        , ("M--",    addName "Decrease max # of windows for layout" $ decreaseLimit)]
         --- Window navigation
         ^++^
         [ ("M-j",    addName "Move focus to next window"              $ windows W.focusDown)
@@ -411,10 +411,10 @@ myKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
         , ("M-S-n",  addName "Show window Hidden"                     $ withLastMinimized maximizeWindowAndFocus)]
         --- Window resizing
         ^++^
-        [ ("M-h",   addName "Shrink window"            $ sendMessage Shrink)
-        , ("M-l",   addName "Expand window"            $ sendMessage Expand)
-        , ("M-a",   addName "Shrink window vertically" $ sendMessage MirrorShrink)
-        , ("M-z",   addName "Expand window vertically" $ sendMessage MirrorExpand)]
+        [ ("M-h",    addName "Shrink window"            $ sendMessage Shrink)
+        , ("M-l",    addName "Expand window"            $ sendMessage Expand)
+        , ("M-a",    addName "Shrink window vertically" $ sendMessage MirrorShrink)
+        , ("M-z",    addName "Expand window vertically" $ sendMessage MirrorExpand)]
         --- Controll Window Float
         ^++^
         [ ("M-<L>",  addName "move float left"       $  withFocused (keysMoveWindow (-20,0)))
@@ -431,51 +431,51 @@ myKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
         , ("M-C-<D>",addName "shrink float at top"   $  withFocused (keysResizeWindow (0,-20) (0,1)))]
         --- + and - Window Spacing
         ^++^
-        [ ("M-C-j", addName "Decrease window spacing"  $ decWindowSpacing 4)
-        , ("M-C-k", addName "Increase window spacing"  $ incWindowSpacing 4)
-        , ("M-C-h", addName "Decrease screen spacing"  $ decScreenSpacing 4)
-        , ("M-C-l", addName "Increase screen spacing"  $ incScreenSpacing 4)]
+        [ ("M-C-j",  addName "Decrease window spacing"  $ decWindowSpacing 4)
+        , ("M-C-k",  addName "Increase window spacing"  $ incWindowSpacing 4)
+        , ("M-C-h",  addName "Decrease screen spacing"  $ decScreenSpacing 4)
+        , ("M-C-l",  addName "Increase screen spacing"  $ incScreenSpacing 4)]
        --- XMonad Prompt (XPConfig)
         ^++^
-        [ ("C-p p", addName "Run Shell Command"        $ shellPrompt myXPConfig)
-        , ("C-p m", addName "Run Man Page Command"     $ manPrompt myXPConfig)
-        , ("C-p g", addName "Focused Window in Prompt" $ windowPrompt myXPConfig Goto wsWindows)
-        , ("C-p b", addName "Move Window To Current WS"$ windowPrompt myXPConfig Bring allWindows)]
+        [ ("C-p p",  addName "Run Shell Command"        $ shellPrompt myXPConfig)
+        , ("C-p m",  addName "Run Man Page Command"     $ manPrompt myXPConfig)
+        , ("C-p g",  addName "Focused Window in Prompt" $ windowPrompt myXPConfig Goto wsWindows)
+        , ("C-p b",  addName "Move Window To Current WS"$ windowPrompt myXPConfig Bring allWindows)]
        --- Prompt Search
         ^++^
-        [ ("C-s d", addName "search in XPrompt in DuckduckGo"$ promptSearchBrowser myXPConfig myBrowser duckduckgo)
-        , ("C-s g", addName "search in XPrompt in google"    $ promptSearchBrowser myXPConfig myBrowser google)
-        , ("C-s y", addName "search in XPrompt in youtube"   $ promptSearchBrowser myXPConfig myBrowser youtube)
-        , ("C-s i", addName "search in XPrompt in image"     $ promptSearchBrowser myXPConfig myBrowser images)
-        , ("C-s p", addName "search in XPrompt in github"    $ promptSearchBrowser myXPConfig myBrowser github)
-        , ("C-s a", addName "search in XPrompt in archwiki"  $ promptSearchBrowser myXPConfig myBrowser archwiki)
-        , ("C-s u", addName "search in XPrompt in aur"       $ promptSearchBrowser myXPConfig myBrowser aur)
-        , ("C-s r", addName "search in XPrompt in reddit"    $ promptSearchBrowser myXPConfig myBrowser reddit)
-        , ("C-s w", addName "search in XPrompt in wallhaven" $ promptSearchBrowser myXPConfig myBrowser wallhaven)]
+        [ ("C-s d",  addName "search in XPrompt in DuckduckGo"$ promptSearchBrowser myXPConfig myBrowser duckduckgo)
+        , ("C-s g",  addName "search in XPrompt in google"    $ promptSearchBrowser myXPConfig myBrowser google)
+        , ("C-s y",  addName "search in XPrompt in youtube"   $ promptSearchBrowser myXPConfig myBrowser youtube)
+        , ("C-s i",  addName "search in XPrompt in image"     $ promptSearchBrowser myXPConfig myBrowser images)
+        , ("C-s p",  addName "search in XPrompt in github"    $ promptSearchBrowser myXPConfig myBrowser github)
+        , ("C-s a",  addName "search in XPrompt in archwiki"  $ promptSearchBrowser myXPConfig myBrowser archwiki)
+        , ("C-s u",  addName "search in XPrompt in aur"       $ promptSearchBrowser myXPConfig myBrowser aur)
+        , ("C-s r",  addName "search in XPrompt in reddit"    $ promptSearchBrowser myXPConfig myBrowser reddit)
+        , ("C-s w",  addName "search in XPrompt in wallhaven" $ promptSearchBrowser myXPConfig myBrowser wallhaven)]
        --- Prompt Launchers
         ^++^
-        [ ("M-d",   addName "Run Programme with Rofi"      $ spawn "rofi -show drun -show-icons")
-        , ("M-S-d", addName "Run Software with dmenu"      $ spawn "dmenu_run -fn 'JetBrains Mono:style=Bold:pixelsize=14' -nb '#11121D' -nf '#7aa2f7' -sb '#7aa2f7' -sf '#11121D' -l 5 -p 'Execute:'")]
+        [ ("M-d",    addName "Run Programme with Rofi"  $ spawn "rofi -show drun -show-icons")
+        , ("M-S-d",  addName "Run Software with dmenu"  $ spawn "dmenu_run -fn 'JetBrains Mono:style=Bold:pixelsize=14' -nb '#11121D' -nf '#7aa2f7' -sb '#7aa2f7' -sf '#11121D' -l 5 -p 'Execute:'")]
        --- Favorite programs
         ^++^
-        [ ("M-S-<Return>",addName "Launch terminal"    $ spawn myTerminal)
-        , ("M-w",   addName "Launch web browser"       $ spawn myBrowser)
-        , ("<Home>",addName "Launch File Manager"      $ spawn "nemo")
-        , ("M-r",   addName "Run Redshift"             $ spawn "redshift -O 3800K")
-        , ("M-x",   addName "Stop Redshift"            $ spawn "redshift -x")]
+        [ ("M-S-<Return>", addName "Launch terminal"    $ spawn myTerminal)
+        , ("M-w",    addName "Launch web browser"       $ spawn myBrowser)
+        , ("<Home>", addName "Launch File Manager"      $ spawn "nemo")
+        , ("M-r",    addName "Run Redshift"             $ spawn "redshift -O 3800K")
+        , ("M-x",    addName "Stop Redshift"            $ spawn "redshift -x")]
         --- Scratchpads
         ^++^
-        [ ("M-s t", addName "Toggle scratchpad terminal"$ namedScratchpadAction myScratchPads "terminal")
-        , ("M-s w", addName "Toggle scratchpad Browser" $ namedScratchpadAction myScratchPads "browser" )]
+        [ ("M-s t",  addName "Toggle scratchpad terminal"$ namedScratchpadAction myScratchPads "terminal")
+        , ("M-s w",  addName "Toggle scratchpad Browser" $ namedScratchpadAction myScratchPads "browser" )]
         --- Multimedia keys
         ^++^
         [ ("<XF86AudioMute>", addName "Toggle audio mute"$spawn "pamixer -t && notify-send -t 200 'Toggle mute button!'")
-        , ("<F9>",  addName "Raise vol"        $ spawn "pamixer -i 5 && ~/.config/xmobar/scripts/volume.sh")
-        , ("<F8>",  addName "Lower vol"        $ spawn "pamixer -d 5 && ~/.config/xmobar/scripts/volume.sh")]
+        , ("<F9>",   addName "Raise vol"        $ spawn "pamixer -i 5 && ~/.config/xmobar/scripts/volume.sh")
+        , ("<F8>",   addName "Lower vol"        $ spawn "pamixer -d 5 && ~/.config/xmobar/scripts/volume.sh")]
        --- Scripts
         ^++^
-        [ ("M-S-w",    addName "Run Wifi Menu"    $ spawn "bash ~/.config/rofi/scripts/wifiMenu.sh" )
-        , ("M-S-e",    addName "Run Power Menu"   $ spawn "bash ~/.config/rofi/scripts/powerMenu.sh")]
+        [ ("M-S-w",  addName "Run Wifi Menu"    $ spawn "bash ~/.config/rofi/scripts/wifiMenu.sh" )
+        , ("M-S-e",  addName "Run Power Menu"   $ spawn "bash ~/.config/rofi/scripts/powerMenu.sh")]
        --- ScreenShoot
         ^++^
         [ ("<Print>",   addName "Take Normal Screenshot"        $ spawn "scrot -F ~/pix/screen/%Y-%m-%d-%T-screenshot.png && notify-send -t 2800 'ScreenShot Takeen' 'Saved in ~/pix/screen/'"     )
@@ -534,7 +534,7 @@ main = xmonad
 		windowCount :: X (Maybe String)
 		windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 -------------------------------------------------------------------------------
---                          My Heart ==>                                   ---
+--                     in  My Heart ==>                                    ---
 -------------------------------------------------------------------------------
 myConfig  = def { modMask                   = myAltMask
                 , terminal                  = myTerminal
