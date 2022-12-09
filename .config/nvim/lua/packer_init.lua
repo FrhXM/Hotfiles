@@ -41,7 +41,7 @@ if not status_ok then
 end
 
 ------------------------------------
---- 	Install plugins		----
+--- 	Install plugins		        ----
 ------------------------------------
 return packer.startup(function(use)
   -- Add you plugins here:
@@ -57,7 +57,6 @@ return packer.startup(function(use)
     -- easier coding
     use("nvim-tree/nvim-web-devicons")
     use("goolord/alpha-nvim")
-    use("norcalli/nvim-colorizer.lua")
     use("lukas-reineke/indent-blankline.nvim")
     use("akinsho/toggleterm.nvim")
     use("windwp/nvim-autopairs")
