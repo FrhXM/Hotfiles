@@ -413,8 +413,8 @@ myKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
         ^++^
         [ ("M-h",    addName "Shrink window"            $ sendMessage Shrink)
         , ("M-l",    addName "Expand window"            $ sendMessage Expand)
-        , ("M-a",    addName "Shrink window vertically" $ sendMessage MirrorShrink)
-        , ("M-z",    addName "Expand window vertically" $ sendMessage MirrorExpand)]
+        , ("M-a",    addName "Expand window vertically" $ sendMessage MirrorExpand)
+        , ("M-z",    addName "Shrink window vertically" $ sendMessage MirrorShrink)]
         --- Controll Window Float
         ^++^
         [ ("M-<L>",  addName "move float left"       $  withFocused (keysMoveWindow (-20,0)))
