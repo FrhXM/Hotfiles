@@ -20,12 +20,12 @@ if status is-interactive
 	#######################################################
 	set -gx FZF_DEFAULT_OPTS '--multi --reverse --border --preview "bat --color=always --style=numbers --line-range=:500 {}" --height 40 --color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
 	set -gx FZF_DEFAULT_COMMAND 'fd --type f --exclude="**/.git/"'
-    set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND "--type=f"
-    set -gx FZF_CTRL_T_OPTS "--preview='bat --style=numbers --color=always {}'"
-    set -gx FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND "--type=d"
-		set -gx FZF_ALT_C_OPTS "--preview='lsd --tree --depth=2 {}'"
-	  # https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
-    set -gx FZF_CTRL_R_OPTS "--preview='echo {}' --preview-window=down:3:hidden:wrap --bind='?:toggle-preview'"
+	set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND "--type=f"
+	set -gx FZF_CTRL_T_OPTS "--preview='bat --style=numbers --color=always {}'"
+	set -gx FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND "--type=d"
+	set -gx FZF_ALT_C_OPTS "--preview='lsd --tree --depth=2 {}'"
+	# https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
+	set -gx FZF_CTRL_R_OPTS "--preview='echo {}' --preview-window=down:3:hidden:wrap --bind='?:toggle-preview'"
 
 	###########################
 	## TokyoNight Color Palette
