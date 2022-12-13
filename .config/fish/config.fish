@@ -77,10 +77,11 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # Changing "ls" to "lsd"
-alias ls='lsd -l --icon never'
-alias l='lsd --almost-all --long'
-alias lS='lsd --oneline --classic'
-alias lt='lsd --tree --depth=2'
+alias ls='lsd --icon never --group-directories-first'
+alias l='ls -l'
+alias la='ls -A'
+alias lla='ls -la'
+alias lt='ls --tree --depth=2'
 # alias ls='exa -l --color=always --group-directories-first'  # my preferred listing
 # alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 # alias ll='exa -l --color=always --group-directories-first'  # long format
