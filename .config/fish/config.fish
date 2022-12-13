@@ -23,7 +23,7 @@ if status is-interactive
     set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND "--type=f"
     set -gx FZF_CTRL_T_OPTS "--preview='bat --style=numbers --color=always {}'"
     set -gx FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND "--type=d"
-	set -gx FZF_ALT_C_OPTS "--preview='exa -T {}'"
+		set -gx FZF_ALT_C_OPTS "--preview='lsd --tree --depth=2 {}'"
 	  # https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
     set -gx FZF_CTRL_R_OPTS "--preview='echo {}' --preview-window=down:3:hidden:wrap --bind='?:toggle-preview'"
 
