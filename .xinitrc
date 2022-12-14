@@ -61,4 +61,4 @@ fi
 ##################### Start WindowManager #################
 ###########################################################
 ## I am In Love with XMonad
-exec /usr/bin/xmonad
+exec /usr/bin/xmonad 2> /dev/null
