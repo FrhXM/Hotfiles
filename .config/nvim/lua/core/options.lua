@@ -11,6 +11,7 @@ opt.syntax = 'enable'
 opt.encoding = 'utf-8'
 opt.clipboard = 'unnamedplus'
 opt.hidden = true
+opt.undofile = true
 opt.backspace = { 'eol', 'start', 'indent' }
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
 
