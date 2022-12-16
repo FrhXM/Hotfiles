@@ -517,7 +517,7 @@ main = xmonad
 	    , ppExtras = [windowCount]
 	      -- Order of things
 	    , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ colorInactive ++ "><fn=5>        " ++ l ++ "</fn></fc>  "]
-        -- , ppOrder  = \(ws:l:t:ex) -> ["<fn=4>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ black ++ "> { " ++ l ++ " } </fc> " ++ t ]  -- With TitleWindow Focused
+      -- , ppOrder  = \(ws:l:t:ex) -> ["<fn=1>" ++ ws ++ " </fn>"] ++ ex ++ ["<fc=" ++ colorInactive ++ "> { " ++ l ++ " } </fc> " ++ t ]  -- With TitleWindow Focused
 	    }
 	    where
 		colorBG :: String
