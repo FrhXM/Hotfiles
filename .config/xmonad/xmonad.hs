@@ -329,7 +329,7 @@ full            = renamed [Replace "FULL"]
 -- Layout/Modifiers
 ------------------------------------------------------------------------------
 mySpacings       = spacingRaw False (Border 0 10 10 10) True (Border 10 10 10 10) True
-myGaps           = gaps [(U, 10),(D, 5),(L, 10),(R, 10)]
+myGaps           = gaps [(U, 2),(D, 5),(L, 10),(R, 10)]
 myShowWNameTheme = def
                 { swn_font              = myNerdFontBig
                 , swn_fade              = 1.0
