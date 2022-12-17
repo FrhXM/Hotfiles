@@ -361,7 +361,7 @@ myKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
         , ("M-S-o",  addName "Kill all Other window except focused"  $ killOthers)
         , ("M-t",    addName "Sink a floating window"  $ withFocused $ windows . W.sink)
         , ("M-S-t",  addName "Sink all floated windows"$ sinkAll)
-        , ("M-S-f",  addName "Full Screen Window Focused with Padding"$ withFocused (sendMessage . maximizeRestore)) {-- For Maximaze With Paddings --}
+        , ("M-S-f",  addName "Full Screen Window Focused with Padding"$ withFocused (sendMessage . maximizeRestore))
         , ("M-f",    addName "Full Screen Window Focused"             $sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts)]
         --- Switch to workspace
         ^++^
