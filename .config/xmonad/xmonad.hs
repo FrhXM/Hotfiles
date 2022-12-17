@@ -38,7 +38,7 @@ import XMonad.ManageHook (doFloat)
 import XMonad.Hooks.ManageHelpers (doCenterFloat, doRectFloat, doFullFloat, isFullscreen)
 import XMonad.Hooks.FadeWindows (fadeWindowsLogHook, isFloating, isUnfocused, transparency, solid)
 import XMonad.Hooks.StatusBar (withEasySB, statusBarProp, defToggleStrutsKey)
-import XMonad.Hooks.StatusBar.PP (PP (ppCurrent, ppExtras, ppHidden, ppOrder, ppSep, ppWsSep, ppUrgent, ppVisible, ppTitle, ppLayout, ppHiddenNoWindows), shorten, wrap, xmobarColor)
+import XMonad.Hooks.StatusBar.PP (PP (ppCurrent, ppExtras, ppHidden, ppOrder, ppSep, ppWsSep, ppUrgent, ppVisible, ppTitle, ppLayout, ppHiddenNoWindows), shorten, wrap, xmobarColor, filterOutWsPP)
 import XMonad.Hooks.UrgencyHook
 --- Utilities
 import XMonad.Util.SpawnOnce (spawnOnce)
@@ -488,7 +488,7 @@ myKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
 main = xmonad
      . ewmhFullscreen
      . ewmh
-     . withEasySB (statusBarProp "xmobar" (clickablePP myXmobarPP)) defToggleStrutsKey
+     . withEasySB (statusBarProp "xmobar" (clickablePP (filterOutWsPP [scratchpadWorkspaceTag] myXmobarPP))) defToggleStrutsKey
      . withUrgencyHook FocusHook
      . docks
      . addDescrKeys ((mod1Mask, xK_F1), xMessage) myKeys
