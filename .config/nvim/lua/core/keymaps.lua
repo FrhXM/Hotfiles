@@ -52,6 +52,7 @@ keymap("v", "p", '"_dP', opts)
 
 -- others
 keymap("n", "<leader>q", ":q!<CR>", opts)
+keymap("n", "<leader>s", ":w!<CR>", opts)
 
 ------------------------
 ---      Plugins     ---
