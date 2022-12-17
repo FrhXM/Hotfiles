@@ -68,7 +68,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.Dishes
 import XMonad.Layout.Dwindle
-import XMonad.Layout.HintedGrid(Grid(Grid, GridRatio))
+import XMonad.Layout.HintedGrid
 import XMonad.Layout.Circle
 --- prompt
 import XMonad.Prompt
