@@ -65,21 +65,26 @@ keys = [
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    #=-/ shrink  window /-=#
+    #=-/ Shrink  window /-=#
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
     Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     Key([mod], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
-    #=-/ myPrograms /-=#
+    #=-/ Meltimedia /-=#
+    Key(["Control"], "F9", lazy.spawn("amixer set Master 5%+"), desc='Volume up 5%'),
+    Key(["Control"], "F8", lazy.spawn("amixer set Master 5%-"), desc='volume down 5%'),
+    Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle"), desc='Volume Mute'),
+    Key(["Control"], "F6", lazy.spawn("xbacklight -inc 30"), desc='brightness up'),
+    Key(["Control"], "F5", lazy.spawn("xbacklight -dec 5"), desc='brightness down'),
+    #=-/ Programs /-=#
     Key([mod, "Shift"], "Return", lazy.spawn(myTerminal), desc="Launch terminal"),
     Key([mod], "p", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "d", lazy.spawn(myLauncher), desc="Launch Rofi"),
     Key([mod], "w", lazy.spawn(myBrowser), desc="Launch qutebrowser"),
     Key([mod, "Shift"], "e", lazy.spawn(myPowerMenu), desc="Launch Power Menu"),
 ]
-
 #==========================================================================#
 #========================= Groups / Workspaces  ===========================#
 #==========================================================================#
@@ -96,22 +101,8 @@ groups = [
     Group('9', label="九"),
 ]
 for i in groups:
-    keys.extend(
-        [
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
-        ]
-    )
+    keys.extend([Key([mod], i.name, lazy.group[i.name].toscreen(), desc="Switch to group {}".format(i.name),),
+                 Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True), desc="Switch to & move focused window to group {}".format(i.name)),])
 #==========================================================================#
 #========================= ScratchPad / DropDown ==========================#
 #==========================================================================#
@@ -151,7 +142,6 @@ layouts = [
     # layout.VerticalTile(**layout_theme),
     # layout.Zoomy(**layout_theme),
 ]
-
 #==========================================================================#
 #======================= Screens && widgets/bar ===========================#
 #==========================================================================#
@@ -169,7 +159,13 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                 widget.TextBox(
+                #=-/ Show Propmt Spawn After Click [Mod] "p" -=/#
+                widget.Prompt(
+                    background=catppuccin["Overlay2"],
+                    foreground=catppuccin["Crust"],
+                ),
+                #=-/ Show Icons Distro /-=#
+                widget.TextBox(
                     text="",
                     padding=10,
                     fontsize=30,
@@ -183,6 +179,7 @@ screens = [
                     background=catppuccin["Surface2"],
                     foreground=catppuccin["Crust"],
                 ),
+                #=-/ Show Workspaces /-=#
                 widget.GroupBox(
                     highlight_method="text",
                     this_current_screen_border=catppuccin["Green"],
@@ -201,20 +198,67 @@ screens = [
                     background=catppuccin["Surface0"],
                     foreground=catppuccin["Surface2"],
                 ),
+                #=-/ Show Window Name -=/#
                 widget.WindowName(
                     background=catppuccin["Surface0"],
                 ),
+                #=-/ Show Battery -=/#
                 widget.TextBox(
                     text="",
                     padding=0,
                     fontsize=22,
                     background=catppuccin["Surface0"],
+                    foreground=catppuccin["Pink"],
+                ),
+                widget.Battery(
+                    format='{char} {percent:2.0%}',
+                    charge_char='',
+                    discharge_char='',
+                    full_char='',
+                    unknown_char= '🔌', #''
+                    empty_char='',
+                    show_short_text=False,
+                    foreground=catppuccin['Surface0'],
+                    background=catppuccin['Pink'],
+                ),
+                #=-/ Show Light -=/#
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=22,
+                    background=catppuccin["Pink"],
+                    foreground=catppuccin["Mauve"],
+                ),
+                widget.Backlight(
+                    background=catppuccin["Mauve"],
+                    foreground=catppuccin["Surface0"],
+                    backlight_name="intel_backlight",
+                    fmt=" {}",
+                ),
+                #=-/ Show Volume -=/#
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=22,
+                    background=catppuccin["Mauve"],
                     foreground=catppuccin["Lavender"],
                 ),
-                widget.CurrentLayoutIcon(
-                    scale=0.7,
+                widget.TextBox(
                     background=catppuccin["Lavender"],
+                    foreground=catppuccin["Surface0"],
+                    text=" ",
+                    font="Font Awesome 6 Free Solid",
+                    padding=0,
                 ),
+                widget.PulseVolume(
+                    background=catppuccin["Lavender"],
+                    foreground=catppuccin["Surface0"],
+                    limit_max_volume="True",
+                    mouse_callbacks={
+                        "Button3": lazy.spawn("kitty pulsemixer"),
+                    },
+                ),
+                #=-/ Show Clock -=/#
                 widget.TextBox(
                     text="",
                     padding=0,
@@ -227,6 +271,7 @@ screens = [
                     background=catppuccin["Sapphire"],
                     foreground=catppuccin["Mantle"],
                 ),
+                #=-/ Show System Tray -=/#
                 widget.TextBox(
                     text="",
                     padding=0,
@@ -237,6 +282,7 @@ screens = [
                 widget.Systray(
                     background=catppuccin["Base"],
                 ),
+                #=-/ Show Date -=/#
                 widget.TextBox(
                     text="",
                     padding=0,
@@ -249,6 +295,7 @@ screens = [
                     background=catppuccin["Green"],
                     foreground=catppuccin["Mantle"],
                 ),
+                #=-/ Show Button Shutdown Qtile -=#/
                 widget.TextBox(
                     text="",
                     padding=0,
@@ -265,28 +312,15 @@ screens = [
                         "Button1": lazy.shutdown(),
                     },
                 ),
-                ##=-/ Show Name Of Current Layout /-=#
-                #widget.CurrentLayout(),
-                ##=-/ Show Groups/Workspaces /-=#
-                #widget.GroupBox(),
-                ##=-/ Show Propmt Spawn After Click [Mod] "p" -=/#
-                #widget.Prompt(),
-                ##=-/ Show Window title -=/#
-                #widget.WindowName(),
-                ##-/ Show Clock and Date -=/#
-                #widget.Clock(),
-                ## Show System Tray
-                #widget.Systray(),
             ],
             size=30,
             background=catppuccin["Base"],
             foreground=catppuccin["Text"],
             opacity=0.90,
-            margin=[2, 10, 2, 10],
+            margin=[2, 5, 2, 5],
         ),
     ),
 ]
-
 #==========================================================================#
 #======================= Floating && rules ================================#
 #==========================================================================#
@@ -312,8 +346,13 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),    # gitk
         Match(title="pinentry"),        # GPG key password entry
+        #=-/ My Floating Window /-=#
+        Match(wm_class="blueman-manager"),
+        Match(wm_class="lxappearance"),
+        Match(wm_class="sxiv"),
+        Match(wm_class="mpv"),
     ],
-    **layout_theme
+    **layout_theme,
 )
 #==========================================================================#
 #============================ Others ======================================#
