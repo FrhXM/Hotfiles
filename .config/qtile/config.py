@@ -350,7 +350,7 @@ screens = [
             size=30,
             background=catppuccin["Base"],
             foreground=catppuccin["Text"],
-            opacity=0.90,
+            opacity=0.80,
             margin=[2, 5, 2, 5],
         ),
     ),
