@@ -23,7 +23,7 @@ if status is-interactive
 	set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND "--type=f"
 	set -gx FZF_CTRL_T_OPTS "--preview='bat --style=numbers --color=always {}'"
 	set -gx FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND "--type=d"
-	set -gx FZF_ALT_C_OPTS "--preview='lsd --tree --depth=2 {}'"
+	set -gx FZF_ALT_C_OPTS "--preview='exa --tree {}'"
 	# https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
 	set -gx FZF_CTRL_R_OPTS "--preview='echo {}' --preview-window=down:3:hidden:wrap --bind='?:toggle-preview'"
 
@@ -77,16 +77,11 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # Changing "ls" to "lsd"
-alias ls='lsd --icon never --group-directories-first'
-alias l='ls -l'
-alias la='ls -A'
-alias lla='ls -la'
-alias lt='ls --tree --depth=2'
-# alias ls='exa -l --color=always --group-directories-first'  # my preferred listing
-# alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-# alias ll='exa -l --color=always --group-directories-first'  # long format
-# alias lt='exa -T --color=always --group-directories-first'	# tree listing
-# alias l.='exa -a | egrep "^\."'
+alias ls='exa -l --color=always --group-directories-first'  # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lt='exa -T --color=always --group-directories-first'	# tree listing
+alias l.='exa -a | egrep "^\."'
 
 ## force confirm before overwriting something
 alias cp="cp -f"
@@ -127,8 +122,7 @@ alias install_grub='sudo grub-install --target=x86_64-efi --efi-directory=/boot/
 alias update_grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'	# After Update Linux Karnel
 
 ## alias for configs
+alias qtilec="nvim ~/.config/qtile/config.py"
 alias fishc="nvim ~/.config/fish/config.fish"
-alias xmonadc="nvim ~/.config/xmonad/xmonad.hs"
-alias xmobarc="nvim ~/.config/xmobar/xmobar.hs"
 alias kittyc="nvim ~/.config/kitty/kitty.conf"
 alias nvimc="nvim ~/.config/nvim/init.lua"
