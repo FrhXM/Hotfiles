@@ -228,11 +228,12 @@ screens = [
                 widget.CheckUpdates(
                     background  = catppuccin['Red'],
                     foreground  = catppuccin["Red"],
-                    fontsize    = 20,
+                    font        ="Font Awesome 6 Free Solid",
+                    fontsize    = 12,
                     padding     = 15,
                     distro      = 'Arch_checkupdates',
                     no_update_string ='',
-                    display_format   = ' {updates}',
+                    display_format   = '  {updates}',
                 ),
                 #=-/ Show Battery -=/#
                 widget.TextBox(
