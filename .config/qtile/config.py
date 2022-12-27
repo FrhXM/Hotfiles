@@ -51,7 +51,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "Shift"], "c", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod], "Space", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc='toggle fullscreen'),
     Key([mod], "t", lazy.window.toggle_floating(), desc='toggle fullscreen'),
     #=-/ Switch between windows /-=#
@@ -59,7 +59,7 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "Tab", lazy.layout.next(), desc="Move window focus to other window"),
+    Key([mod], "Space", lazy.layout.next(), desc="Move window focus to other window"),
     #=-/ Move windows left@right or up@down /-=#
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
@@ -232,8 +232,11 @@ screens = [
                     fontsize    = 12,
                     padding     = 15,
                     distro      = 'Arch_checkupdates',
-                    no_update_string ='',
+                    no_update_string =' ',
                     display_format   = '  {updates}',
+                    mouse_callbacks={
+                        "Button1": lazy.spawn("kitty sudo pacman -Syu"),
+                    },
                 ),
                 #=-/ Show Battery -=/#
                 widget.TextBox(
