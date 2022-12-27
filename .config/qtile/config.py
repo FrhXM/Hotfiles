@@ -185,11 +185,11 @@ screens = [
                     this_current_screen_border=catppuccin["Green"],
                     urgent_alert_method="text",
                     urgent_text=catppuccin["Red"],
-                    background=catppuccin["Surface2"],
                     active=catppuccin["Text"],
                     inactive=catppuccin["Surface0"],
                     fontsize=15,
                     disable_drag=True,
+                    background=catppuccin["Surface2"],
                 ),
                 widget.TextBox(
                     text="",
@@ -254,6 +254,7 @@ screens = [
                     background=catppuccin["Lavender"],
                     foreground=catppuccin["Surface0"],
                     limit_max_volume="True",
+                    update_interval=0.01,
                     mouse_callbacks={
                         "Button3": lazy.spawn("kitty pulsemixer"),
                     },
