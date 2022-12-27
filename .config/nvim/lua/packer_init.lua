@@ -68,9 +68,9 @@ return packer.startup(function(use)
    -- Color theme
     use("xiyaowong/nvim-transparent")
     use("folke/tokyonight.nvim")
-    use({ 'tiagovla/tokyodark.nvim',
+    use({"catppuccin/nvim", as = "catppuccin",
         config = function()
-        vim.cmd("colorscheme tokyodark")
+        vim.cmd("colorscheme catppuccin")
         end })
 
   -- Automatically set up your configuration after cloning packer.nvim
