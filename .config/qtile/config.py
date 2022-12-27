@@ -195,19 +195,51 @@ screens = [
                     text="",
                     padding=0,
                     fontsize=22,
-                    background=catppuccin["Surface0"],
+                    background=catppuccin["Mantle"],
                     foreground=catppuccin["Surface2"],
+                ),
+                #=-/ Show Current Layout Icons -=/#
+                widget.CurrentLayoutIcon(
+                    scale=0.65,
+                    padding=10,
+                    background=catppuccin["Mantle"],
+                    foreground=catppuccin["Surface0"],
+                ),
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=22,
+                    background=catppuccin["Surface0"],
+                    foreground=catppuccin["Mantle"],
                 ),
                 #=-/ Show Window Name -=/#
                 widget.WindowName(
                     background=catppuccin["Surface0"],
+                    padding=10,
+                ),
+                #=-/ Show Number Of Update -=/#
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=22,
+                    background=catppuccin["Surface0"],
+                    foreground=catppuccin["Red"],
+                ),
+                widget.CheckUpdates(
+                    background  = catppuccin['Red'],
+                    foreground  = catppuccin["Red"],
+                    fontsize    = 20,
+                    padding     = 15,
+                    distro      = 'Arch_checkupdates',
+                    no_update_string ='',
+                    display_format   = ' {updates}',
                 ),
                 #=-/ Show Battery -=/#
                 widget.TextBox(
                     text="",
                     padding=0,
                     fontsize=22,
-                    background=catppuccin["Surface0"],
+                    background=catppuccin["Red"],
                     foreground=catppuccin["Pink"],
                 ),
                 widget.Battery(
@@ -351,7 +383,6 @@ floating_layout = layout.Floating(
         Match(wm_class="blueman-manager"),
         Match(wm_class="lxappearance"),
         Match(wm_class="sxiv"),
-        Match(wm_class="mpv"),
     ],
     **layout_theme,
 )
